@@ -2,12 +2,19 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.9'
 gem 'haml-rails'
+gem 'bootstrap-sass-rails', :git => 'git://github.com/yabawock/bootstrap-sass-rails.git'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 group :development, :test do
   gem 'sqlite3'
+  gem 'pry-rails'
+end
+
+group :test do
+  gem 'rspec-rails'
+  gem 'database_cleaner'
 end
 
 group :production, :staging do
