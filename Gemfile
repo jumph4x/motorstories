@@ -1,8 +1,7 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.9'
+gem 'rails', '3.2.12'
 gem 'haml-rails'
-gem 'bootstrap-sass-rails', :git => 'git://github.com/yabawock/bootstrap-sass-rails.git'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -13,12 +12,19 @@ group :development, :test do
 end
 
 group :test do
-  gem 'rspec-rails'
+  gem 'factory_girl_rails', '~> 3.0'
+  gem 'faker'
   gem 'database_cleaner'
+  gem 'rspec-rails'
+  gem 'spork'
+  gem 'shoulda-matchers'
+  gem 'capybara'
 end
 
 group :production, :staging do
   gem 'pg'
+  gem 'ratchetio', '>= 0.4.0'
+  gem 'newrelic_rpm'
 end
 
 # Gems used only for assets and not required
@@ -31,6 +37,7 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
+  gem 'zurb-foundation', '~> 4.0.0'
 end
 
 gem 'jquery-rails'
