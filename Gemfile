@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.12'
 gem 'haml-rails'
+gem 'craigslist', :git => 'git://github.com/gregstallings/craigslist.git'
+gem 'devise'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -39,8 +41,6 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
   gem 'zurb-foundation', '~> 4.0.0'
 end
-
-gem 'craigslist', :git => 'git://github.com/gregstallings/craigslist.git'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
