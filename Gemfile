@@ -5,6 +5,7 @@ gem 'haml-rails'
 gem 'craigslist', :git => 'git://github.com/gregstallings/craigslist.git'
 gem 'devise'
 gem 'active_hash'
+gem 'browser'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
