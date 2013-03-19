@@ -40,7 +40,7 @@ group :assets do
   gem 'zurb-foundation', '~> 4.0.0'
 end
 
-gem 'jquery-rails'
+gem 'craigslist', :git => 'git://github.com/gregstallings/craigslist.git'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
