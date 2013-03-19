@@ -4,6 +4,7 @@ gem 'rails', '3.2.12'
 gem 'haml-rails'
 gem 'craigslist', :git => 'git://github.com/gregstallings/craigslist.git'
 gem 'devise'
+gem 'active_hash'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -19,8 +20,7 @@ group :test do
   gem 'database_cleaner'
   gem 'rspec-rails'
   gem 'spork'
-  gem 'shoulda-matchers'
-  gem 'capybara'
+  #gem 'capybara'
 end
 
 group :production, :staging do
