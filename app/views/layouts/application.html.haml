@@ -1,26 +1,45 @@
 !!! 5
 / paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/
-/[if lt IE 7 ] <html class=\"ie6\" lang=\"en\">
-/[if IE 7 ]    <html class=\"ie7\" lang=\"en\">
-/[if IE 8 ]    <html class=\"ie8\" lang=\"en\">
-/[if IE 9 ]    <html class=\"ie9\" lang=\"en\">
-/[if (gt IE 9)|!(IE)] <!--> <html lang=\"en\">
+/[if lt IE 7 ] <html class="ie6" lang="en">
+/[if IE 7 ]    <html class="ie7" lang="en">
+/[if IE 8 ]    <html class="ie8" lang="en">
+/[if IE 9 ]    <html class="ie9" lang="en">
+/[if (gt IE 9)|!(IE)] <!--> <html lang="en">
 
 %head
-  %meta{ :charset => "utf-8" }
+  %meta{ charset: "utf-8" }
 
   -# Uncomment to make IE8 render like IE7
   -# meta http-equiv="X-UA-Compatible" content="IE=7"
 
   -# Set the viewport width to device width for mobile
-  %meta{ :name => "viewport", :content => "width=device-width, initial-scale=1.0" }
+  %meta{ name:"viewport", content: "width=device-width, initial-scale=1.0" }
 
   %title= Motorstories
 
   = stylesheet_link_tag "application"
+  %link{href: '//fonts.googleapis.com/css?family=Rancho', rel: 'stylesheet', type: 'text/css'}
   = javascript_include_tag is_legacy? ? :legacy : :modern
   = csrf_meta_tag
 
 %body
-
+  .contain-to-grid
+    %nav.top-bar
+      .container
+        %ul.title-area
+          %li.name
+            %h1
+              %a{href: '/'} Motor<b>stori</b>.es
+          %li.toggle-topbar.menu-icon
+            %a{href: '#'}
+              %span Menu
+        %section.top-bar-section
+          %ul.right
+            %li.show-for-small
+              %a{href: '/'} Home
+            %li.divider
+            = render "shared/topnav#{ '_auth' unless current_user}"
+            %li.divider
+            %li.has-form
+              %a.button{href: '/'} Tour
   = yield

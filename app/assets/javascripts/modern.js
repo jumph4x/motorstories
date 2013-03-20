@@ -1,2 +1,2 @@
-//= require 'zepto.min'
-
+//= require 'vendor/zepto'
+//= require './all'
