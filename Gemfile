@@ -11,6 +11,7 @@ gem 'browser'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 group :development, :test do
+  gem 'rspec-rails'
   gem 'sqlite3'
   gem 'pry-rails'
 end
@@ -19,7 +20,6 @@ group :test do
   gem 'factory_girl_rails', '~> 3.0'
   gem 'faker'
   gem 'database_cleaner'
-  gem 'rspec-rails'
   gem 'spork'
   #gem 'capybara'
 end
