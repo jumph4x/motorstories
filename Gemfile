@@ -22,7 +22,7 @@ group :test do
   gem 'faker'
   gem 'database_cleaner'
   gem 'spork'
-  #gem 'capybara'
+  gem 'capybara'
 end
 
 group :production, :staging do
