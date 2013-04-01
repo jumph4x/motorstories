@@ -1,6 +1,6 @@
 class StaticController < ApplicationController
 
-  def index
+  def index #tour
 
   end
 
