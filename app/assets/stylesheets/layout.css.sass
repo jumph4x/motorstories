@@ -1,17 +1,33 @@
+@import "compass/css3/box-shadow"
+
+body
+  background: asset-data-url('layout/bg_2.png')
+#first-tier
+  @include single-box-shadow(rgba(0,0,0,0.7), 0, 0, 10px, 0)  
+  position: relative
+  z-index: 40
 #logo
   font: 0/0 a
   color: transparent
   background: asset-data-url('layout/logo.png') no-repeat center center
-  height: 70px
-  width: 196px
+  height: 90px
+  width: 167px
   padding: 10px 0
   display: block
-  position: absolute
+  margin: 0 auto -100px auto
   z-index: 50
+  position: relative
 #hero
-  background: url('http://fcp-promotions.s3.amazonaws.com/euro/18.jpg')
-  height: 25em
+  background: asset-data-url('layout/hero.jpg') no-repeat center center
+  background-color: white
+  height: 0
+  padding-bottom: 36%
   background-size: cover
-  background-position: center center
-  -webkit-box-shadow: $hero-box-shadow
-  box-shadow: $hero-box-shadow
+#main
+  max-width: 62.5em
+  margin: 0 auto
+  .row
+    background: white
+footer
+  min-height: 256px
+  background: #222

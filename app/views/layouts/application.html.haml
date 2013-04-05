@@ -15,17 +15,17 @@
   -# Set the viewport width to device width for mobile
   %meta{ name:"viewport", content: "width=device-width, initial-scale=1.0" }
 
-  %title= Motorstories
+  %title= html_title
 
   = stylesheet_link_tag "application"
-  %link{href: '//fonts.googleapis.com/css?family=Rancho', rel: 'stylesheet', type: 'text/css'}
+  %link{href: '//fonts.googleapis.com/css?family=Sanchez', rel: 'stylesheet', type: 'text/css'}
   = javascript_include_tag is_legacy? ? :legacy : :modern
   = csrf_meta_tag
 
 %body
   .row
     %a#logo{href: '/'} Motorstori.es
-  .contain-to-grid
+  #first-tier.contain-to-grid
     %nav.top-bar
       .container
         %ul.title-area
@@ -42,4 +42,6 @@
             %li.divider
             %li.has-form
               %a.button{href: '/'} Tour
-  = yield
+  #main
+    = yield
+  %footer
