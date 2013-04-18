@@ -1,19 +1,24 @@
 source 'https://rubygems.org'
 
 gem 'rails', '~> 3.2.12'
+gem 'mongo_mapper'
+gem 'bson_ext'
+
 gem 'haml-rails'
 gem 'craigslist', :git => 'git://github.com/gregstallings/craigslist.git'
-gem 'devise'
-gem 'active_hash'
-gem 'carrierwave'
 gem 'browser'
+
+gem 'mm-devise'
+gem 'devise'
+
+gem 'mm-carrierwave'
+gem 'carrierwave'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 group :development, :test do
   gem 'rspec-rails'
-  gem 'sqlite3'
   gem 'pry-rails'
 end
 
@@ -26,7 +31,6 @@ group :test do
 end
 
 group :production, :staging do
-  gem 'pg'
   gem 'ratchetio', '>= 0.4.0'
   gem 'newrelic_rpm'
 end
