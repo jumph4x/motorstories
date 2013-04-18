@@ -1,5 +1,9 @@
 @import "compass/css3/box-shadow"
 
+// variables
+$breakpoints: 'zurb-default' (0 768px)
+
+// styles
 body
   background: asset-data-url('layout/bg_2.png')
 #first-tier
@@ -18,11 +22,19 @@ body
   z-index: 50
   position: relative
 #hero
-  background: asset-data-url('layout/hero.jpg') no-repeat center center
+  margin-top: 2%
   background-color: white
-  height: 0
-  padding-bottom: 36%
-  background-size: cover
+  position: relative
+  .outer
+    width: 100%
+    padding-top: 36% //aspect ratio
+    position: relative
+  .inner
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0      
 #main
   max-width: 62.5em
   margin: 0 auto
@@ -31,3 +43,29 @@ body
 footer
   min-height: 256px
   background: #222
+
+// landing
+#hero
+  .title
+    text-transform: uppercase
+    text-align: center
+    position: absolute
+    bottom: -10%
+    left: 26%
+    font-family: arial
+    padding: 1% 6%
+    background: white
+    font-size: emCalc(45px)
+  .hero_img
+    width: 23%
+    margin: 0 1%
+    background: gray
+    float: left
+    height: 100%
+.landing
+  h1
+    font-weight: bold
+    text-align: center
+  h3
+    font-weight: bold
+    border-bottom: 1px solid #ddd

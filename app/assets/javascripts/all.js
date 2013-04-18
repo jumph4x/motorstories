@@ -1,3 +1,4 @@
+//= require './jquery.fittext'
 //= require 'foundation/foundation'
 //= require 'foundation/foundation.topbar'
 
