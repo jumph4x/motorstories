@@ -13,7 +13,7 @@ module Motorstories
 
     it 'should populate location model with data' do
       subject.populate_locations
-      Location.count.should > 0
+      Location.data.size.should > 0
     end
 
     context 'when working with city names' do
