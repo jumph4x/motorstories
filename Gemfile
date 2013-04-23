@@ -43,9 +43,6 @@ group :assets do
   gem 'compass-rails'
   gem 'respond-to'
 
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', :platforms => :ruby
-
   gem 'uglifier', '>= 1.0.3'
   gem 'zurb-foundation', :git => 'git://github.com/zurb/foundation.git'
 end
