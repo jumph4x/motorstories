@@ -1,5 +1,12 @@
 require 'spec_helper'
 
 describe Model do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  it 'can print the name of its vehicle_type' do
+    car = create(:base_vehicle_car).model
+    moto = create(:base_vehicle_moto).model
+    car.vehicle_type.should == 'car'
+    moto.vehicle_type.should == 'motorcycle'
+  end
+
 end
