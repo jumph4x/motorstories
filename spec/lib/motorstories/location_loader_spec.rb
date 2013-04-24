@@ -8,12 +8,12 @@ module Motorstories
     end
 
     it 'should iterate over CL cities and form an active_hash' do
-      subject.location_hashes.first.should be_a(Hash)
+      subject.locations_hash.should be_a(Hash)
     end
 
     it 'should populate location model with data' do
       subject.populate_locations
-      Location.data.size.should > 0
+      Location.data.size.should > 10
     end
 
     context 'when working with city names' do
