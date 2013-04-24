@@ -29,6 +29,7 @@ group :test do
   gem 'database_cleaner'
   gem 'spork'
   gem 'capybara'
+  gem 'webrat'
 end
 
 group :production, :staging do
