@@ -24,6 +24,7 @@ RSpec.configure do |config|
   end
   
   config.include LocationFactory
+  config.include VehicleTypeFactory
 
   config.include FactoryGirl::Syntax::Methods
 
