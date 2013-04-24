@@ -5,5 +5,4 @@ class BaseVehicle
   belongs_to :model
 
   key :year, Integer
-
 end

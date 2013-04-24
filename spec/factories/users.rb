@@ -5,6 +5,7 @@ FactoryGirl.define do
     name 'James'
     email 'james@gmail.com'
     password 'hehsadaaa'
+    location_id {Location.first.id}
   end
 
 end

@@ -12,5 +12,9 @@ class Location
     def find_by_id id
       Location.new(self.data[id.to_i])
     end
+
+    def first
+      Location.new self.data.first.last
+    end
   end
 end

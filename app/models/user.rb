@@ -18,7 +18,19 @@ class User
 
   timestamps!
 
+  validates_presence_of :name
+  validates_presence_of :username
+  validates_uniqueness_of :username
+  
+  validate :location_validity
+
   def location
     location_id && Location.find_by_id(location_id)
+  end
+
+  private
+
+  def location_validity
+    errors.add(:location_id, "Please specify your location") unless location
   end
 end
