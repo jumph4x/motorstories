@@ -2,6 +2,11 @@
 
 // variables
 $breakpoints: 'zurb-default' (0 768px)
+$off_black: #27282F
+$blue: #63BBF2
+$light_blue: #99D9F2
+$cream: #EBFFF8
+$green: #5DDE78
 
 // styles
 body
@@ -23,49 +28,40 @@ body
   position: relative
 #hero
   margin-top: 2%
-  background-color: white
   position: relative
-  .outer
-    width: 100%
-    padding-top: 36% //aspect ratio
-    position: relative
-  .inner
-    position: absolute
-    top: 0
-    left: 0
-    right: 0
-    bottom: 0      
 #main
-  max-width: 62.5em
+  max-width: 80em
   margin: 0 auto
-  .row
-    background: white
+  background: white
 footer
   min-height: 256px
   background: #222
 
 // landing
 #hero
-  .title
-    text-transform: uppercase
-    text-align: center
-    position: absolute
-    bottom: -10%
-    left: 26%
-    font-family: arial
-    padding: 1% 6%
-    background: white
-    font-size: emCalc(45px)
   .hero_img
-    width: 23%
-    margin: 0 1%
-    background: gray
+    width: 25%
     float: left
     height: 100%
-.landing
+    position: relative
+    cursor: pointer
+    overflow: hidden
+.landing_section
   h1
     font-weight: bold
     text-align: center
   h3
     font-weight: bold
-    border-bottom: 1px solid #ddd
+    background: $light_blue
+    text-align: center
+.overlay
+  background: rgba(0,0,0,0.2)
+  color: white
+  font-weight: bold
+  text-align: center
+  position: absolute
+  height: 50%
+  width: 100%
+  padding-top: 8px
+  bottom: -40%
+  
