@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '~> 3.2.12'
 gem 'mongo_mapper'
 gem 'bson_ext'
+gem 'database_cleaner'
 
 gem 'haml-rails'
 gem 'craigslist', :git => 'git://github.com/gregstallings/craigslist.git'
