@@ -12,5 +12,15 @@ FactoryGirl.define do
     year 2006
   end
 
-end
+  factory :base_vehicle_atv, :class => BaseVehicle do
+    make { create(:make, :name => 'Yamaha' )}
+    model { create(:model, :name => 'Explorer',:vehicle_type_id => 39) }
+    year 2005
+  end
 
+  factory :base_vehicle_ktm_atv, :class => BaseVehicle do
+    make { create(:make, :name => 'KTM') } 
+    model { create(:model, :name => 'Fake ATV', :vehicle_type_id => 39) }
+    year 2011
+  end
+end
