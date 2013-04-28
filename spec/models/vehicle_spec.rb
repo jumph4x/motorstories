@@ -8,9 +8,9 @@ describe Vehicle do
 
   describe 'at class level' do
     it 'should have [un]claimed scopes' do
-      u = create(:user)
+      p = create(:profile)
       v = create(:vehicle, :model => 'UNCLAIMED')
-      v2 = create(:vehicle, :model => 'CLAIMED', :user => u)
+      v2 = create(:vehicle, :model => 'CLAIMED', :profile => p)
 
       Vehicle.unclaimed.all.should == [v]
       Vehicle.claimed.all.should == [v2]
