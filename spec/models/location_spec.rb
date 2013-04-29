@@ -29,6 +29,10 @@ describe Location do
     it 'should pluck attributes' do
       Location.pluck(:slug).should == ['dummy-location', 'another-location']
     end
+
+    it 'should have a row counter method' do
+      Location.count.should == 2
+    end
   end
 
 end

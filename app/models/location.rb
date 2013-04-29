@@ -67,5 +67,9 @@ class Location
 
       @data = []
     end
+
+    def count
+      data.size
+    end
   end
 end
