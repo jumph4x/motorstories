@@ -20,3 +20,6 @@
 
 # Ignore Mac hidden file cache
 *.DS_Store
+
+# Ignore cached files
+*.*#
