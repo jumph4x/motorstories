@@ -18,10 +18,28 @@ describe Vehicle do
   end
 
   describe 'as instance' do
-    it 'should set location from profile' do
-      v = create(:vehicle, :profile => profile) 
-      v.location_id.should be_present
-      v.location_id.should == profile.location_id
+    let(:vehicle){ create(:vehicle, :profile => profile) }
+    it 'should set location from profile' do 
+      vehicle.location_id.should be_present
+      vehicle.location_id.should == profile.location_id
     end
+
+    it 'should set nickname from profile' do
+      vehicle.nickname.should == "#{profile.username}s-#{vehicle.model.to_url}"
+    end
+
+    it 'should validate nickname presence if profile is set' do
+      v = create(:vehicle)
+      v.nickname.should be_nil
+
+      v.profile = profile
+      v.save
+
+      v.nickname.should be_present
+      v.nickname = ''
+      v.save.should be_false
+    end
+    
+    it 'should validate uniqueness of nickname within scope'
   end
 end

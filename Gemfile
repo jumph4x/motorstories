@@ -15,6 +15,8 @@ gem 'mm-devise'
 gem 'carrierwave'
 gem 'mm-carrierwave'
 
+gem 'stringex'
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
