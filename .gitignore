@@ -17,3 +17,6 @@
 # Ignoring VIM swap files
 *.swp
 *.swo
+
+# Ignore Mac hidden file cache
+*.DS_Store
