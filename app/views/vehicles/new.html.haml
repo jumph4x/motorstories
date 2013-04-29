@@ -1,0 +1,96 @@
+.wrapper.project.cf
+  .content.project
+    %h1.project-header Create a new story
+    
+    .project-section.general.expanded
+      %span.section-icon -
+      %h3.section-title 
+        General <span class="aside">(Date of purchase, type of project, etc.)</span>
+      .section-controls
+        %input
+        %input
+        %input
+    .project-section.suspension
+      %span.section-icon +
+      %h3.section-title Suspension
+      .section-controls
+        %input
+        %input
+        %input
+    .project-section.engine
+      %span.section-icon +
+      %h3.section-title 
+        Engine <span class="aside">(Including exhaust, power mods)</span>
+      .section-controls
+        %input
+        %input
+        %input
+    .project-section.drivetrain
+      %span.section-icon +
+      %h3.section-title 
+        Drivetrain <span class="aside">(Gear ratio, sprockets, final drive)</span>
+      .section-controls
+        %input
+        %input
+        %input
+    .project-section.exterior
+      %span.section-icon +
+      %h3.section-title Exterior
+      .section-controls
+        %input
+        %input
+        %input
+    .project-section.controls
+      %span.section-icon +
+      %h3.section-title 
+        Controls <span class="aside">(Interior, levers, pedals, gauges)</span>
+      .section-controls
+        %input
+        %input
+        %input
+    .project-section.brakes
+      %span.section-icon +
+      %h3.section-title Brakes
+      .section-controls
+        %input
+        %input
+        %input
+    .project-section.wheels
+      %span.section-icon +
+      %h3.section-title 
+        Wheels
+      .section-controls
+        %input
+        %input
+        %input
+    
+  .sidebar.project
+    .content-sidebar
+      .modifications
+        %h2.mods Current modifications
+        %figure.diagram
+          = image_tag 'car-diagram/blueprint.png'
+      %ul.sidebar-progress
+        %li.sidebar-progress-item
+          %a.progress-link{:href => "#"}
+            Suspension
+        %li.sidebar-progress-item
+          %a.progress-link{:href => "#"}
+            Engine
+        %li.sidebar-progress-item
+          %a.progress-link{:href => "#"}
+            Drivetrain
+        %li.sidebar-progress-item.modified
+          %a.progress-link{:href => "#"}
+            Exterior
+        %li.sidebar-progress-item
+          %a.progress-link{:href => "#"}
+            Controls
+        %li.sidebar-progress-item.modified
+          %a.progress-link{:href => "#"}
+            Brakes
+        %li.sidebar-progress-item
+          %a.progress-link{:href => "#"}
+            Wheels
+        
+    

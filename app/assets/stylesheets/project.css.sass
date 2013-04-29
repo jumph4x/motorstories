@@ -1,0 +1,106 @@
+// general layoutg
+.wrapper 
+  width: 100%
+  position: relative
+  height: 100%
+  
+.content.project
+  background: white
+  position: absolute
+  left: 0
+  top: 0
+  right: 30%
+  bottom: 0
+  overflow-y: auto
+  padding: 20px 40px 20px 20px
+
+.sidebar.project
+  position: absolute
+  top: 0
+  left: 70%
+  right: 0
+  bottom: 0
+  padding: 0
+  background: darken(white, 5%)
+  border-left: 1px solid darken(white, 50%)
+
+.content-sidebar
+  width: 90%
+  height: 100%
+  margin: 0 auto
+  position: relative
+  padding-top: 20px
+  overflow-y: auto
+
+// main content styling
+.project-header
+  border-bottom: 3px solid black
+  text-transform: uppercase
+
+.project-section
+  width: 100%
+  padding: 10px
+  border: 1px solid darken(white, 50%)
+  margin-bottom: 20px
+  @include border-radius(5px)
+  position: relative
+  @include opacity(0.5)
+  @include transition-property(opacity)
+  @include transition-duration(0.15s)
+  height: 40px
+  overflow: hidden
+  &.expanded
+    @include opacity(1)
+    @include transition-property(opacity)
+    @include transition-duration(0.15s)
+    height: auto
+
+  input
+    display: block
+
+.section-icon
+  font-family: 'validation'
+  position: absolute
+  left: 10px
+  top: 13px
+  font-size: emCalc(12px)
+  color: lighten(black, 40%)
+  cursor: pointer
+
+.section-title, .section-icon
+  -webkit-touch-callout: none
+  -webkit-user-select: none
+  -khtml-user-select: none
+  -moz-user-select: none
+  -ms-user-select: none
+  user-select: none
+
+.section-title
+  margin: 0 0 20px 20px
+  line-height: 1em
+  cursor: pointer
+
+.aside
+  @include opacity(0.5)
+
+// sidebar styling
+.modifications
+  text-align: center
+
+.mods
+  border-bottom: 2px solid black
+
+.sidebar-progress
+  list-style-type: none
+
+.sidebar-progress-item
+  cursor: pointer
+
+.modified
+  background: yellow
+
+.progress-link
+  color: black
+  &:hover
+    color: black
+
