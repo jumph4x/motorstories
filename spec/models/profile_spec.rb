@@ -22,5 +22,16 @@ describe Profile do
       lambda{ profile.save! }.should raise_error
     end
   end
+
+  context 'when location is changed' do
+    it 'should propagate it to vehicles' do
+      v = create(:vehicle, :profile => profile)
+      
+      profile.location_id = Location.last.id
+      profile.save
+
+      v.reload.location_id.should == profile.location_id
+    end
+  end
 end
 

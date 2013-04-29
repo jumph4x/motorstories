@@ -16,5 +16,9 @@ class Location
     def first
       Location.new self.data.first.last
     end
+
+    def last
+      Location.new self.data.to_a.last.last
+    end
   end
 end

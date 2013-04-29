@@ -9,6 +9,7 @@ module LocationFactory
   def load_dummy_locations
     locations = {}
     locations[4321] = {:id => 4321, :name => 'Dummy Location'}
+    locations[66] = {:id => 66, :name => 'Another Location'}
     Location.data = locations
   end
 
