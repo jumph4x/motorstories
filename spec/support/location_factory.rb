@@ -7,13 +7,10 @@ module LocationFactory
   end
 
   def load_dummy_locations
-    locations = {}
-    locations[4321] = {:id => 4321, :name => 'Dummy Location'}
-    locations[66] = {:id => 66, :name => 'Another Location'}
-    Location.data = locations
-  end
-
-  def remove_dummy_locations
-    Location.data = nil
+    locations = [
+      {:id => 4321, :name => 'Dummy Location'},
+      {:id => 66, :name => 'Another Location'}
+    ]
+    Location.populate locations
   end
 end

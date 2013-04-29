@@ -1,23 +1,23 @@
 module Motorstories
   class LocationLoader
-    attr_accessor :cached_locations_hash
+    attr_accessor :cached_locations
     class << self
       attr_accessor :cached_cipher_data
     end
     
     def populate_locations
-      Location.data = locations_hash
+      Location.populate locations
       true
     end
 
-    def locations_hash
-      return cached_locations_hash if cached_locations_hash.present?
+    def locations
+      return cached_locations if cached_locations.present?
 
-      locations = {}
-      Craigslist.cities.each do |city|
+      locations = 
+      Craigslist.cities.map do |city|
         key = hash_name(city)
 
-        locations[key] = {
+        {
           :name => decorate_name(city),
           :id => key
         }

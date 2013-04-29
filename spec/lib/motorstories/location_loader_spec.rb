@@ -7,8 +7,9 @@ module Motorstories
       should_not be_nil
     end
 
-    it 'should iterate over CL cities and form an active_hash' do
-      subject.locations_hash.should be_a(Hash)
+    it 'should iterate over CL cities and collect hashes' do
+      subject.locations.should be_a(Array)
+      subject.locations.should be_present
     end
 
     it 'should populate location model with data' do
