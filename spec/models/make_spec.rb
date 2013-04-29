@@ -8,7 +8,14 @@ describe Make do
       moto = create(:base_vehicle_moto)
       atv = create(:base_vehicle_atv)
 
-      Make.car_or_motorcycle.all.map(&:name).should == ['Mazda', 'KTM'] 
+      Make.car_or_motorcycle.map(&:name).should == ['KTM', 'Mazda'] 
     end
+
+    it 'has an in-memory slug lookup cache' do
+      moto = create(:base_vehicle_moto)
+      
+      Make.find_by_slug('ktm').name.should == 'KTM' 
+    end
+
   end
 end

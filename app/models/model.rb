@@ -21,5 +21,18 @@ class Model
       model_ids = BaseVehicle.where(:make_id => make_id).distinct(:model_id)
       car_or_motorcycle.where(:_id => model_ids)
     end
+
+    def find_by_make_id_and_slug make_id, slug
+      hit = nil
+
+      by_make_id(make_id).each do |make|
+        if make.name.to_url == slug
+          hit = make
+          break
+        end
+      end
+
+      hit
+    end
   end
 end

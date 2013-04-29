@@ -14,6 +14,12 @@ describe Model do
 
       Model.by_make_id(moto.make_id).map(&:name).should == ['690 SMC']
     end 
+
+    it 'has an in-memory slug lookup cache' do
+      moto = create(:base_vehicle_moto)
+      
+      Model.find_by_make_id_and_slug(moto.make_id, '690-smc').name.should == '690 SMC' 
+    end
   end
 
 end
