@@ -1,7 +1,6 @@
 Motorstories::Application.routes.draw do
 
-  resources :profiles
-
+  resources :profiles, :path => 'people'
 
   devise_for :users
 
