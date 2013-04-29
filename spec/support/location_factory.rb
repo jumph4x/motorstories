@@ -8,8 +8,8 @@ module LocationFactory
 
   def load_dummy_locations
     locations = [
-      {:id => 4321, :name => 'Dummy Location'},
-      {:id => 66, :name => 'Another Location'}
+      {:id => 4321, :name => 'Dummy Location', :slug => 'dummy-location'},
+      {:id => 66, :name => 'Another Location', :slug => 'another-location'}
     ]
     Location.populate locations
   end

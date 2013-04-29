@@ -20,6 +20,15 @@ describe Location do
       location = Location.find_by_name('Dummy Location')
       location.id.should == 4321
     end
+
+    it 'should load records by name' do
+      location = Location.find_by_slug('dummy-location')
+      location.id.should == 4321
+    end
+
+    it 'should pluck attributes' do
+      Location.pluck(:slug).should == ['dummy-location', 'another-location']
+    end
   end
 
 end

@@ -19,7 +19,8 @@ module Motorstories
 
         {
           :name => decorate_name(city),
-          :id => key
+          :id => key,
+          :slug => city.gsub('_','-')
         }
       end
 
