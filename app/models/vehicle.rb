@@ -26,4 +26,11 @@ class Vehicle
 
     self.location_id = profile.location_id
   end
+
+  # Exterior & Body
+  # Brakes
+  # Suspension
+  # Engine
+  # Drivetrain
+  # Wheels
 end
