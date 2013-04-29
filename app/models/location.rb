@@ -11,6 +11,8 @@ class Location
   @name_map = {}
   @slug_map = {}
 
+  @data = []
+
   class << self
     attr_accessor :data, :id_map, :name_map, :slug_map
 
@@ -56,6 +58,14 @@ class Location
       raise 'No such attribute' unless [:slug, :id, :name].include? attrib.to_sym
 
       (send("#{attrib}_map") || {}).keys
+    end
+
+    def destroy_all
+      @id_map = {}
+      @name_map = {}
+      @slug_map = {}
+
+      @data = []
     end
   end
 end
