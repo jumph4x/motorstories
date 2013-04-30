@@ -23,25 +23,26 @@
   = csrf_meta_tag
 
 %body
-  .row
-    %a#logo{href: '/'} Motorstori.es
-  #first-tier.contain-to-grid
-    %nav.top-bar
-      .container
-        %ul.title-area
-          %li.name
-          %li.toggle-topbar.menu-icon
-            %a{href: '#'}
-              %span Menu
-        %section.top-bar-section
-          %ul.right
-            %li.show-for-small
-              %a{href: '/'} Home
-            %li.divider
-            = render "shared/topnav#{ '_auth' unless current_user}"
-            %li.divider
-            %li.has-form
-              %a.button{href: '/'} Tour
-  .container
-    = yield
-  %footer
+  #container.cf
+    .row
+      %a#logo{href: '/'} Motorstori.es
+    #first-tier.contain-to-grid
+      %nav.top-bar
+        .container
+          %ul.title-area
+            %li.name
+            %li.toggle-topbar.menu-icon
+              %a{href: '#'}
+                %span Menu
+          %section.top-bar-section
+            %ul.right
+              %li.show-for-small
+                %a{href: '/'} Home
+              %li.divider
+              = render "shared/topnav#{ '_auth' unless current_user}"
+              %li.divider
+              %li.has-form
+                %a.button{href: '/'} Tour
+    .container.cf
+      = yield
+    %footer
