@@ -2,6 +2,8 @@ require 'spec_helper'
 
 describe Make do
 
+  before{ Make.clear_cache }
+
   context 'at class level' do
     it 'has an auto-moto scope' do
       car = create(:base_vehicle_car)
