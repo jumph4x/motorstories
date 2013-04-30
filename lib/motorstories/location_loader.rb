@@ -20,7 +20,7 @@ module Motorstories
         {
           :name => decorate_name(city),
           :id => key,
-          :slug => city.gsub('_','-')
+          :slug => city.to_url
         }
       end
 

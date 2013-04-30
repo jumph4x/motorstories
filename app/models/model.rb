@@ -25,9 +25,9 @@ class Model
     def find_by_make_id_and_slug make_id, slug
       hit = nil
 
-      by_make_id(make_id).each do |make|
-        if make.name.to_url == slug
-          hit = make
+      by_make_id(make_id).each do |modell|
+        if modell.name.to_url == slug
+          hit = modell
           break
         end
       end

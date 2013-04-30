@@ -20,7 +20,7 @@ class Make
     end
 
     def initialize_slug_cache
-      return true if slug_map
+      return true if slug_map.present?
 
       @slug_map = {}
       car_or_motorcycle.each_with_index do |make, index|
@@ -28,6 +28,11 @@ class Make
       end
 
       true
+    end
+
+    def clear_cache
+      @slug_map = nil
+      @car_moto_makes = nil
     end
 
     def find_by_slug slug

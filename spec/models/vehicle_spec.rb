@@ -39,6 +39,14 @@ describe Vehicle do
       v.nickname = ''
       v.save.should be_false
     end
+
+    it 'should return #make_slug' do
+      vehicle.make_slug.should == 'mazda'
+    end
+
+    it 'should return #model_slug' do
+      vehicle.model_slug.should == 'mx-5-miata'
+    end
     
     it 'should validate uniqueness of nickname within scope'
   end

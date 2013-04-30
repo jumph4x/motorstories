@@ -19,6 +19,14 @@ class Vehicle
 
   validate :ensure_nickname_presence
 
+  def make_slug
+    make.to_url
+  end
+
+  def model_slug
+    model.to_url
+  end
+
   def location
     location_id && Location.find_by_id(location_id)
   end
