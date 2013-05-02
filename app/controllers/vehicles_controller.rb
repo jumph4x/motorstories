@@ -1,4 +1,5 @@
 class VehiclesController < ApplicationController
+  helper :navigation
 
   def index
     @vehicles = Vehicle.where(vehicle_query_conditions).limit(20).all

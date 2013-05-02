@@ -8,6 +8,7 @@ describe VehiclesController do
   before do
     Motorstories::Application.reload_routes!
     Make.clear_cache
+    controller.extend NavigationHelper
   end
 
   def request_params loc, veh, extended = false
