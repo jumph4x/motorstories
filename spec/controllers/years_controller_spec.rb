@@ -12,7 +12,7 @@ describe YearsController do
         :model_slug => bv.model.name.to_url,
         :format => :json
       response.status.should == 200
-      response.body.should contain(bv.year.to_s)
+      response.body.should match(bv.year.to_s)
     end
   end
 end

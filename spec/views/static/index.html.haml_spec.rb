@@ -10,12 +10,12 @@ describe 'static/index.html.haml' do
   it 'gives a static tour of the product' do
     render
    
-    rendered.should contain('Free')
-    rendered.should contain('Private')
-    rendered.should contain('Motorcycle')
-    rendered.should contain('Car')
-    rendered.should contain('Suspension')
-    rendered.should contain('Engine')
-    rendered.should contain('Wheel fitment')
+    rendered.should match('Free')
+    rendered.should match('Private')
+    rendered.should match('Motorcycle')
+    rendered.should match('Car')
+    rendered.should match('Suspension')
+    rendered.should match('Engine')
+    rendered.should match('Wheel fitment')
   end
 end

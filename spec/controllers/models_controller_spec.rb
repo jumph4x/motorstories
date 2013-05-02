@@ -9,7 +9,7 @@ describe ModelsController do
     it 'should respond to JSON' do
       get :index, :make_slug => bv.make.name.to_url, :format => :json
       response.status.should == 200
-      response.body.should contain(bv.model.name)
+      response.body.should match(bv.model.name)
     end
   end
 end
