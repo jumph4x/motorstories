@@ -1,5 +1,4 @@
 class VehiclesController < ApplicationController
-  before_filter :load_location, :load_make, :load_modell, :only => [:index, :show]
 
   def index
     @vehicles = Vehicle.where(vehicle_query_conditions).limit(20).all
@@ -17,26 +16,10 @@ class VehiclesController < ApplicationController
       :make => current_make.name
     }
 
-    hash[:model] = current_modell.name if current_modell
+    hash[:model] = current_model.name if current_model
     hash[:year] = params[:year].to_i if params[:year].present?
     hash[:nickname] = params[:nickname] if params[:nickname].present?
     
     hash
   end
-
-  def load_location
-    @location ||= Location.find_by_slug(params[:location_slug])
-  end
-  alias current_location load_location
-
-  def load_make
-    @make ||= Make.find_by_slug(params[:make_slug])
-  end
-  alias current_make load_make
-
-  def load_modell
-    return unless current_make
-    @model ||= Model.find_by_make_id_and_slug(current_make.id, params[:model_slug])
-  end
-  alias current_modell load_modell
 end
