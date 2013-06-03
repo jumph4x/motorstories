@@ -20,12 +20,13 @@ gem 'stringex'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-group :development, :test do
-  gem 'rspec-rails'
+group :development do
+  gem 'better_errors'
   gem 'pry-rails'
 end
 
 group :test do
+  gem 'rspec-rails'
   gem 'factory_girl_rails', '~> 3.0'
   gem 'faker'
   gem 'database_cleaner'
