@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe VehiclesController do
+  render_views
   let(:profile){ create(:profile) }
   let(:vehicle){ create(:vehicle, :profile => profile) }
   let(:location){ Location.first }
@@ -32,28 +33,39 @@ describe VehiclesController do
   context 'on #index' do
     it 'should prep the environment' do 
       get :index, request_params(location, vehicle)
-      response.should render_template(:index)
 
       assigns(:location).should be_a(Location)
-
       assigns(:make).should be_a(Make)
       assigns(:model).should be_a(Model)
-
       assigns(:vehicles).should == [vehicle]
+    end
+
+    it 'should render' do
+      get :index, request_params(location, vehicle)
+      response.should render_template(:index)
     end
   end
 
   context 'on #show' do
     it 'should prep the environment' do 
       get :show, request_params(location, vehicle, true)
-      response.should render_template(:show)
 
       assigns(:location).should be_a(Location)
-
       assigns(:make).should be_a(Make)
       assigns(:model).should be_a(Model)
-
       assigns(:vehicle).should == vehicle
+    end
+
+    it 'should render' do
+      get :show, request_params(location, vehicle, true)
+      response.should render_template(:show)
+    end
+  end
+
+  context 'on (implicit) #new' do
+    it 'should render' do
+      get :new
+      response.should render_template(:new)
     end
   end
 end
