@@ -10,6 +10,8 @@ class Vehicle
   belongs_to :base_vehicle
   belongs_to :profile
 
+  validate :ensure_nickname_presence
+
   key :make, String, :required => true
   key :model, String, :required => true
   key :year, Integer, :required => true
@@ -17,7 +19,86 @@ class Vehicle
   key :nickname, String
   key :location_id, Integer
 
-  validate :ensure_nickname_presence
+  # General
+  key :acquired_at, Date
+  key :project_type, String
+
+  # Engine
+  key :exhaust, String
+  key :intake, String
+  key :engine_management, String
+  key :engine_code, String
+
+  # Suspension
+  key :height_diff, Float
+  key :springs_front, String
+  key :spring_rear, String
+  key :dampers_front, String
+  key :dampers_rear, String
+  key :camber_front, Float
+  key :camber_rear, Float
+
+  # Drivetrain
+  key :front_sprocket, String
+  key :front_sprocket_diff, Integer
+  key :rear_sprocket, String
+  key :rear_sprocket_diff, Integer
+  key :chain, String
+  key :chain_pitch, Integer
+
+  key :transmission, String
+  key :differential_ratio, String
+  key :differential_lock, String
+
+  # Brakes
+  key :front_brake_diameter, Integer
+  key :front_rotor, String
+  key :front_caliper, String
+  key :front_brake_pads, String
+  key :front_brake_lines, String
+
+  key :rear_brake_diamter, Integer
+  key :rear_rotor, String
+  key :rear_caliper, String
+  key :rear_brake_pads, String
+  key :rear_brake_lines, String
+
+  # Wheels
+  key :front_wheel, String
+  key :front_wheel_dimater, Integer
+  key :front_wheel_width, Float
+  key :front_tire, String
+  key :front_tire_width, Integer
+  key :front_tire_profile, Integer
+
+  key :rear_wheel, String
+  key :rear_wheel_dimater, Integer
+  key :rear_wheel_width, Float
+  key :rear_tire, String
+  key :rear_tire_width, Integer
+  key :rear_tire_profile, Integer
+
+  # Controls & Interior
+  key :control_levers, String
+  key :steering_damper, String
+  key :gauges, String
+  key :rear_sets, String
+  key :seat, String
+  key :rollcage, String
+  key :steering_wheel, String
+  key :pedals, String
+
+  # Exterior & Body
+  key :headlight, String
+  key :crash_cage, String # or sliders
+  key :plastics, String
+
+  key :front_bumper, String
+  key :rear_bumper, String
+  key :spoiler, String
+  key :hood, String
+  key :trunk, String
+  key :tint, String
 
   def make_slug
     make.to_url
@@ -51,10 +132,4 @@ class Vehicle
     errors.add(:nickname, "Add a nickname for your car") unless nickname.present?
   end
 
-  # Exterior & Body
-  # Brakes
-  # Suspension
-  # Engine
-  # Drivetrain
-  # Wheels
 end
