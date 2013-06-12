@@ -3,6 +3,7 @@ require 'spec_helper'
 describe Make do
 
   before{ Make.clear_cache }
+  after{ Make.clear_cache }
 
   context 'at class level' do
     it 'has an auto-moto scope' do
