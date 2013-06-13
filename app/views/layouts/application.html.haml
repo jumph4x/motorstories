@@ -19,7 +19,7 @@
 
   = stylesheet_link_tag "application"
   %link{href: '//fonts.googleapis.com/css?family=Sanchez|Donegal+One', rel: 'stylesheet', type: 'text/css'}
-  = javascript_include_tag is_legacy? ? :legacy : :modern
+  = javascript_include_tag  :legacy
   = csrf_meta_tag
 
 %body

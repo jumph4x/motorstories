@@ -3,6 +3,8 @@ $ ->
 
   # new project stuff
 
+  $('#test').select2()
+
   # change +/- icon and expand/contract
   $('.section-title, .section-icon').on 'click', ->
     $section = $(this).parent()
