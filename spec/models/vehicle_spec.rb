@@ -15,6 +15,10 @@ describe Vehicle do
       Vehicle.unclaimed.all.should == [v]
       Vehicle.claimed.all.should == [v2]
     end
+
+    #it 'should returns fields for grou pand vehicle type' do
+    #  Vehicle.fields_for(:motorcycle, :wheels).should == 
+    #end
   end
 
   describe 'as instance' do

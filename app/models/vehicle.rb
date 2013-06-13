@@ -19,6 +19,93 @@ class Vehicle
   key :nickname, String
   key :location_id, Integer
 
+  #DETAIL_FIELDS = {
+  #  general: [
+  #    [:acquired_at, Date],
+  #    [:project_type, String]
+  #  ],
+  #  engine: [
+  #    [:exhaust, String],
+  #    [:intake, String],
+  #    [:engine_management, String],
+  #    [:engine_code, String, 0]
+  #  ],
+  #  suspension: [
+  #    [:height_diff, Float],
+  #    [:springs_front, String],
+  #    [:spring_rear, String],
+  #    [:dampers_front, String],
+  #    [:dampers_rear, String],
+  #    [:camber_front, Float, 0],
+  #    [:camber_rear, Float, 0]
+  #  ],
+  #  drivetrain: [
+  #    [:front_sprocket, String, 1],
+  #    [:front_sprocket_diff, Integer, 1],
+  #    [:rear_sprocket, String, 1],
+  #    [:rear_sprocket_diff, Integer, 1],
+  #    [:chain, String, 1],
+  #    [:chain_pitch, Integer, 1],
+  #    [:transmission, String],
+  #    [:differential_ratio, String, 0],
+  #    [:differential_lock, String, 0]
+  #  ],
+  #  brakes: [
+  #    [:front_brake_diameter, Integer],
+  #    [:front_rotor, String],
+  #    [:front_caliper, String],
+  #    [:front_brake_pads, String],
+  #    [:front_brake_lines, String],
+  #    [:rear_brake_diamter, Integer],
+  #    [:rear_rotor, String],
+  #    [:rear_caliper, String],
+  #    [:rear_brake_pads, String],
+  #    [:rear_brake_lines, String]
+  #  ],
+  #  wheels: [
+  #    [:front_wheel, String, 0],
+  #    [:front_wheel_dimater, Integer, 0],
+  #    [:front_wheel_width, Float, 0],
+  #    [:front_tire, String],
+  #    [:front_tire_width, Integer],
+  #    [:front_tire_profile, Integer, 0],
+  #    [:rear_wheel, String, 0],
+  #    [:rear_wheel_dimater, Integer, 0],
+  #    [:rear_wheel_width, Float, 0],
+  #    [:rear_tire, String],
+  #    [:rear_tire_width, Integer],
+  #    [:rear_tire_profile, Integer, 0]
+  #  ],
+  #  interior: [
+  #    [:control_levers, String, 1],
+  #    [:steering_damper, String, 1],
+  #    [:gauges, String],
+  #    [:rear_sets, String, 1],
+  #    [:seat, String],
+  #    [:rollcage, String],
+  #    [:steering_wheel, String, 0],
+  #    [:pedals, String, 0]
+  #  ],
+  #  body: [
+  #    [:headlight, String],
+  #    [:crash_cage, String, 1],# or sliders
+  #    [:plastics, String, 1],
+  #    [:front_bumper, String, 0],
+  #    [:rear_bumper, String, 0],
+  #    [:spoiler, String, 0],
+  #    [:hood, String, 0],
+  #    [:trunk, String, 0],
+  #    [:tint, String, 0]
+  #  ]
+  #}
+
+  #DETAIL_FIELDS.each do |group_name, fields|
+  #  fields.each do |field_stuffs|
+  #    field, data_type, applicability = field_stuffs
+  #    key(field, data_type)
+  #  end
+  #end
+
   # General
   key :acquired_at, Date
   key :project_type, String
