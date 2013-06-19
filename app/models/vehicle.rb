@@ -2,7 +2,7 @@ class Vehicle
   include MongoMapper::Document
 
   before_create :set_location_from_profile
-  before_validation :set_nickname_from_profile
+  before_validation :set_nickname_from_profile, :set_vehicle_type
 
   scope :claimed, where(:profile_id.ne => nil)
   scope :unclaimed, where(:profile_id => nil)
@@ -15,6 +15,7 @@ class Vehicle
   key :make, String, :required => true
   key :model, String, :required => true
   key :year, Integer, :required => true
+  key :vehicle_type, String, :required => true
 
   key :nickname, String
   key :location_id, Integer
@@ -118,6 +119,12 @@ class Vehicle
     return true unless profile
 
     self.location_id = profile.location_id
+  end
+
+  def set_vehicle_type
+    return true unless base_vehicle
+
+    self.vehicle_type = base_vehicle.vehicle_type
   end
 
   def set_nickname_from_profile

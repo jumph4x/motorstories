@@ -9,4 +9,10 @@ describe BaseVehicle do
       output.should include(2006)
     end
   end
+
+  context 'at instance' do
+    it 'should determine vehicle_type' do
+      bv.vehicle_type.should == 'car'
+    end
+  end
 end

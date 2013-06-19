@@ -7,6 +7,11 @@ describe Vehicle do
     v.base_vehicle.should be_present
   end
 
+  it 'should have a vehicle_type set' do
+    v = create(:vehicle)
+    v.vehicle_type.should == 'car'
+  end
+
   describe 'at class' do
     it 'should have [un]claimed scopes' do
       v = create(:vehicle, :model => 'UNCLAIMED')
