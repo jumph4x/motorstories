@@ -15,6 +15,7 @@ class VehiclesController < ApplicationController
 
    @vehicle = Vehicle.new
    @vehicle.base_vehicle = base_vehicle
+   @vehicle.prime!
   end
 
   private

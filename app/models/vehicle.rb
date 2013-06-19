@@ -113,6 +113,12 @@ class Vehicle
     location_id && Location.find_by_id(location_id)
   end
 
+  def prime!
+    set_location_from_profile
+    set_vehicle_type
+    set_nickname_from_profile
+  end
+
   private
 
   def set_location_from_profile
