@@ -62,10 +62,24 @@ describe VehiclesController do
     end
   end
 
-  context 'on (implicit) #new' do
-    it 'should render' do
-      get :new
-      response.should render_template(:new)
+  context 'on #new' do
+    context 'without proper parameters' do
+      it 'should redirect' do
+        get :new
+        response.should redirect_to '/'
+      end
+    end
+
+    context 'with proper parameters' do
+      let(:bv){ create(:base_vehicle_car) }
+      it 'should render' do
+        get :new, {
+          make: bv.make,
+          model: bv.model,
+          year: bv.year
+        }
+        response.should render_template(:new)
+      end
     end
   end
 end
