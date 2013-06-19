@@ -10,11 +10,11 @@ class VehiclesController < ApplicationController
   end
 
   def new
-   base_vehicle = BaseVehicle.where(vehicle_query_conditions.slice(:make, :model, :year)).first
-   (redirect_to('/') && return) unless base_vehicle
+   @base_vehicle = BaseVehicle.where(mmy_query_conditions).first if vehicle_query_conditions.present?
+   (redirect_to('/', :error => 'Please provide the year, make and model.') && return) unless @base_vehicle
 
    @vehicle = Vehicle.new
-   @vehicle.base_vehicle = base_vehicle
+   @vehicle.base_vehicle = @base_vehicle
    @vehicle.prime!
   end
 
@@ -31,5 +31,9 @@ class VehiclesController < ApplicationController
     hash[:nickname] = params[:nickname] if params[:nickname].present?
     
     hash
+  end
+
+  def mmy_query_conditions
+    vehicle_query_conditions.slice(:make, :model, :year)
   end
 end

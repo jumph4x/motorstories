@@ -7,7 +7,7 @@ class BaseVehicle
   key :year, Integer
 
   def vehicle_type
-    model.vehicle_type.name
+    model.chassis_type
   end
 
   class << self
