@@ -73,6 +73,18 @@
 .aside
   @include opacity(0.5)
 
+// input styling
+.section-controls
+  .half
+    width: 49%
+    float: left
+    @include respond-to('zurb-default')
+      width: 100%
+  .space
+    margin-right: 2%
+    @include respond-to('zurb-default')
+      margin-right: 0
+
 // sidebar styling
 .modifications
   text-align: center

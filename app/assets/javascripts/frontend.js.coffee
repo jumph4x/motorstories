@@ -3,7 +3,8 @@ $ ->
 
   # new project stuff
 
-  $('#test').select2()
+  $('#test').select2
+    placeholder: 'Car/Moto'
 
   # change +/- icon and expand/contract
   $('.section-title, .section-icon').on 'click', ->
