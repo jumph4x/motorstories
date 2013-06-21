@@ -30,7 +30,7 @@ class Profile
 
     vehicles.each do |vehicle|
       vehicle.location_id = location_id
-      vehicle.save 
+      vehicle.save! 
     end
   end
 end

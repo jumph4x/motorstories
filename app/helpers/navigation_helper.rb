@@ -14,6 +14,10 @@ module NavigationHelper
     @model ||= Model.find_by_make_id_and_slug(current_make.id, params[:model_slug])
   end
 
+  def current_year
+    @year ||= params[:year].try(:to_i) 
+  end
+
   def make_dropdown
     collection = Make.car_or_motorcycle.map{|m| [m.name, m.name]}
     collection.unshift("Make", nil)

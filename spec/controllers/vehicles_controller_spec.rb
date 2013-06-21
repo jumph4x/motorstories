@@ -74,8 +74,8 @@ describe VehiclesController do
       let(:bv){ create(:base_vehicle_car) }
       it 'should render' do
         get :new, {
-          make: bv.make,
-          model: bv.model,
+          make_slug: bv.make.name.to_url,
+          model_slug: bv.model.name.to_url,
           year: bv.year
         }
         response.should render_template(:new)

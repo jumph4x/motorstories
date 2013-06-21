@@ -1,4 +1,5 @@
 class VehiclesController < ApplicationController
+  rescue_from MongoMapper::DocumentNotFound, :with => :render_404
   helper :navigation
 
   def index
@@ -10,12 +11,11 @@ class VehiclesController < ApplicationController
   end
 
   def new
-   @base_vehicle = BaseVehicle.where(mmy_query_conditions).first if vehicle_query_conditions.present?
-   (redirect_to('/', :error => 'Please provide the year, make and model.') && return) unless @base_vehicle
+    @base_vehicle = load_base_vehicle
 
-   @vehicle = Vehicle.new
-   @vehicle.base_vehicle = @base_vehicle
-   @vehicle.prime!
+    @vehicle = Vehicle.new
+    @vehicle.base_vehicle = @base_vehicle
+    @vehicle.prime!
   end
 
   private
@@ -33,7 +33,8 @@ class VehiclesController < ApplicationController
     hash
   end
 
-  def mmy_query_conditions
-    vehicle_query_conditions.slice(:make, :model, :year)
+  def load_base_vehicle
+    year = params[:year].try(:to_i)
+    BaseVehicle.find_by_make_id_and_model_id_and_year!(current_make.try(:_id), current_model.try(:_id), current_year)
   end
 end

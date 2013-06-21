@@ -3,4 +3,8 @@ class ApplicationController < ActionController::Base
 
   helper :navigation
   include NavigationHelper
+
+  def render_404
+    redirect_to '/'
+  end
 end
