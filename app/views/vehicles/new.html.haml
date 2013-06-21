@@ -1,6 +1,6 @@
 .wrapper.project.cf
   .content.project.cf
-    %h1.project-header= @vehicle.name
+    %h1.project-header Create a story for your #{@vehicle.name}
 
     .project-section.general.expanded
       %span.section-icon -
@@ -9,10 +9,8 @@
       .section-controls
         %input.half.space{:type => "text", :placeholder => "name"}
         %input.half{:type => "text", :placeholder => "acquired at"}
-        %input.half.space{:type => "text", :placeholder => "project type"}
-        %select#test.half
-          %option{:value => "Cars"} Cars
-          %option{:value => "Momos"} Momos
+        %select#select2.half.space
+          - select_options_for @vehicle.vehicle_type, :project_type
     .project-section.suspension
       %span.section-icon +
       %h3.section-title Suspension

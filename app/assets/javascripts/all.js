@@ -3,6 +3,7 @@
 //= require 'foundation/foundation.topbar'
 //= require 'foundation/foundation.forms'
 //= require select2
+//= require parsley
 //= require './frontend'
 
 $(document).ready(function(){

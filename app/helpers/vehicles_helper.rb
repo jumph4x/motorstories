@@ -1,5 +1,6 @@
 module VehiclesHelper
 
+  # project type helper
   SELECT_OPTIONS = {
     :car => {
       :project_type => ['autocross warrior', 'track attack', 'drifter', 'daily driver', 'offroader', 'hauler', 'vip']
@@ -12,4 +13,6 @@ module VehiclesHelper
     options = SELECT_OPTIONS[vehicle_type.to_sym][field.to_sym]
     options_for_select(options, existing_value)
   end
+
+
 end

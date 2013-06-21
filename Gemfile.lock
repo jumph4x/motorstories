@@ -143,6 +143,7 @@ GEM
     newrelic_rpm (3.5.8.72)
     nokogiri (1.5.7)
     orm_adapter (0.4.0)
+    parsley-rails (1.1.16.0)
     plucky (0.5.2)
       mongo (~> 1.5)
     poltergeist (1.0.2)
@@ -259,6 +260,7 @@ DEPENDENCIES
   mm-devise
   mongo_mapper
   newrelic_rpm
+  parsley-rails
   poltergeist
   pry-rails
   rails (~> 3.2.12)
