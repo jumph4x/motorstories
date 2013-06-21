@@ -2,15 +2,6 @@ require 'spec_helper'
 
 describe Vehicle do
   let(:profile){ create(:profile) }
-  it 'should belong to a base_vehicle' do
-    v = create(:vehicle)
-    v.base_vehicle.should be_present
-  end
-
-  it 'should have a vehicle_type set' do
-    v = create(:vehicle)
-    v.vehicle_type.should == 'car'
-  end
 
   describe 'at class' do
     it 'should have [un]claimed scopes' do
@@ -24,6 +15,21 @@ describe Vehicle do
 
   describe 'as instance' do
     let(:vehicle){ create(:vehicle, :profile => profile) }
+
+    it 'should belong to a base_vehicle' do
+      v = create(:vehicle)
+      v.base_vehicle.should be_present
+    end
+
+    it 'should have a vehicle_type set' do
+      v = create(:vehicle)
+      v.vehicle_type.should == 'car'
+    end
+
+    it 'should be able to print vehicle name' do
+      vehicle.name.should == '2006 Mazda MX-5 Miata'
+    end
+
     it 'should set location from profile' do 
       vehicle.location_id.should be_present
       vehicle.location_id.should == profile.location_id
@@ -54,5 +60,19 @@ describe Vehicle do
     end
     
     it 'should validate uniqueness of nickname within scope'
+
+    context 'when tied to a base vehicle' do
+      let(:base_vehicle){ create(:base_vehicle_car) }
+      let(:blank_vehicle) do
+        v = Vehicle.new
+        v.base_vehicle = base_vehicle
+        v.prime!
+        v
+      end
+
+      it 'gets name from base_vehicle' do
+        blank_vehicle.make.should == 'Mazda'
+      end
+    end
   end
 end

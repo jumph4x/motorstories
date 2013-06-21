@@ -2,7 +2,7 @@ class Vehicle
   include MongoMapper::Document
 
   before_create :set_location_from_profile
-  before_validation :set_nickname_from_profile, :set_vehicle_type
+  before_validation :prime!
 
   scope :claimed, where(:profile_id.ne => nil)
   scope :unclaimed, where(:profile_id => nil)
@@ -101,6 +101,10 @@ class Vehicle
   key :trunk, String
   key :tint, String
 
+  def name
+    "#{year} #{make} #{model}"
+  end
+
   def make_slug
     make.to_url
   end
@@ -117,9 +121,20 @@ class Vehicle
     set_location_from_profile
     set_vehicle_type
     set_nickname_from_profile
+    set_name_from_base_vehicle
   end
 
   private
+
+  def set_name_from_base_vehicle
+    return true unless base_vehicle
+
+    self.year = base_vehicle.year
+    self.make = base_vehicle.make.name
+    self.model = base_vehicle.model.name
+
+    true
+  end
 
   def set_location_from_profile
     return true unless profile
