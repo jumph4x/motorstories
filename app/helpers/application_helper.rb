@@ -15,4 +15,15 @@ module ApplicationHelper
     "#{title} | Motorstori.es"
   end
 
+  def show_flash
+    flash[flash_type]
+  end
+
+  def flash_type
+    flash[:error] ? :error : :notice
+  end
+
+  def wrapped_flash
+    show_flash and content_tag(:p, show_flash, :class => flash_type)
+  end
 end
