@@ -59,7 +59,14 @@ describe Vehicle do
       vehicle.model_slug.should == 'mx-5-miata'
     end
     
-    it 'should validate uniqueness of nickname within scope'
+    it 'should validate uniqueness of nickname within scope' do
+      v2 = create(:vehicle, :make => 'BMW', :model => "MX-5 Miata")
+      v2.nickname = 'test-nickname'
+      v2.save
+
+      vehicle.nickname = 'test-nickname'
+      vehicle.should_not be_valid
+    end
 
     context 'when tied to a base vehicle' do
       let(:base_vehicle){ create(:base_vehicle_car) }

@@ -11,6 +11,7 @@ class Vehicle
   belongs_to :profile
 
   validate :ensure_nickname_presence
+  validates :nickname, :uniqueness => true
 
   key :make, String, :required => true
   key :model, String, :required => true
