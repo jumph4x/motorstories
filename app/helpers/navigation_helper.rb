@@ -19,8 +19,8 @@ module NavigationHelper
   end
 
   def make_dropdown
-    collection = Make.car_or_motorcycle.map{|m| [m.name, m.name]}
-    collection.unshift("Make", nil)
+    collection = Make.car_or_motorcycle.map{|m| [m.name, m.name.to_url]}
+    collection.unshift(["Make", nil])
     select_tag :make, options_for_select(collection, current_make.try(:name))
   end
 
@@ -29,10 +29,10 @@ module NavigationHelper
   end
 
   def model_dropdown
-    collection = model_names_by_current_make || []
+    collection = (model_names_by_current_make || []).map{|m| [m, m.to_url]}
     html_hash = {}
     html_hash[:disabled] = 'disabled' if collection.present?
-    collection.unshift("Model", nil)
+    collection.unshift(["Model", nil])
 
     select_tag :model, options_for_select(collection, current_model.try(:name)), html_hash
   end
@@ -46,7 +46,7 @@ module NavigationHelper
     collection = years_by_make_and_model || []
     html_hash = {}
     html_hash[:disabled] = 'disabled' if collection.present?
-    collection.unshift("Year", nil)
+    collection.unshift(["Year", nil])
 
     select_tag(:year, options_for_select(collection, params[:year]), html_hash)
   end
