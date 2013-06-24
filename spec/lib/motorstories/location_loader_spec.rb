@@ -18,6 +18,11 @@ module Motorstories
       Location.destroy_all
     end
 
+    it 'should add a catch-all :all location' do
+      subject.populate_locations
+      Location.find_by_slug('all').should be_present
+    end
+
     context 'when working with city names' do
       it 'should hash names to numeric values without collisions' do
         hash_val = subject.hash_name('San Francisco')

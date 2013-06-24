@@ -24,6 +24,12 @@ module Motorstories
         }
       end
 
+      locations.unshift({
+        :name => 'Global',
+        :id => hash_name('Global'),
+        :slug => 'all'
+      })
+
       cached_cipher_data = locations
     end
 

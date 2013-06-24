@@ -4,6 +4,7 @@
 //= require 'foundation/foundation.forms'
 //= require select2
 //= require parsley
+//= require './mmy_selector'
 //= require './frontend'
 
 $(document).ready(function(){

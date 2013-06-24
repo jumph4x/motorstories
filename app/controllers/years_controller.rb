@@ -5,7 +5,7 @@ class YearsController < ApplicationController
     years = BaseVehicle.years_by_make_id_and_model_id(make.id, model.id)
 
     respond_to do |format|
-      format.json{ render :json => years }
+      format.json{ render :json => years.map{|y| [y, y]} }
     end
   end
 end
