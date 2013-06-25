@@ -10,7 +10,7 @@
         %input.half.space{:type => "text", :placeholder => "name"}
         %input.half{:type => "text", :placeholder => "acquired at"}
         %select#select2.half.space
-          - select_options_for @vehicle.vehicle_type, :project_type
+          = select_options_for @vehicle.vehicle_type, :project_type
     .project-section.suspension
       %span.section-icon +
       %h3.section-title Suspension

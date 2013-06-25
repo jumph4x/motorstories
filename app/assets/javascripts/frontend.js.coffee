@@ -2,9 +2,7 @@ $ ->
   'use strict'
 
   # new project stuff
-
-  $('#test').select2
-    placeholder: 'Car/Moto'
+  $('#select2').select2({ placeholder: 'hello' })
 
   # change +/- icon and expand/contract
   $('.section-title, .section-icon').on 'click', ->
