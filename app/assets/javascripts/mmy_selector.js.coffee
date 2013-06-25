@@ -40,6 +40,8 @@ $ ->
     make = $(this).val()
 
     if make == ''
+      model_el.html('<option value="">Model</option>').attr('disabled','disabled')
+      year_el.html('<option value="">Year</option>').attr('disabled','disabled')
       btn_el.attr('disabled','disabled')
       return true
 
