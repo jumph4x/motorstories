@@ -19,7 +19,7 @@ class Model
   class << self
     def by_make_id make_id
       model_ids = BaseVehicle.where(:make_id => make_id).distinct(:model_id)
-      car_or_motorcycle.where(:_id => model_ids)
+      car_or_motorcycle.sort(:name).where(:_id => model_ids)
     end
 
     def find_by_make_id_and_slug make_id, slug
