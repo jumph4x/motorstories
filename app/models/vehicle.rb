@@ -59,7 +59,7 @@ class Vehicle
   key :front_brake_pads, String
   key :front_brake_lines, String
 
-  key :rear_brake_diamter, Integer
+  key :rear_brake_diameter, Integer
   key :rear_rotor, String
   key :rear_caliper, String
   key :rear_brake_pads, String
@@ -67,7 +67,7 @@ class Vehicle
 
   # Wheels
   key :front_wheel, String
-  key :front_wheel_dimater, Integer
+  key :front_wheel_diameter, Integer
   key :front_wheel_width, Float
   key :front_tire, String
   key :front_tire_width, Integer
