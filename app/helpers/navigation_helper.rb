@@ -18,6 +18,11 @@ module NavigationHelper
     @year ||= params[:year].try(:to_i) 
   end
 
+  def current_mmy
+    mmy = params.slice(:make_slug, :model_slug, :year)
+    mmy.size == 3 and mmy.values.all?{|p| p.present?} and mmy
+  end
+
   def make_dropdown
     collection = Make.car_or_motorcycle.map{|m| [m.name, m.name.to_url]}
     collection.unshift(["Make", nil])
