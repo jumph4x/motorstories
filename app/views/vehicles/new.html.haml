@@ -21,6 +21,7 @@
             = content_tag :div, { :class => "input-append half #{cycle('space', '')}" } do
               = f.text_field attr, :placeholder => t(attr, default: attr.to_s.humanize)
               %span.input-append-thing= t("units.#{attr}", :default => '')
+        - reset_cycle
       .project-section.engine
         %span.section-icon +
         %h3.section-title 
@@ -30,6 +31,7 @@
             = content_tag :div, { :class => "input-append half #{cycle('space', '')}" } do 
               = f.text_field attr, :placeholder => t(attr, default: attr.to_s.humanize)
               %span.input-append-thing= t("units.#{attr}", :default => '')
+        - reset_cycle
       .project-section.drivetrain
         %span.section-icon +
         %h3.section-title 
@@ -39,6 +41,7 @@
             = content_tag :div, {:class => "input-append half #{cycle('space', '')}"} do
               = f.text_field attr, :placeholder => t(attr, default: attr.to_s.humanize)
               %span.input-append-thing= t("units.#{attr}", :default => '')
+        - reset_cycle
       .project-section.exterior
         %span.section-icon +
         %h3.section-title Exterior
@@ -47,6 +50,7 @@
             = content_tag :div, {:class => "input-append half #{cycle('space', '')}"} do
               = f.text_field attr, :placeholder => t(attr, default: attr.to_s.humanize)
               %span.input-append-thing= t("units.#{attr}", :default => '') 
+        - reset_cycle
       .project-section.controls
         %span.section-icon +
         %h3.section-title 
@@ -56,6 +60,7 @@
             = content_tag :div, {:class => "input-append half #{cycle('space', '')}"} do
               = f.text_field attr, :placeholder => t(attr, default: attr.to_s.humanize)
               %span.input-append-thing= t("units.#{attr}", :default => '')
+        - reset_cycle
       .project-section.brakes
         %span.section-icon +
         %h3.section-title Brakes
@@ -64,6 +69,7 @@
             = content_tag :div, {:class => "input-append half #{cycle('space', '')}"} do
               = f.text_field attr, :placeholder => t(attr, default: attr.to_s.humanize)
               %span.input-append-thing= t("units.#{attr}", :default => '')
+        - reset_cycle
       .project-section.wheels
         %span.section-icon +
         %h3.section-title 
@@ -73,6 +79,7 @@
             = content_tag :div, {:class => "input-append half #{cycle('space', '')}"} do
               = f.text_field attr, :placeholder => t(attr, default: attr.to_s.humanize)
               %span.input-append-thing= t("units.#{attr}", :default => '')
+        - reset_cycle
       %input{:type => "submit"}
 
   .sidebar.project
