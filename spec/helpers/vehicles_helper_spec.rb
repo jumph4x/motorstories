@@ -13,4 +13,12 @@ describe VehiclesHelper do
       end
     end
   end
+
+  context 'on #section_fields' do
+    it 'should return an array' do
+      fields = helper.section_fields('car', :suspension)
+      fields.should include(:camber_front)
+      fields.should include(:height_diff)
+    end
+  end
 end

@@ -1,76 +1,8 @@
-.project-section.general.expanded
-  %span.section-icon -
-  %h3.section-title 
-    General <span class="aside">(Date of purchase, type of project, etc.)</span>
-  .section-controls
-    = f.text_field :nickname, :class => 'half space', :placeholder => 'nickname'
-    = f.text_field :acquired_at, :class => 'half', :placeholder => 'When\'d you get it?'
-    //%input.half{:type => "text", :placeholder => "acquired at"}
-    = f.select(:project_type, select_options_for(@vehicle.vehicle_type, :project_type),{}, {:class => 'half space', :id => 'select2'})
-.project-section.suspension
-  %span.section-icon +
-  %h3.section-title Suspension
-  .section-controls
-    - [:springs_front, :springs_rear, :dampers_front, :dampers_rear, :camber_front, :camber_rear, :height_diff].each do |attr|
-      = content_tag :div, { :class => "input-append half #{cycle('space', '')}" } do
-        = f.text_field attr, :placeholder => t(attr, default: attr.to_s.humanize)
-        %span.input-append-thing= t("units.#{attr}", :default => '')
-  - reset_cycle
-.project-section.engine
-  %span.section-icon +
-  %h3.section-title 
-    Engine <span class="aside">(Including exhaust, power mods)</span>
-  .section-controls
-    - [:exhaust, :intake, :engine_management, :engine_code].each do |attr|
-      = content_tag :div, { :class => "input-append half #{cycle('space', '')}" } do 
-        = f.text_field attr, :placeholder => t(attr, default: attr.to_s.humanize)
-        %span.input-append-thing= t("units.#{attr}", :default => '')
-  - reset_cycle
-.project-section.drivetrain
-  %span.section-icon +
-  %h3.section-title 
-    Drivetrain <span class="aside">(Gear ratio, sprockets, final drive)</span>
-  .section-controls
-    - [:front_sprocket, :front_sprocket_diff, :rear_sprocket, :rear_sprocket_diff, :chain, :chain_pitch].each do |attr|
-      = content_tag :div, {:class => "input-append half #{cycle('space', '')}"} do
-        = f.text_field attr, :placeholder => t(attr, default: attr.to_s.humanize)
-        %span.input-append-thing= t("units.#{attr}", :default => '')
-  - reset_cycle
-.project-section.exterior
-  %span.section-icon +
-  %h3.section-title Exterior
-  .section-controls
-    - [:headlight, :crash_cage, :plastics, :front_bumper, :rear_bumper, :spoiler, :hood, :trunk, :tint].each do |attr|
-      = content_tag :div, {:class => "input-append half #{cycle('space', '')}"} do
-        = f.text_field attr, :placeholder => t(attr, default: attr.to_s.humanize)
-        %span.input-append-thing= t("units.#{attr}", :default => '') 
-  - reset_cycle
-.project-section.controls
-  %span.section-icon +
-  %h3.section-title 
-    Controls <span class="aside">(Interior, levers, pedals, gauges)</span>
-  .section-controls
-    - [:control_levers, :steering_damper, :gauges, :rear_sets, :seat, :rollcage, :steering_wheel, :pedals].each do |attr|
-      = content_tag :div, {:class => "input-append half #{cycle('space', '')}"} do
-        = f.text_field attr, :placeholder => t(attr, default: attr.to_s.humanize)
-        %span.input-append-thing= t("units.#{attr}", :default => '')
-  - reset_cycle
-.project-section.brakes
-  %span.section-icon +
-  %h3.section-title Brakes
-  .section-controls
-    - [:front_brake_diameter, :front_rotor, :front_caliper, :front_brake_pads, :front_brake_lines, :rear_brake_diameter, :rear_rotor, :rear_caliper, :rear_brake_pads, :rear_brake_lines].each do |attr|
-      = content_tag :div, {:class => "input-append half #{cycle('space', '')}"} do
-        = f.text_field attr, :placeholder => t(attr, default: attr.to_s.humanize)
-        %span.input-append-thing= t("units.#{attr}", :default => '')
-  - reset_cycle
-.project-section.wheels
-  %span.section-icon +
-  %h3.section-title 
-    Wheels
-  .section-controls
-    - [:front_wheel, :front_wheel_diameter, :front_wheel_width, :front_tire, :front_tire_width, :front_tire_profile, :rear_wheel, :rear_wheel_width, :rear_tire, :rear_tire_width, :rear_tire_profile].each do |attr|
-      = content_tag :div, {:class => "input-append half #{cycle('space', '')}"} do
-        = f.text_field attr, :placeholder => t(attr, default: attr.to_s.humanize)
-        %span.input-append-thing= t("units.#{attr}", :default => '')
-  - reset_cycle
+= render 'form_section', {section_name: 'general', expanded: true, f: f}
+= render 'form_section', {section_name: 'suspension', expanded: false, f: f}
+= render 'form_section', {section_name: 'engine', expanded: false, f: f}
+= render 'form_section', {section_name: 'drivetrain', expanded: false, f: f}
+= render 'form_section', {section_name: 'exterior_body', expanded: false, f: f}
+= render 'form_section', {section_name: 'controls_interior', expanded: false, f: f}
+= render 'form_section', {section_name: 'brakes', expanded: false, f: f}
+= render 'form_section', {section_name: 'wheels', expanded: false, f: f}

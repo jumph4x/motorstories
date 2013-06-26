@@ -1,0 +1,8 @@
+.project-section{:class => "#{'expanded' if expanded } #{section_name}"}
+  %span.section-icon= expanded ? '-' : '+' 
+  %h3.section-title= t("sections.#{section_name}", default: section_name.to_s.humanize)
+  .section-controls
+    - section_fields(@vehicle.vehicle_type, section_name).each do |attr|
+      = content_tag :div, { :class => "input-append half #{cycle('space', '')}" } do
+        = render_vehicle_field(@vehicle.vehicle_type, attr, f)
+  - reset_cycle

@@ -37,6 +37,7 @@ class Vehicle
   key :springs_rear, String
   key :dampers_front, String
   key :dampers_rear, String
+
   key :camber_front, Float
   key :camber_rear, Float
 
@@ -74,7 +75,7 @@ class Vehicle
   key :front_tire_profile, Integer
 
   key :rear_wheel, String
-  key :rear_wheel_dimater, Integer
+  key :rear_wheel_diameter, Integer
   key :rear_wheel_width, Float
   key :rear_tire, String
   key :rear_tire_width, Integer
