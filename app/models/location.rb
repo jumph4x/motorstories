@@ -16,6 +16,10 @@ class Location
   class << self
     attr_accessor :data, :id_map, :name_map, :slug_map
 
+    def seed!
+      Motorstories::LocationLoader.new.populate_locations
+    end
+
     def populate data
       @data = data
 
