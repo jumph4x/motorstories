@@ -20,6 +20,7 @@ class VehiclesController < ApplicationController
 
   def create
     @vehicle = Vehicle.new params[:vehicle]
+    @vehicle.prime!
 
     if @vehicle.save
       redirect_to vehicle_path(@vehicle)
