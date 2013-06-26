@@ -23,7 +23,7 @@ class VehiclesController < ApplicationController
     @vehicle.prime!
 
     if @vehicle.save
-      redirect_to vehicle_path(@vehicle)
+      redirect_to semantic_vehicle_path(@vehicle.semantic_url_hash)
     else
       render :new
     end

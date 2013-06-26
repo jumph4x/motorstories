@@ -16,6 +16,15 @@ describe Vehicle do
   describe 'as instance' do
     let(:vehicle){ create(:vehicle, :profile => profile) }
 
+    it 'should output #semantic_url_hash' do
+      h = vehicle.semantic_url_hash
+      h[:make_slug].should == vehicle.make.to_url
+      h[:model_slug].should == vehicle.model.to_url
+      h[:year].should == vehicle.year
+      h[:nickname].should == vehicle.nickname
+      h.size.should == 4
+    end
+
     it 'should belong to a base_vehicle' do
       v = create(:vehicle)
       v.base_vehicle.should be_present
@@ -41,12 +50,13 @@ describe Vehicle do
 
     it 'should validate nickname presence if profile is set' do
       v = create(:vehicle)
-      v.nickname.should be_nil
+      val1 = v.nickname
 
       v.profile = profile
       v.save
 
       v.nickname.should be_present
+      val1.should_not == v.nickname
       v.nickname = ''
       v.save.should be_false
     end

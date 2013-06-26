@@ -2,7 +2,7 @@ class Vehicle
   include MongoMapper::Document
 
   before_create :set_location_from_profile
-  before_validation :set_nickname_from_profile, :set_vehicle_type
+  before_validation :set_nickname, :set_vehicle_type
 
   scope :claimed, where(:profile_id.ne => nil)
   scope :unclaimed, where(:profile_id => nil)
@@ -122,8 +122,17 @@ class Vehicle
   def prime!
     set_location_from_profile
     set_vehicle_type
-    set_nickname_from_profile
+    set_nickname
     set_name_from_base_vehicle
+  end
+
+  def semantic_url_hash
+    {
+      :make_slug => make_slug,
+      :model_slug => model_slug,
+      :year => year, 
+      :nickname => nickname
+    }
   end
 
   private
@@ -148,10 +157,13 @@ class Vehicle
     self.vehicle_type = base_vehicle.vehicle_type
   end
 
-  def set_nickname_from_profile
-    return true unless profile
-    
-    self.nickname ||= "#{profile.username}s-#{model.to_url}"
+  def set_nickname
+    self.nickname = nil if profile_id_changed?
+    if profile
+      self.nickname ||= "#{profile.username}s-#{model.to_url}"
+    else
+      self.nickname ||= _id
+    end
   end
 
   def ensure_nickname_presence
