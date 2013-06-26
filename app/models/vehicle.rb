@@ -34,7 +34,7 @@ class Vehicle
   # Suspension
   key :height_diff, Float
   key :springs_front, String
-  key :spring_rear, String
+  key :springs_rear, String
   key :dampers_front, String
   key :dampers_rear, String
   key :camber_front, Float
