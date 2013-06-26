@@ -11,12 +11,12 @@ Motorstories::Application.routes.draw do
 
   get ':location_slug/:make_slug/:model_slug/:year/:nickname' => 'vehicles#show',
     :location_slug => location_slugs,
-    :as => 'vehicle'
+    :as => 'semantic_vehicle'
 
   get ':location_slug/:make_slug(/:model_slug(/:year))' => 'vehicles#index',
     :location_slug => location_slugs,
     :trailing_slash => true,
-    :as => 'vehicles'
+    :as => 'semantic_vehicles'
 
   get ':location_slug' => 'locations#show',
     :location_slug => location_slugs,

@@ -18,6 +18,18 @@ class VehiclesController < ApplicationController
     @vehicle.prime!
   end
 
+  def create
+    @vehicle = Vehicle.new(
+      params[:vehicle]
+    )
+
+    if @vehicle.save
+      redirect_to vehicle_path(@vehicle)
+    else
+      render :new
+    end
+  end
+
   private
 
   def vehicle_query_conditions

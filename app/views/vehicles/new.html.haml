@@ -2,91 +2,92 @@
   .content.project.cf
     %h1.project-header Create a story for your #{@vehicle.name}
 
-    .project-section.general.expanded
-      %span.section-icon -
-      %h3.section-title 
-        General <span class="aside">(Date of purchase, type of project, etc.)</span>
-      .section-controls
-        %input.half.space{:type => "text", :placeholder => "name"}
-        %input.half{:type => "text", :placeholder => "acquired at"}
-        %select#select2.half.space
-          = select_options_for @vehicle.vehicle_type, :project_type
-    .project-section.suspension
-      %span.section-icon +
-      %h3.section-title Suspension
-      .section-controls
-        %input.half.space{:type => "text", :placeholder => "Spring rates"}
-        %input.half{:type => "text", :placeholder => "Dampers"}
-        %input.half.space{:type => "text", :placeholder => "Height diff"}
-        %input.half{:type => "text", :placeholder => "Alignment"}
-    .project-section.engine
-      %span.section-icon +
-      %h3.section-title 
-        Engine <span class="aside">(Including exhaust, power mods)</span>
-      .section-controls
-        %input.half.space{:type => "text", :placeholder => "Exhaust modifications"}
-        %input.half{:type => "text", :placeholder => "Intake"}
-        %input.half.space{:type => "text", :placeholder => "Engine management"}
-        %input.half{:type => "text", :placeholder => "Engine size"}
-    .project-section.drivetrain
-      %span.section-icon +
-      %h3.section-title 
-        Drivetrain <span class="aside">(Gear ratio, sprockets, final drive)</span>
-      .section-controls
-        %input.half.space{:type => "text", :placeholder => "Sprocket difference"}
-        %input.half{:type => "text", :placeholder => "Chain pitch"}
-        %input.half.space{:type => "text", :placeholder => "Transmission swap"}
-        %input.half{:type => "text", :placeholder => "Differential swap"}
-        %input{:type => "text", :placeholder => "Differential lock"}
-    .project-section.exterior
-      %span.section-icon +
-      %h3.section-title Exterior
-      .section-controls
-        %input.half.space{:type => "text", :placeholder => "Crash cage"}
-        %input.half{:type => "text", :placeholder => "Headlights"}
-        %input.half.space{:type => "text", :placeholder => "Plastics"}
-        %input.half{:type => "text", :placeholder => "Bumpers"}
-        %input.half.space{:type => "text", :placeholder => "Spoilers"}    
-        %input.half{:type => "text", :placeholder => "Hood"}
-        %input.half.space{:type => "text", :placeholder => "Window tint"}
-        %input.half{:type => "text", :placeholder => "Trunk"}
-    .project-section.controls
-      %span.section-icon +
-      %h3.section-title 
-        Controls <span class="aside">(Interior, levers, pedals, gauges)</span>
-      .section-controls
-        %input.half.space{:type => "text", :placeholder => "Levers"}
-        %input.half{:type => "text", :placeholder => "Steering damper"}
-        %input.half.space{:type => "text", :placeholder => "Gauges"}
-        %input.half{:type => "text", :placeholder => "Rearsets"}
-        %input.half.space{:type => "text", :placeholder => "Seat"}
-        %input.half{:type => "text", :placeholder => "Rollcage/Rollbar"}
-        %input.half.space{:type => "text", :placeholder => "Steering wheel"}
-        %input.half{:type => "text", :placeholder => "Pedals"}
-    .project-section.brakes
-      %span.section-icon +
-      %h3.section-title Brakes
-      .section-controls
-        %input.half.space{:type => "text", :placeholder => "Diameter front"}
-        %input.half{:type => "text", :placeholder => "Diameter rear"}
-        %input.half.space{:type => "text", :placeholder => "Front caliper"}
-        %input.half{:type => "text", :placeholder => "Rear caliper"}   
-        %input.half.space{:type => "text", :placeholder => "Front pads"}
-        %input.half{:type => "text", :placeholder => "Rear pads"}
-        %input.half.space{:type => "text", :placeholder => "Front brake lines"}
-        %input.half{:type => "text", :placeholder => "Rear brake lines"}
+    = form_for @vehicle do |f|
+      .project-section.general.expanded
+        %span.section-icon -
+        %h3.section-title 
+          General <span class="aside">(Date of purchase, type of project, etc.)</span>
+        .section-controls
+          = f.text_field :nickname, :class => 'half space', :placeholder => 'nickname'
+          = f.text_field :acquired_at, :class => 'half', :placeholder => 'When\'d you get it?'
+          //%input.half{:type => "text", :placeholder => "acquired at"}
+          = f.select(:project_type, select_options_for(@vehicle.vehicle_type, :project_type),{}, {:class => 'half space', :id => 'select2'})
+      .project-section.suspension
+        %span.section-icon +
+        %h3.section-title Suspension
+        .section-controls
+          %input.half.space{:type => "text", :placeholder => "Spring rates"}
+          %input.half{:type => "text", :placeholder => "Dampers"}
+          %input.half.space{:type => "text", :placeholder => "Height diff"}
+          %input.half{:type => "text", :placeholder => "Alignment"}
+      .project-section.engine
+        %span.section-icon +
+        %h3.section-title 
+          Engine <span class="aside">(Including exhaust, power mods)</span>
+        .section-controls
+          %input.half.space{:type => "text", :placeholder => "Exhaust modifications"}
+          %input.half{:type => "text", :placeholder => "Intake"}
+          %input.half.space{:type => "text", :placeholder => "Engine management"}
+          %input.half{:type => "text", :placeholder => "Engine size"}
+      .project-section.drivetrain
+        %span.section-icon +
+        %h3.section-title 
+          Drivetrain <span class="aside">(Gear ratio, sprockets, final drive)</span>
+        .section-controls
+          %input.half.space{:type => "text", :placeholder => "Sprocket difference"}
+          %input.half{:type => "text", :placeholder => "Chain pitch"}
+          %input.half.space{:type => "text", :placeholder => "Transmission swap"}
+          %input.half{:type => "text", :placeholder => "Differential swap"}
+          %input{:type => "text", :placeholder => "Differential lock"}
+      .project-section.exterior
+        %span.section-icon +
+        %h3.section-title Exterior
+        .section-controls
+          %input.half.space{:type => "text", :placeholder => "Crash cage"}
+          %input.half{:type => "text", :placeholder => "Headlights"}
+          %input.half.space{:type => "text", :placeholder => "Plastics"}
+          %input.half{:type => "text", :placeholder => "Bumpers"}
+          %input.half.space{:type => "text", :placeholder => "Spoilers"}    
+          %input.half{:type => "text", :placeholder => "Hood"}
+          %input.half.space{:type => "text", :placeholder => "Window tint"}
+          %input.half{:type => "text", :placeholder => "Trunk"}
+      .project-section.controls
+        %span.section-icon +
+        %h3.section-title 
+          Controls <span class="aside">(Interior, levers, pedals, gauges)</span>
+        .section-controls
+          %input.half.space{:type => "text", :placeholder => "Levers"}
+          %input.half{:type => "text", :placeholder => "Steering damper"}
+          %input.half.space{:type => "text", :placeholder => "Gauges"}
+          %input.half{:type => "text", :placeholder => "Rearsets"}
+          %input.half.space{:type => "text", :placeholder => "Seat"}
+          %input.half{:type => "text", :placeholder => "Rollcage/Rollbar"}
+          %input.half.space{:type => "text", :placeholder => "Steering wheel"}
+          %input.half{:type => "text", :placeholder => "Pedals"}
+      .project-section.brakes
+        %span.section-icon +
+        %h3.section-title Brakes
+        .section-controls
+          %input.half.space{:type => "text", :placeholder => "Diameter front"}
+          %input.half{:type => "text", :placeholder => "Diameter rear"}
+          %input.half.space{:type => "text", :placeholder => "Front caliper"}
+          %input.half{:type => "text", :placeholder => "Rear caliper"}   
+          %input.half.space{:type => "text", :placeholder => "Front pads"}
+          %input.half{:type => "text", :placeholder => "Rear pads"}
+          %input.half.space{:type => "text", :placeholder => "Front brake lines"}
+          %input.half{:type => "text", :placeholder => "Rear brake lines"}
 
-    .project-section.wheels
-      %span.section-icon +
-      %h3.section-title 
-        Wheels
-      .section-controls
-        %input.half.space{:type => "text", :placeholder => "Front wheel"}
-        %input.half{:type => "text", :placeholder => "Front wheel diameter"}
-        %input.half.space{:type => "text", :placeholder => "Front wheel width"}
-        %input.half{:type => "text", :placeholder => "Front tire"}
-        %input.half.space{:type => "text", :placeholder => "Front tire width"}
-        %input.half{:type => "text", :placeholder => "Front tire profile"}
+      .project-section.wheels
+        %span.section-icon +
+        %h3.section-title 
+          Wheels
+        .section-controls
+          %input.half.space{:type => "text", :placeholder => "Front wheel"}
+          %input.half{:type => "text", :placeholder => "Front wheel diameter"}
+          %input.half.space{:type => "text", :placeholder => "Front wheel width"}
+          %input.half{:type => "text", :placeholder => "Front tire"}
+          %input.half.space{:type => "text", :placeholder => "Front tire width"}
+          %input.half{:type => "text", :placeholder => "Front tire profile"}
 
   .sidebar.project
     .content-sidebar
@@ -116,5 +117,3 @@
         %li.sidebar-progress-item
           %a.progress-link{:href => "#"}
             Wheels
-
-
