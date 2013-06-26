@@ -16,13 +16,8 @@
         %span.section-icon +
         %h3.section-title Suspension
         .section-controls
-          = f.text_field :springs_front, :class => "half space", :placeholder => "Spring rates - front"
-          = f.text_field :springs_rear, :class => "half", :placeholder => "Spring rates - rear"
-          = f.text_field :dampers_front, :class => "half space", :placeholder => "Dampers - front"
-          = f.text_field :dampers_rear, :class => "half", :placeholder => "Dampers - rear"
-          = f.text_field :height_diff, :class => "half space", :placeholder => "Height difference"
-          = f.text_field :camber_front, :class => "half", :placeholder => "Camber front"
-          = f.text_field :camber_rear, :class => "half space", :placeholder => "Camber rear"
+          - [:springs_front, :springs_rear, :dampers_front, :dampers_rear, :camber_front, :camber_rear, :height_diff].each do |attr|
+            = f.text_field attr, :class => "half #{cycle('space','')}", :placeholder => t(attr)
       .project-section.engine
         %span.section-icon +
         %h3.section-title 
