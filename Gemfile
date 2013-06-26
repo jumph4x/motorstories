@@ -16,6 +16,7 @@ gem 'carrierwave'
 gem 'mm-carrierwave'
 
 gem 'stringex'
+gem 'dynamic_form'
 
 gem 'select2-rails'
 gem 'parsley-rails'
