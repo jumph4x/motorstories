@@ -17,7 +17,7 @@
         %h3.section-title Suspension
         .section-controls
           - [:springs_front, :springs_rear, :dampers_front, :dampers_rear, :camber_front, :camber_rear, :height_diff].each do |attr|
-            = f.text_field attr, :class => "half #{cycle('space','')}", :placeholder => t(attr)
+            = f.text_field attr, :class => "half #{cycle('space','')}", :placeholder => t(attr, default: attr.to_s.humanize)
       .project-section.engine
         %span.section-icon +
         %h3.section-title 
