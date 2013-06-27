@@ -1,4 +1,5 @@
 //= require 'vendor/jquery'
+//= require './modernizr'
 //= require 'foundation/foundation'
 //= require 'foundation/foundation.topbar'
 //= require 'foundation/foundation.forms'
