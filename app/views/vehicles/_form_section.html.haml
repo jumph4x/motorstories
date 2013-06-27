@@ -3,6 +3,6 @@
   %h3.section-title= t("sections.#{section_name}", default: section_name.to_s.humanize)
   .section-controls
     - section_fields(@vehicle.vehicle_type, section_name).each do |attr|
-      = content_tag :div, { :class => "input-append half #{cycle('space', '')}" } do
+      = content_tag :div, { :class => "input-append half #{cycle('space', '', name: section_name)}"} do
         = render_vehicle_field(@vehicle.vehicle_type, attr, f)
-  - reset_cycle
+        %span.has-tip(title="Sick descrp yo!" data-tooltip) more infox?
