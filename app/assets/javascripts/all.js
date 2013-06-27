@@ -7,7 +7,7 @@
 //= require select2
 //= require parsley
 //= require './mmy_selector'
-//= require './frontend'
+//= require './vehicles'
 
 $(document).ready(function(){
   $(document).foundation();
