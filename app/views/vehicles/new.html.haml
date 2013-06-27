@@ -5,7 +5,7 @@
     = form_for @vehicle do |f|
       = f.hidden_field :base_vehicle_id, :value => @vehicle.base_vehicle_id
       = render 'form', :f => f
-      %input{:type => "submit"}
+      %input.button{:type => "submit"}
 
   .sidebar.project
     .content-sidebar
