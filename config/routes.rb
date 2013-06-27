@@ -1,5 +1,7 @@
 Motorstories::Application.routes.draw do
 
+  devise_for :users
+
   resources :profiles, :path => 'people'
   resources :vehicles, :path => 'projects', :except => [:show, :index]
   resources :models, :only => :index
@@ -22,7 +24,6 @@ Motorstories::Application.routes.draw do
     #:location_slug => location_slugs,
     :as => 'locations'
 
-  devise_for :users
   root :to => 'static#index'
 
 end
