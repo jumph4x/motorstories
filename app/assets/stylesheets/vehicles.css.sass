@@ -38,12 +38,14 @@
   @include transition-property(opacity)
   @include transition-duration(0.15s)
   height: 40px
-  overflow: hidden
   &.expanded
     @include opacity(1)
     @include transition-property(opacity)
     @include transition-duration(0.15s)
     height: auto
+
+    .section-controls
+      display: block
 
   input
     display: block
@@ -75,6 +77,7 @@
 
 // input styling
 .section-controls
+  display: none
   .half
     width: 46%
     padding-left: 2%
@@ -107,3 +110,11 @@
   &:hover
     color: black
 
+// move up select in general section
+.general.project-section .input-append:last-of-type
+  position: relative
+  bottom: 1em
+  @include respond-to('zurb-default')
+    bottom: 0
+  .tool-tip
+    top: 1em

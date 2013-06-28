@@ -2,7 +2,7 @@
   .content.project.cf
     %h1.project-header Create a story for your #{@vehicle.name}
 
-    = form_for @vehicle do |f|
+    = form_for @vehicle, :html => { :class => 'custom' } do |f|
       = f.hidden_field :base_vehicle_id, :value => @vehicle.base_vehicle_id
       = render 'form', :f => f
       %input.button{:type => "submit"}

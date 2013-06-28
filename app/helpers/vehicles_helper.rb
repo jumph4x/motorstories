@@ -60,7 +60,9 @@ module VehiclesHelper
   end
 
   def render_dropdown_field vehicle_type, attr, f
-    f.select(attr, select_options_for(vehicle_type, attr),{}, {:class => 'half space'})
+    output = content_tag(:label, t("labels.project_type"), :for => 'project-type-select')
+    output << f.select(attr, select_options_for(vehicle_type, attr),{}, {:class => 'medium', :id => 'project-type-select'})
+    output
   end
 
   def render_text_field attr, f
