@@ -42,10 +42,10 @@ class Vehicle
   key :camber_rear, Float
 
   # Drivetrain
-  key :front_sprocket, String
-  key :front_sprocket_diff, Integer
-  key :rear_sprocket, String
-  key :rear_sprocket_diff, Integer
+  key :sprocket_front, String
+  key :sprocket_front_diff, Integer
+  key :sprocket_rear, String
+  key :sprocket_rear_diff, Integer
   key :chain, String
   key :chain_pitch, Integer
 
@@ -54,32 +54,32 @@ class Vehicle
   key :differential_lock, String
 
   # Brakes
-  key :front_brake_diameter, Integer
-  key :front_rotor, String
-  key :front_caliper, String
-  key :front_brake_pads, String
-  key :front_brake_lines, String
+  key :brake_front_diameter, Integer
+  key :rotor_front, String
+  key :caliper_front, String
+  key :brake_front_pads, String
+  key :brake_front_lines, String
 
-  key :rear_brake_diameter, Integer
-  key :rear_rotor, String
-  key :rear_caliper, String
-  key :rear_brake_pads, String
-  key :rear_brake_lines, String
+  key :brake_rear_diameter, Integer
+  key :rotor_rear, String
+  key :caliper_rear, String
+  key :brake_rear_pads, String
+  key :brake_rear_lines, String
 
   # Wheels
-  key :front_wheel, String
-  key :front_wheel_diameter, Integer
-  key :front_wheel_width, Float
-  key :front_tire, String
-  key :front_tire_width, Integer
-  key :front_tire_profile, Integer
+  key :wheel_front, String
+  key :wheel_front_diameter, Integer
+  key :wheel_front_width, Float
+  key :tire_front, String
+  key :tire_front_width, Integer
+  key :tire_front_profile, Integer
 
-  key :rear_wheel, String
-  key :rear_wheel_diameter, Integer
-  key :rear_wheel_width, Float
-  key :rear_tire, String
-  key :rear_tire_width, Integer
-  key :rear_tire_profile, Integer
+  key :wheel_rear, String
+  key :wheel_rear_diameter, Integer
+  key :wheel_rear_width, Float
+  key :tire_rear, String
+  key :tire_rear_width, Integer
+  key :tire_rear_profile, Integer
 
   # Controls & Interior
   key :control_levers, String
@@ -96,8 +96,8 @@ class Vehicle
   key :crash_cage, String # or sliders
   key :plastics, String
 
-  key :front_bumper, String
-  key :rear_bumper, String
+  key :bumper_front, String
+  key :bumper_rear, String
   key :spoiler, String
   key :hood, String
   key :trunk, String

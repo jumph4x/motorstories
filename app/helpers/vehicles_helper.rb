@@ -19,13 +19,13 @@ module VehiclesHelper
     :car => {
       :suspension => [:camber_front, :camber_rear],
       :drivetrain => [:transmission, :differential_ratio, :differential_lock],
-      :wheels => [:front_wheel, :rear_wheel, :front_wheel_diameter,
-                  :rear_wheel_diameter, :front_wheel_width, :rear_wheel_width],
+      :wheels => [:wheel_front, :wheel_rear, :wheel_front_diameter,
+                  :wheel_rear_diameter, :wheel_front_width, :wheel_rear_width],
       :controls_interior => [:rollcage, :steering_wheel, :pedals],
-      :exterior_body => [:front_bumper, :rear_bumper, :hood, :trunk, :tint, :spoiler]
+      :exterior_body => [:bumper_front, :bumper_rear, :hood, :trunk, :tint, :spoiler]
     },
     :motorcycle => {
-      :drivetrain => [:front_sprocket, :front_sprocket_diff, :rear_sprocket, :rear_sprocket_diff, :chain, :chain_pitch],
+      :drivetrain => [:sprocket_front, :sprocket_front_diff, :sprocket_rear, :sprocket_rear_diff, :chain, :chain_pitch],
       :controls_interior => [:control_levers, :steering_damper, :rear_sets],
       :exterior_body => [:crash_cage, :plastics]
     }
@@ -35,9 +35,9 @@ module VehiclesHelper
     :general => [:acquired_at, :project_type],
     :suspension => [:height_diff, :springs_front, :springs_rear, :dampers_front, :dampers_rear],
     :engine => [:intake, :exhaust, :engine_management, :engine_code],
-    :brakes => [:front_brake_diameter, :rear_brake_diameter, :front_rotor, :rear_rotor, :front_caliper,
-                :rear_caliper, :front_brake_lines, :rear_brake_lines, :front_brake_pads, :rear_brake_pads],
-    :wheels => [:front_tire, :rear_tire, :front_tire_width, :rear_tire_width, :front_tire_profile, :rear_tire_profile],
+    :brakes => [:brake_front_diameter, :brake_rear_diameter, :rotor_front, :rotor_rear, :caliper_front,
+                :caliper_rear, :brake_front_lines, :brake_rear_lines, :brake_front_pads, :brake_rear_pads],
+    :wheels => [:tire_front, :tire_rear, :tire_front_width, :tire_rear_width, :tire_front_profile, :tire_rear_profile],
     :controls_interior => [:gauges, :seat],
     :exterior_body => [:headlight]
   }
