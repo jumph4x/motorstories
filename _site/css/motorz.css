@@ -1,0 +1,30 @@
+body{
+  background: url(/img/blackorchid.png);
+  color: #bbb;
+  font-family: 'Donegal One', serif;
+}
+
+h1, h2, h3, h4, h5, h6{
+  font-weight: normal;
+  margin: -0.25em 0;
+}
+
+h3{
+  color: #555;
+}
+
+#logo{
+  background: url(/img/logo-large.png);
+  background-repeat: no-repeat;
+  height: 64px;
+  width: 119px; 
+  margin: 4em auto 1em auto;
+}
+
+#logo h1{
+  display: none;
+}
+
+.main{
+  text-align: center;
+}
