@@ -14,8 +14,5 @@ describe 'static/index.html.haml' do
     rendered.should match('Private')
     rendered.should match('Motorcycle')
     rendered.should match('Car')
-    rendered.should match('Suspension')
-    rendered.should match('Engine')
-    rendered.should match('Wheel fitment')
   end
 end
