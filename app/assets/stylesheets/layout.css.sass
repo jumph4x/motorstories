@@ -14,24 +14,24 @@ body
 #logo
   font: 0/0 a
   color: transparent
-  background: asset-data-url('layout/logo-large.png') no-repeat center center
-  height: 64px
-  width: 119px
+  background: asset-data-url('layout/logo.png') no-repeat center center
+  height: 81px
+  width: 150px
   padding: 10px 0
   display: block
   margin: 0 auto -100px auto
   z-index: 50
-  float: left
   position: relative
 #first-tier
   @include single-box-shadow(rgba(0,0,0,0.7), 0, 0, 10px, 0)  
   position: relative
   z-index: 40
-  .mmy-selector
-    margin-left: 120px
 
 // landing header
-.top-bar-section ul li:hover > a.button
+.top-bar-section
+  padding-top: 30px
+  background: none !important
+  ul li:hover > a.button
   background: #2284a1
 
 .container
@@ -42,3 +42,7 @@ footer
   background: #222
   border-top: 3px solid #666
   width: 100%
+
+@media #{$small} 
+  .top-bar-section
+    padding-top: 0
