@@ -1,7 +1,7 @@
 @import "compass/css3/box-shadow"
 
 // variables
-$breakpoints: 'zurb-default' (0 768px)
+//$breakpoints: 'zurb-default' (0 768px)
 $off_black: #27282F
 $blue: #63BBF2
 $light_blue: #99D9F2
@@ -20,15 +20,14 @@ body
   padding: 10px 0
   display: block
   margin: 0 auto -100px auto
-  z-index: 50
+  z-index: 70
   position: relative
 #first-tier
   @include single-box-shadow(rgba(0,0,0,0.7), 0, 0, 10px, 0)  
-  position: relative
-  z-index: 40
+  z-index: 69
 
 // landing header
-.top-bar-section
+.expanded .top-bar-section
   padding-top: 30px
   background: none !important
   ul li:hover > a.button
@@ -43,12 +42,12 @@ footer
   padding: 1.5em 0
   line-height: 1.5em
   a
-    color: #bedd15
+    color: #aaa
+    text-decoration: underline
     &:hover
       color: #fff
-      text-decoration: underline
 
-@media #{$small} 
+@media #{$topbar-media-query}
   body
     padding-top: 45px
   .top-bar-section
@@ -57,4 +56,4 @@ footer
     position: fixed
     top: 0
   #logo
-    top: -40px
+    top: -45px
