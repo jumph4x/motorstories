@@ -32,17 +32,29 @@ body
   padding-top: 30px
   background: none !important
   ul li:hover > a.button
-  background: #2284a1
+    background: #2284a1
 
-.container
-  max-width: 1200px
-  margin: 0 auto
 footer
-  height: 100px
   background: #222
   border-top: 3px solid #666
   width: 100%
+  text-align: center
+  color: #555
+  padding: 1.5em 0
+  line-height: 1.5em
+  a
+    color: #bedd15
+    &:hover
+      color: #fff
+      text-decoration: underline
 
 @media #{$small} 
+  body
+    padding-top: 45px
   .top-bar-section
     padding-top: 0
+  #first-tier
+    position: fixed
+    top: 0
+  #logo
+    top: -40px
