@@ -9,9 +9,9 @@ GIT
 
 GIT
   remote: git://github.com/zurb/foundation.git
-  revision: 061c6c455cd97b36477213f5e30763f546b4b2a3
+  revision: 0f3e644139b8c49c3af3521a533e795b4f94223c
   specs:
-    zurb-foundation (4.2.3)
+    zurb-foundation (4.3.2)
       sass (>= 3.2.0)
 
 GEM
@@ -208,7 +208,7 @@ GEM
       rspec-expectations (~> 2.13.0)
       rspec-mocks (~> 2.13.0)
     rubyzip (0.9.9)
-    sass (3.2.9)
+    sass (3.2.10)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
       sass (>= 3.1.10)
