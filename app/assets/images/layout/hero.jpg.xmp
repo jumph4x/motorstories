@@ -4,54 +4,79 @@
   <rdf:Description rdf:about=""
     xmlns:xmp="http://ns.adobe.com/xap/1.0/"
     xmlns:darktable="http://darktable.sf.net/"
+    xmlns:xmpMM="http://ns.adobe.com/xap/1.0/mm/"
     xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:lr="http://ns.adobe.com/lightroom/1.0/"
    xmp:Rating="1"
    darktable:xmp_version="1"
-   darktable:raw_params="-16711648">
+   darktable:raw_params="-16711648"
+   darktable:auto_presets_applied="1"
+   xmpMM:DerivedFrom="hero.jpg">
    <darktable:colorlabels>
     <rdf:Seq/>
    </darktable:colorlabels>
    <darktable:history_modversion>
-    <rdf:Bag>
+    <rdf:Seq>
      <rdf:li>1</rdf:li>
      <rdf:li>2</rdf:li>
      <rdf:li>1</rdf:li>
-    </rdf:Bag>
+    </rdf:Seq>
    </darktable:history_modversion>
    <darktable:history_enabled>
-    <rdf:Bag>
+    <rdf:Seq>
      <rdf:li>1</rdf:li>
      <rdf:li>1</rdf:li>
      <rdf:li>1</rdf:li>
-    </rdf:Bag>
+    </rdf:Seq>
    </darktable:history_enabled>
    <darktable:history_operation>
-    <rdf:Bag>
+    <rdf:Seq>
      <rdf:li>splittoning</rdf:li>
      <rdf:li>exposure</rdf:li>
      <rdf:li>splittoning</rdf:li>
-    </rdf:Bag>
+    </rdf:Seq>
    </darktable:history_operation>
    <darktable:history_params>
-    <rdf:Bag>
+    <rdf:Seq>
      <rdf:li>000000005c9c563f42236f3e6acd763f8acad33e5c9fcd41</rdf:li>
      <rdf:li>00000000cb9581bf0000803f</rdf:li>
      <rdf:li>000000005c9c563f42236f3e6acd763f1871a23e5c9fcd41</rdf:li>
-    </rdf:Bag>
+    </rdf:Seq>
    </darktable:history_params>
    <darktable:blendop_params>
-    <rdf:Bag>
+    <rdf:Seq>
      <rdf:li>000000000000c84200000000</rdf:li>
      <rdf:li>000000000000000000000000</rdf:li>
      <rdf:li>000000000000c84200000000</rdf:li>
-    </rdf:Bag>
-   </darktable:blendop_params>
-   <dc:subject>
-    <rdf:Seq>
-     <rdf:li>darktable|format|jpg</rdf:li>
-     <rdf:li>darktable|changed</rdf:li>
     </rdf:Seq>
+   </darktable:blendop_params>
+   <darktable:blendop_version>
+    <rdf:Seq>
+     <rdf:li>1</rdf:li>
+     <rdf:li>1</rdf:li>
+     <rdf:li>1</rdf:li>
+    </rdf:Seq>
+   </darktable:blendop_version>
+   <darktable:multi_priority>
+    <rdf:Seq>
+     <rdf:li>0</rdf:li>
+     <rdf:li>0</rdf:li>
+     <rdf:li>0</rdf:li>
+    </rdf:Seq>
+   </darktable:multi_priority>
+   <darktable:multi_name>
+    <rdf:Seq>
+     <rdf:li> </rdf:li>
+     <rdf:li> </rdf:li>
+     <rdf:li> </rdf:li>
+    </rdf:Seq>
+   </darktable:multi_name>
+   <dc:subject>
+    <rdf:Seq/>
    </dc:subject>
+   <lr:hierarchicalSubject>
+    <rdf:Seq/>
+   </lr:hierarchicalSubject>
   </rdf:Description>
  </rdf:RDF>
 </x:xmpmeta>

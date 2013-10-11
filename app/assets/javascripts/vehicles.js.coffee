@@ -1,22 +1,23 @@
 $ ->
   'use strict'
+  progress = 4
+  completed = []
+  $(".progress .meter").css('width', progress + '%')
 
-  # new project stuff
-  # $('#select2').select2({ placeholder: 'hello' })
-
-  # change +/- icon and expand/contract
-  $('.section-title, .section-icon').on 'click', ->
-    $section = $(this).parent()
-    if $section.hasClass 'expanded'
-      $section.removeClass 'expanded'
-      $section.children('.section-icon').html "+"
-
-    else
-      $section.addClass 'expanded'
-      $section.children('.section-icon').html "-"
+  $(".section-controls .button").click () ->
+    section = $(this).parents("[data-name]")
+    section_name = section.attr('data-name')
+    
+    if !(section_name in completed)
+      completed.push section_name
+      progress += 12
+      $(".progress .meter").css('width', progress + '%')
       
-  $('.tool-tip').hide()
-  $('.input-append').on 'mouseover mouseenter', ->
-    $(this).children('.tool-tip').show()
-  .on 'mouseout mouseleave', ->
-    $(this).children('.tool-tip').hide()
+      $('.progress-headings .' + section_name).addClass("done")
+    
+    section.removeClass('expanded') 
+    next_section = section.next("[data-name]")
+    if next_section.length > 0
+      next_section.addClass('expanded') 
+    else
+      section.parents('form').submit()
