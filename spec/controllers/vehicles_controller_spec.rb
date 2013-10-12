@@ -83,4 +83,13 @@ describe VehiclesController do
       end
     end
   end
+
+  context 'on #edit' do
+    context 'when adding a poster' do
+      it 'should render' do
+        get :edit, request_params(location, vehicle, true).merge(segment: :poster)
+        response.should render_template(:edit)
+      end
+    end
+  end
 end

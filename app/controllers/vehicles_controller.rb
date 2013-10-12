@@ -23,15 +23,24 @@ class VehiclesController < ApplicationController
     @vehicle.prime!
 
     if @vehicle.save
-      redirect_to semantic_vehicle_path(@vehicle.semantic_url_hash)
+      redirect_to edit_semantic_vehicle_path(@vehicle.semantic_url_hash.merge(:segment => 'poster'))
     else
       render :new
     end
   end
 
+  def update
+    @vehicle = Vehicle.where(vehicle_query_conditions).first
+
+    if @vehicle.update_attributes(params[:vehicle])
+      redirect_to semantic_vehicle_path(@vehicle.semantic_url_hash)
+    else
+      render :edit
+    end
+  end
+
   def edit
     @vehicle = Vehicle.where(vehicle_query_conditions).first
-    segment = params[:segment].presence || :all
   end
 
   private

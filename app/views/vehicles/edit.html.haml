@@ -1,0 +1,9 @@
+.edit-project
+  .row
+    .12-large.12-small.columns
+      %h1 Add the #{@vehicle.name} poster
+
+  = form_for @vehicle, :html => { :class => 'custom' } do |f|
+    %input{id: 'segment', value: params[:segment], name: 'segment', type: 'hidden'}
+    = render 'form', :f => f
+

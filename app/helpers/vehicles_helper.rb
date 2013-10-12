@@ -39,7 +39,8 @@ module VehiclesHelper
                 :caliper_rear, :brake_front_lines, :brake_rear_lines, :brake_front_pads, :brake_rear_pads],
     :wheels => [:tire_front, :tire_rear, :tire_front_width, :tire_rear_width, :tire_front_profile, :tire_rear_profile],
     :interior => [:gauges, :seat],
-    :exterior => [:headlight]
+    :exterior => [:headlight],
+    :poster => [:poster]
   }
 
   # CSS classes for fields, for instance, to help datepicker element auto-instantiate
@@ -55,6 +56,8 @@ module VehiclesHelper
   def render_vehicle_field vehicle_type, attr, f
     if dropdown_field?(vehicle_type, attr)
       render_dropdown_field vehicle_type, attr, f
+    elsif file_field?(vehicle_type, attr)
+      render_file_field attr, f
     else
       render_text_field attr, f
     end
@@ -63,6 +66,10 @@ module VehiclesHelper
   def dropdown_field? vehicle_type, attr
     s = SELECT_OPTIONS[vehicle_type.to_sym] and
     s[attr.to_sym]
+  end
+
+  def file_field? vehicle_type, attr
+    attr.to_sym == :poster
   end
 
   def render_dropdown_field vehicle_type, attr, f
@@ -74,6 +81,11 @@ module VehiclesHelper
   def render_text_field attr, f
     output = f.text_field attr, :placeholder => t(attr, default: attr.to_s.humanize), :class => FIELD_CLASSES[attr]
     output << content_tag(:span, t("units.#{attr}", :default => ''), :class => 'input-append-thing')
+    output
+  end
+
+  def render_file_field attr, f
+    output = f.file_field attr, :placeholder => t(attr, default: attr.to_s.humanize), :class => FIELD_CLASSES[attr]
     output
   end
 
