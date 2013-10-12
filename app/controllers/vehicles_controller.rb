@@ -29,6 +29,11 @@ class VehiclesController < ApplicationController
     end
   end
 
+  def edit
+    @vehicle = Vehicle.where(vehicle_query_conditions).first
+    segment = params[:segment].presence || :all
+  end
+
   private
 
   def vehicle_query_conditions

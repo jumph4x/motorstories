@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe VehiclesController do
   render_views
+
   let(:profile){ create(:profile) }
   let(:vehicle){ create(:vehicle, :profile => profile) }
   let(:location){ Location.first }

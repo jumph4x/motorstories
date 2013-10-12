@@ -1,5 +1,8 @@
 class Vehicle
+  require 'carrierwave/orm/mongomapper'
   include MongoMapper::Document
+
+  mount_uploader :poster, PosterUploader
 
   before_create :set_location_from_profile
   before_validation :set_nickname, :set_vehicle_type
