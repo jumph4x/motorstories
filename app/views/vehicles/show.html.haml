@@ -1,0 +1,20 @@
+- content_for :head do
+  - if @vehicle.poster.present?
+    :css
+      .poster{
+        background-image: url(#{@vehicle.poster});
+        background-size: cover;
+      }
+      .tinter{
+        background-image: url(/assets/tinters/07.png);
+      }
+  - else
+    :css
+      .poster{
+        background-image: url(/assets/layout/poster-bg.png);
+      }
+.show.project.poster
+  .tinter
+    .row
+      .12-large.12-small.columns
+        %h1 #{@vehicle.name}

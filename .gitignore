@@ -24,3 +24,6 @@
 # Ignore cached files
 *.*#
 .#*
+
+# ignore carrierwave uplods
+public/uploads/*

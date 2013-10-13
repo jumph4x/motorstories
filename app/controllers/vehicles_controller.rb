@@ -1,13 +1,15 @@
 class VehiclesController < ApplicationController
   rescue_from MongoMapper::DocumentNotFound, :with => :render_404
   helper :navigation
+  helper_method :name_from_params
 
   def index
-    @vehicles = Vehicle.where(vehicle_query_conditions).limit(20).all
+    @vehicles = Vehicle.claimed.where(vehicle_query_conditions).limit(20).all
   end
 
   def show
     @vehicle = Vehicle.where(vehicle_query_conditions).first
+    render_404 unless @vehicle
   end
 
   def new
@@ -23,14 +25,14 @@ class VehiclesController < ApplicationController
     @vehicle.prime!
 
     if @vehicle.save
-      redirect_to edit_semantic_vehicle_path(@vehicle.semantic_url_hash.merge(:segment => 'poster'))
+      redirect_to edit_vehicle_path(@vehicle, {:segment => 'poster'})
     else
       render :new
     end
   end
 
   def update
-    @vehicle = Vehicle.where(vehicle_query_conditions).first
+    @vehicle = Vehicle.find! params[:id]
 
     if @vehicle.update_attributes(params[:vehicle])
       redirect_to semantic_vehicle_path(@vehicle.semantic_url_hash)
@@ -40,8 +42,13 @@ class VehiclesController < ApplicationController
   end
 
   def edit
-    @vehicle = Vehicle.where(vehicle_query_conditions).first
+    @vehicle = Vehicle.find! params[:id]
   end
+
+  def name_from_params
+    [params[:year], current_make.try(:name), current_model.try(:name)].compact.join(' ')
+  end
+
 
   private
 
@@ -52,7 +59,7 @@ class VehiclesController < ApplicationController
     hash[:model] = current_model.name if current_model
     hash[:year] = params[:year].to_i if params[:year].present?
 
-    hash[:location_id] = current_location.id if current_location
+    #hash[:location_id] = current_location.id if current_location
     hash[:nickname] = params[:nickname] if params[:nickname].present?
     
     hash

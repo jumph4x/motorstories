@@ -1,5 +1,12 @@
-.wrapper
-  .content
-    %h1 Not sure if we have any...
-    - if current_mmy
-      %p Why don't you #{link_to 'add one', new_vehicle_path(current_mmy)}?
+.index.project
+  .row
+    .12-large.12-small.columns
+      - if @vehicles.any?
+        %h1 Showing all #{name_from_params}
+        %ul
+          - @vehicles.each do |veh|
+            %li= link_to veh.name, semantic_vehicle_path(veh.semantic_url_hash)
+      - else
+        %h1 Looks like no one added a #{name_from_params} yet
+        - if current_mmy
+          %p Why don't you #{link_to 'add one', new_vehicle_path(current_mmy)}?

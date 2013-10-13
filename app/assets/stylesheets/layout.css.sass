@@ -11,6 +11,16 @@ $green: #5DDE78
 // styles
 body
   background: asset-data-url('layout/bg_2.png')
+  &.devise
+    background: #222
+    padding: 100px 0 0 0
+    .new
+      background: #222
+    label
+      color: #e5e5e5
+      font-size: 1.1em
+    footer
+      border: none
 #logo
   font: 0/0 a
   color: transparent
@@ -33,6 +43,12 @@ body
   li:hover a.button
     background: #2284a1
 
+.new,.index,.show,.edit
+  background: white
+  padding: 3em 0 1px 0
+  h1
+    text-align: center
+    margin-bottom: 0
 footer
   background: #222
   border-top: 3px solid #666
