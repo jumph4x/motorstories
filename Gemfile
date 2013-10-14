@@ -6,11 +6,12 @@ gem 'bson_ext'
 gem 'database_cleaner'
 
 gem 'haml-rails'
+gem "jquery-rails"
 gem 'craigslist', :git => 'git://github.com/gregstallings/craigslist.git'
 gem 'browser'
 
-gem 'devise'
-gem 'mm-devise'
+gem 'devise', '~> 2.0'
+gem 'mm-devise', :git => "git://github.com/roboteti/mm-devise"
 
 gem 'carrierwave'
 gem 'mm-carrierwave'

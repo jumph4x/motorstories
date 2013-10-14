@@ -1,11 +1,5 @@
 %li
-  %a{href: '#'} Help
+  =link_to 'My Acount', edit_user_registration_path(current_user)
 %li.divider
 %li
-  %a{href: '#'} Cars
-%li.divider
-%li
-  %a{href: '#'} Neighborhoods
-%li.divider
-%li
-  %a{href: '#'} People
+  =link_to 'Sign out', destroy_user_session_path, method: :delete
