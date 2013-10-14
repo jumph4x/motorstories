@@ -23,7 +23,7 @@
           %i (we need your current password to confirm your changes)
           =f.password_field :current_password
 
-        %div= f.submit "Update"
+        .form-actions= f.submit "Update", class: 'button'
       
       %h2 Can my account!
         %p

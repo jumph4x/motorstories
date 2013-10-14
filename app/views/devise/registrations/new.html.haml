@@ -1,6 +1,6 @@
 .new.registration
   .row
-    .large-3.small-12.columns
+    .large-4.large-centered.small-12.columns
       %h1 Welcome aboard
 
       =form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
@@ -16,7 +16,7 @@
           =f.label :password_confirmation
           =f.password_field :password_confirmation
 
-        %div= f.submit "Join!"
+        .form-actions= f.submit "Join!", class: 'button'
 
       =render "devise/shared/links"
 

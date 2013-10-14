@@ -18,3 +18,5 @@
     .row
       .12-large.12-small.columns
         %h1 #{@vehicle.name}
+        - if stored_vehicle_ids.include? @vehicle.id
+          %div.subhead Like what you see? Save your changes #{link_to "by registering", new_user_registration_path}. This project page won't be saved otherwise.
