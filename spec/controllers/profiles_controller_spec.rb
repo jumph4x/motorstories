@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe ProfilesController do
-  let(:profile){ create(:profile) }
+  let(:profile){ create(:user) }
 
   context 'on #show' do
 

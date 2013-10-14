@@ -3,8 +3,8 @@ require 'spec_helper'
 describe VehiclesController do
   render_views
 
-  let(:profile){ create(:profile) }
-  let(:vehicle){ create(:vehicle, :profile => profile) }
+  let(:user){ create(:user) }
+  let(:vehicle){ create(:vehicle, :user => user) }
   let(:location){ Location.first }
 
   before do

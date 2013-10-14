@@ -14,7 +14,7 @@ module Motorstories
 
     it 'should populate location model with data' do
       subject.populate_locations
-      Location.data.size.should > 10
+      Location.data.size.should > 2
       Location.destroy_all
     end
 

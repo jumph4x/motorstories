@@ -14,7 +14,7 @@ module Motorstories
       return cached_locations if cached_locations.present?
 
       locations = 
-      Craigslist.cities.map do |city|
+      scope.map do |city|
         key = hash_name(city)
 
         {
@@ -31,6 +31,12 @@ module Motorstories
       })
 
       cached_cipher_data = locations
+    end
+
+    def scope
+      cities = Craigslist.cities
+      cities = cities[0..2] if Rails.env.test?
+      cities
     end
 
     def hash_name city_name

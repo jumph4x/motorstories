@@ -1,12 +1,12 @@
 require 'spec_helper'
 
 describe Vehicle do
-  let(:profile){ create(:profile) }
+  let(:user){create(:user) }
 
   describe 'at class' do
     it 'should have [un]claimed scopes' do
       v = create(:vehicle, :model => 'UNCLAIMED')
-      v2 = create(:vehicle, :model => 'CLAIMED', :profile => profile)
+      v2 = create(:vehicle, :model => 'CLAIMED', :user => user)
 
       Vehicle.unclaimed.all.should == [v]
       Vehicle.claimed.all.should == [v2]
@@ -14,7 +14,7 @@ describe Vehicle do
   end
 
   describe 'as instance' do
-    let(:vehicle){ create(:vehicle, :profile => profile) }
+    let(:vehicle){ create(:vehicle, :user => user) }
 
     it 'should output #semantic_url_hash' do
       h = vehicle.semantic_url_hash
@@ -39,20 +39,20 @@ describe Vehicle do
       vehicle.name.should == '2006 Mazda MX-5 Miata'
     end
 
-    it 'should set location from profile' do 
+    it 'should set location from user' do 
       vehicle.location_id.should be_present
-      vehicle.location_id.should == profile.location_id
+      vehicle.location_id.should == user.location_id
     end
 
-    it 'should set nickname from profile' do
-      vehicle.nickname.should == "#{profile.username}s-#{vehicle.model.to_url}"
+    it 'should set nickname from user' do
+      vehicle.nickname.should == "#{user.username}s-#{vehicle.model.to_url}"
     end
 
-    it 'should validate nickname presence if profile is set' do
+    it 'should validate nickname presence if user is set' do
       v = create(:vehicle)
       val1 = v.nickname
 
-      v.profile = profile
+      v.user = user
       v.save
 
       v.nickname.should be_present

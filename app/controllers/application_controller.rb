@@ -4,12 +4,30 @@ class ApplicationController < ActionController::Base
   helper :navigation
   include NavigationHelper
 
+  helper_method :stored_vehicle_ids, :stored_vehicles
   after_filter :store_location
 
   def render_404
     redirect_to '/'
   end
 
+  def store_created_vehicle vehicle
+    return unless vehicle
+    session[:vehicles] ||= []
+    session[:vehicles] << vehicle.id
+  end
+
+  def stored_vehicle_ids
+    session[:vehicles] || []
+  end
+
+  def wipe_stored_vehicles
+    session.delete :vehicles
+  end
+
+  def stored_vehicles
+    @cached_stored_vehicles ||= Vehicle.where(:id => stored_vehicle_ids).all
+  end
 
   def store_location
     # store last url - this is needed for post-login redirect to whatever the user last visited.
@@ -18,6 +36,14 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
+    session[:previous_url] || root_path
+  end
+
+  def after_sign_up_path_for(resource)
+    stored_vehicles.each do |vehicle|
+      vehicle.user_id = current_user.id
+    end
+
     session[:previous_url] || root_path
   end
 

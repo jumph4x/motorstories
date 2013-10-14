@@ -4,14 +4,14 @@ class Vehicle
 
   mount_uploader :poster, PosterUploader
 
-  before_create :set_location_from_profile
+  before_create :set_location_from_user
   before_validation :set_nickname, :set_vehicle_type
 
-  scope :claimed, where(:profile_id.ne => nil)
-  scope :unclaimed, where(:profile_id => nil)
+  scope :claimed, where(:user_id.ne => nil)
+  scope :unclaimed, where(:user_id => nil)
 
   belongs_to :base_vehicle
-  belongs_to :profile
+  belongs_to :user
 
   validate :ensure_nickname_presence
   validates :nickname, :uniqueness => true
@@ -123,7 +123,7 @@ class Vehicle
   end
 
   def prime!
-    set_location_from_profile
+    #set_location_from_user
     set_vehicle_type
     set_nickname
     set_name_from_base_vehicle
@@ -148,10 +148,10 @@ class Vehicle
     self.model = base_vehicle.model.name
   end
 
-  def set_location_from_profile
-    return true unless profile
+  def set_location_from_user
+    return true unless user
 
-    self.location_id = profile.location_id
+    self.location_id = user.location_id
   end
 
   def set_vehicle_type
@@ -161,16 +161,16 @@ class Vehicle
   end
 
   def set_nickname
-    self.nickname = nil if profile_id_changed?
-    if profile
-      self.nickname ||= "#{profile.username}s-#{model.to_url}"
+    self.nickname = nil if user_id_changed?
+    if user
+      self.nickname ||= "#{user.username}s-#{model.to_url}"
     else
       self.nickname ||= _id
     end
   end
 
   def ensure_nickname_presence
-    return true unless profile
+    return true unless user
 
     errors.add(:nickname, "Add a nickname for your car") unless nickname.present?
   end

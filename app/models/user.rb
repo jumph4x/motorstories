@@ -39,11 +39,22 @@ class User
   # key :authentication_token, String
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :name
+  attr_accessible :login, :email, :password, :password_confirmation, :remember_me, :name, :username
 
-  attr_accessor :encrypted_password
+  attr_accessor :encrypted_password, :login
 
   key :name, String, :required => true
+  key :username, String, :required => true
+  key :location_id, Integer
+
+  def self.find_first_by_auth_conditions(warden_conditions)
+    conditions = warden_conditions.dup
+    if login = conditions.delete(:login)
+      self.where(:$or => [{:username =>  /^#{Regexp.escape(login)}$/i }, { :email =>  /^#{Regexp.escape(login)}$/i }]).first
+    else
+      super
+    end
+  end
 
   timestamps!
 end
