@@ -25,31 +25,7 @@
 
 %body
   #container.cf
-    .row
-      %a#logo{href: '/'} Motorstori.es
-    #first-tier.contain-to-grid
-      %nav.top-bar
-        .container
-          %ul.title-area
-            %li.name
-            %li.toggle-topbar.menu-icon
-              %a{href: '#'}
-                %span Menu
-          %section.top-bar-section
-            %ul.left
-              %li
-                = render 'shared/mmy_selector'
-            %ul.right
-              %li.show-for-small
-                %a{href: '/'} Home
-              %li.divider
-              = render "shared/topnav#{ '_auth' unless current_user}"
-              %li.divider
-              %li.has-form
-                %a.button{href: '/'} Tour
+    = render 'shared/header'
     = wrapped_flash
     = yield
-    %footer
-      &copy; <a href="http://downshiftlabs.com" target="_blank" rel="nofollow" title="Like what you see? Holler at us.">DownshiftLabs, LLC</a> 2012-2013.<br/>
-      We hailin from East Oakland, California and, um, sometimes it gets a little hectic out there. <br/>
-      Be excellent to each other.
+    = render 'shared/footer'
