@@ -9,7 +9,7 @@ module ApplicationHelper
     title = if respond_to? methud
       send(methud)
     else
-      'Built by Gearheads. For Gearheads.'
+      "Built by Gearheads - For Gearheads"
     end
 
     "#{title} | Motorstori.es"

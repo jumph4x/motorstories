@@ -1,19 +1,33 @@
 body.devise
-  background: #222
-  padding: 100px 0 0 0
+  background: #222 url(/assets/tinters/02.png)
+  padding: 75px 0 0 0
+  .container
+    padding-top: 50px
   .new
-    background: #222
+    background: none
   label
     color: #e5e5e5
     font-size: 1.1em
   footer
+    background: none
     margin-top: 4em
     border: none
+  #error_explanation
+    color: #fff
+    h2
+      color: #fff
+      font-size: 1.4em
+    ul
+      margin-left: 1.5em
+  .field_with_errors
+    label
+      color: #d00
 .registration,.session
+  h1
+    color: #fff
   .form-actions
     text-align: center
 .devise-links
   a
     display: block
     text-align: center
-

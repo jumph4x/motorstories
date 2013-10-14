@@ -1,52 +1,13 @@
 module VehiclesHelper
 
-  # project type helper
-  SELECT_OPTIONS = {
-    :car => {
-      :project_type => ['autocross warrior', 'track attack', 'drifter', 'daily driver', 'offroader', 'hauler', 'vip']
-    },
-    :motorcycle => {
-      :project_type => ['track attack', 'adventure', 'street fighter', 'commuter', 'stunter']
-    }
-  }
+  def html_title_show
+    @vehicle.name
+  end
+
   def select_options_for vehicle_type, field, existing_value = nil
     options = SELECT_OPTIONS[vehicle_type.to_sym][field.to_sym]
     options_for_select(options, existing_value)
   end
-
-  # fields specific to vehicle types
-  SPECIFIC_SECTION_FIELDS = {
-    :car => {
-      :suspension => [:camber_front, :camber_rear],
-      :drivetrain => [:transmission, :differential_ratio, :differential_lock],
-      :wheels => [:wheel_front, :wheel_rear, :wheel_front_diameter,
-                  :wheel_rear_diameter, :wheel_front_width, :wheel_rear_width],
-      :interior => [:rollcage, :steering_wheel, :pedals],
-      :exterior => [:bumper_front, :bumper_rear, :hood, :trunk, :tint, :spoiler]
-    },
-    :motorcycle => {
-      :drivetrain => [:sprocket_front, :sprocket_front_diff, :sprocket_rear, :sprocket_rear_diff, :chain, :chain_pitch],
-      :interior => [:control_levers, :steering_damper, :rear_sets],
-      :exterior => [:crash_cage, :plastics]
-    }
-  }
-  # fields shared by both vehicle types
-  SECTION_FIELDS = {
-    :overview => [:acquired_at, :project_type],
-    :suspension => [:height_diff, :springs_front, :springs_rear, :dampers_front, :dampers_rear],
-    :engine => [:intake, :exhaust, :engine_management, :engine_code],
-    :brakes => [:brake_front_diameter, :brake_rear_diameter, :rotor_front, :rotor_rear, :caliper_front,
-                :caliper_rear, :brake_front_lines, :brake_rear_lines, :brake_front_pads, :brake_rear_pads],
-    :wheels => [:tire_front, :tire_rear, :tire_front_width, :tire_rear_width, :tire_front_profile, :tire_rear_profile],
-    :interior => [:gauges, :seat],
-    :exterior => [:headlight],
-    :poster => [:poster]
-  }
-
-  # CSS classes for fields, for instance, to help datepicker element auto-instantiate
-  FIELD_CLASSES = {
-    :acquired_at => 'date'
-  }
 
   def section_fields vehicle_type, section
     (SECTION_FIELDS[section.to_sym] || []) +
@@ -89,4 +50,47 @@ module VehiclesHelper
     output
   end
 
+  # project type helper
+  SELECT_OPTIONS = {
+    :car => {
+      :project_type => ['autocross warrior', 'track attack', 'drifter', 'daily driver', 'offroader', 'hauler', 'vip']
+    },
+    :motorcycle => {
+      :project_type => ['track attack', 'adventure', 'street fighter', 'commuter', 'stunter']
+    }
+  }
+
+  # fields specific to vehicle types
+  SPECIFIC_SECTION_FIELDS = {
+    :car => {
+      :suspension => [:camber_front, :camber_rear],
+      :drivetrain => [:transmission, :differential_ratio, :differential_lock],
+      :wheels => [:wheel_front, :wheel_rear, :wheel_front_diameter,
+                  :wheel_rear_diameter, :wheel_front_width, :wheel_rear_width],
+      :interior => [:rollcage, :steering_wheel, :pedals],
+      :exterior => [:bumper_front, :bumper_rear, :hood, :trunk, :tint, :spoiler]
+    },
+    :motorcycle => {
+      :drivetrain => [:sprocket_front, :sprocket_front_diff, :sprocket_rear, :sprocket_rear_diff, :chain, :chain_pitch],
+      :interior => [:control_levers, :steering_damper, :rear_sets],
+      :exterior => [:crash_cage, :plastics]
+    }
+  }
+  # fields shared by both vehicle types
+  SECTION_FIELDS = {
+    :overview => [:acquired_at, :project_type],
+    :suspension => [:height_diff, :springs_front, :springs_rear, :dampers_front, :dampers_rear],
+    :engine => [:intake, :exhaust, :engine_management, :engine_code],
+    :brakes => [:brake_front_diameter, :brake_rear_diameter, :rotor_front, :rotor_rear, :caliper_front,
+                :caliper_rear, :brake_front_lines, :brake_rear_lines, :brake_front_pads, :brake_rear_pads],
+    :wheels => [:tire_front, :tire_rear, :tire_front_width, :tire_rear_width, :tire_front_profile, :tire_rear_profile],
+    :interior => [:gauges, :seat],
+    :exterior => [:headlight],
+    :poster => [:poster]
+  }
+
+  # CSS classes for fields, for instance, to help datepicker element auto-instantiate
+  FIELD_CLASSES = {
+    :acquired_at => 'date'
+  }
 end

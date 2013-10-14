@@ -1,8 +1,6 @@
 .new.session
   .row
     .large-4.large-centered.small-12.columns
-      %h1 Good to have you back!
-
       =form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
         %div
           =f.label :email
