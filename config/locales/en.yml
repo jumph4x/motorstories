@@ -102,3 +102,7 @@ en:
     wheel_rear: 'Maker and style of the rear wheels'
     wheel_rear_diameter: "Wheel diameter in inches. Ex: 18"
     wheel_rear_width: 'Wheel width in inches. Ex: 8.5'
+  
+  devise:
+    failure:
+      invalid: "Invalid email, username or password."

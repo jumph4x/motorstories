@@ -22,9 +22,11 @@
   %link{href: '//fonts.googleapis.com/css?family=Sanchez|Donegal+One', rel: 'stylesheet', type: 'text/css'}
   = csrf_meta_tag
   = content_for :head
+  = javascript_include_tag :all
 
 %body.devise
   %a#logo{href: '/'} Motorstori.es
   .container
+    = wrapped_flash
     = yield
     = render 'shared/footer'

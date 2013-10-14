@@ -44,7 +44,7 @@ class User
   attr_accessor :encrypted_password, :login
 
   key :name, String, :required => true
-  key :username, String, :required => true
+  key :username, String, :required => true, :unique => true
   key :location_id, Integer
 
   def self.find_first_by_auth_conditions(warden_conditions)

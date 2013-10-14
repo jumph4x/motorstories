@@ -20,7 +20,7 @@ module ApplicationHelper
   end
 
   def flash_type
-    flash[:error] ? :error : :notice
+    flash[:error] ? :error : (flash[:notice] ? :notice : :alert)
   end
 
   def wrapped_flash

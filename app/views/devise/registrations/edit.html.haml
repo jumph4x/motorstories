@@ -14,6 +14,9 @@
           =f.label :name
           =f.text_field :name, :autofocus => true
         %div
+          =f.label :username
+          =f.text_field :username
+        %div
           =f.label :email
           =f.email_field :email
         -if devise_mapping.confirmable? && resource.pending_reconfirmation?
