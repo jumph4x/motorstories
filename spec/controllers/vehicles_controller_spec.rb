@@ -35,7 +35,7 @@ describe VehiclesController do
     it 'should prep the environment' do 
       get :index, request_params(location, vehicle)
 
-      assigns(:location).should be_a(Location)
+      #assigns(:location).should be_a(Location)
       assigns(:make).should be_a(Make)
       assigns(:model).should be_a(Model)
       assigns(:vehicles).should == [vehicle]
@@ -51,7 +51,7 @@ describe VehiclesController do
     it 'should prep the environment' do 
       get :show, request_params(location, vehicle, true)
 
-      assigns(:location).should be_a(Location)
+      #assigns(:location).should be_a(Location)
       assigns(:make).should be_a(Make)
       assigns(:model).should be_a(Model)
       assigns(:vehicle).should == vehicle
@@ -87,7 +87,7 @@ describe VehiclesController do
   context 'on #edit' do
     context 'when adding a poster' do
       it 'should render' do
-        get :edit, request_params(location, vehicle, true).merge(segment: :poster)
+        get :edit, :id => vehicle.id, :segment => :poster
         response.should render_template(:edit)
       end
     end

@@ -2,6 +2,7 @@ class VehiclesController < ApplicationController
   rescue_from MongoMapper::DocumentNotFound, :with => :render_404
   helper :navigation
   helper_method :name_from_params
+  helper_method :stored_vehicle_ids, :stored_vehicles
 
   def index
     @vehicles = Vehicle.claimed.where(vehicle_query_conditions).limit(20).all
@@ -50,6 +51,19 @@ class VehiclesController < ApplicationController
     [params[:year], current_make.try(:name), current_model.try(:name)].compact.join(' ')
   end
 
+  def store_created_vehicle vehicle
+    return unless vehicle
+    session[:vehicles] ||= []
+    session[:vehicles] << vehicle.id
+  end
+
+  def stored_vehicle_ids
+    session[:vehicles] || []
+  end
+
+  def stored_vehicles
+    @cached_stored_vehicles ||= Vehicle.where(:id => stored_vehicle_ids).all
+  end
 
   private
 
