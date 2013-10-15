@@ -25,7 +25,7 @@ class VehiclesController < ApplicationController
     @vehicle.prime!
 
     if @vehicle.save
-      store_created_vehicle(@vehicle)
+      handle_created_vehicle @vehicle
       redirect_to edit_vehicle_path(@vehicle, {:segment => 'poster'})
     else
       render :new

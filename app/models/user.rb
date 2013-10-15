@@ -43,6 +43,8 @@ class User
 
   attr_accessor :encrypted_password, :login
 
+  has_many :vehicles, :dependent => :destroy
+
   key :name, String, :required => true
   key :username, String, :required => true, :unique => true
   key :location_id, Integer

@@ -5,7 +5,7 @@ require File.expand_path('../boot', __FILE__)
 require "action_controller/railtie"
 require "action_mailer/railtie"
 require "active_resource/railtie"
-require "rails/test_unit/railtie"
+#require "rails/test_unit/railtie"
 
 
 if defined?(Bundler)
@@ -20,6 +20,14 @@ module Motorstories
 
     config.generators do |g|
       g.orm :mongo_mapper
+      g.test_framework :rspec,
+        :fixtures => true,
+        :view_specs => true,
+        :helper_specs => true,
+        :routing_specs => false,
+        :controller_specs => true,
+        :request_specs => true
+      g.fixture_replacement :factory_girl, :dir => "spec/factories"
     end
 
     config.to_prepare do

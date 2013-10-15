@@ -11,10 +11,14 @@ class ApplicationController < ActionController::Base
     redirect_to '/'
   end
 
-  def store_created_vehicle vehicle
+  def handle_created_vehicle vehicle
     return unless vehicle
-    session[:vehicles] ||= []
-    session[:vehicles] << vehicle.id
+    if current_user
+      vehicle.set(:user_id => current_user.id)
+    else
+      session[:vehicles] ||= []
+      session[:vehicles] << vehicle.id
+    end
   end
 
   def stored_vehicle_ids
@@ -32,17 +36,16 @@ class ApplicationController < ActionController::Base
   def store_location
     # store last url - this is needed for post-login redirect to whatever the user last visited.
     return if request.fullpath.match(/users|sign_in|sign_up|password/) || request.xhr?
+    return unless request.get?
+
     session[:previous_url] = request.fullpath 
   end
 
   def after_sign_in_path_for(resource)
-    session[:previous_url] || root_path
-  end
-
-  def after_sign_up_path_for(resource)
     stored_vehicles.each do |vehicle|
-      vehicle.user_id = current_user.id
+      vehicle.set(:user_id => current_user.id)
     end
+    wipe_stored_vehicles
 
     session[:previous_url] || root_path
   end

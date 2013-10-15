@@ -1,9 +1,4 @@
 module ApplicationHelper
-
-  def is_legacy?
-    browser.ie6?
-  end
-
   def html_title
     methud = "html_title_#{controller.action_name}"
     title = if respond_to? methud
@@ -21,6 +16,14 @@ module ApplicationHelper
 
   def flash_type
     flash[:error] ? :error : (flash[:notice] ? :notice : :alert)
+  end
+
+  def register_link
+    if stored_vehicle_ids.any?
+      link_to "Register #{content_tag :b, stored_vehicle_ids.count}".html_safe, new_user_registration_path, :title => "Register now to save your projects!"
+    else
+      link_to "Register", new_user_registration_path
+    end
   end
 
   def wrapped_flash
