@@ -1,18 +1,15 @@
 - content_for :head do
   - if @vehicle.poster.present?
-    :css
-      .poster{
-        background-image: url(#{@vehicle.poster});
-        background-size: cover;
-      }
-      .tinter{
-        background-image: url(/assets/tinters/07.png);
-      }
+    :sass
+      .poster
+        background-image: url(#{@vehicle.poster})
+        background-size: cover
+      .tinter
+        background-image: url(/assets/tinters/07.png)
   - else
-    :css
-      .poster{
-        background-image: url(/assets/layout/poster-bg.png);
-      }
+    :sass
+      .poster
+        background-image: url(/assets/layout/poster-bg.png)
 .show.project.poster
   .tinter
     .row

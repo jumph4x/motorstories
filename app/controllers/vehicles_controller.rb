@@ -1,7 +1,7 @@
 class VehiclesController < ApplicationController
   rescue_from MongoMapper::DocumentNotFound, :with => :render_404
   helper :navigation
-  helper_method :name_from_params
+  helper_method :name_from_params, :authorized_to_edit?
 
   def index
     @vehicles = Vehicle.claimed.where(vehicle_query_conditions).limit(20).all
@@ -34,6 +34,7 @@ class VehiclesController < ApplicationController
 
   def update
     @vehicle = Vehicle.find! params[:id]
+    render_401 unless authorized_to_edit?
 
     if @vehicle.update_attributes(params[:vehicle])
       redirect_to semantic_vehicle_path(@vehicle.semantic_url_hash)
@@ -44,10 +45,21 @@ class VehiclesController < ApplicationController
 
   def edit
     @vehicle = Vehicle.find! params[:id]
+    render_401 unless authorized_to_edit?
   end
 
   def name_from_params
     [params[:year], current_make.try(:name), current_model.try(:name)].compact.join(' ')
+  end
+
+  def authorized_to_edit?
+    return unless @vehicle
+
+    if current_user
+      @vehicle.user_id == current_user.id
+    else
+      stored_vehicle_ids.include? @vehicle.id
+    end
   end
 
   private

@@ -11,6 +11,11 @@ class ApplicationController < ActionController::Base
     redirect_to '/'
   end
 
+  def render_401
+    flash[:error] = "Try not to do that. Your account has been flagged."
+    redirect_to '/'
+  end
+
   def handle_created_vehicle vehicle
     return unless vehicle
     if current_user
