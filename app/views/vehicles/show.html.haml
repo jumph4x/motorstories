@@ -15,5 +15,8 @@
     .row
       .12-large.12-small.columns
         %h1 #{@vehicle.name}
-        - if stored_vehicle_ids.include? @vehicle.id
-          %div.subhead Like what you see? Save your changes #{link_to "by registering", new_user_registration_path}. This project page won't be saved otherwise.
+        - if authorized_to_edit?
+          - if current_user
+            %div.subhead This is yours. #{link_to "Update the spec", edit_vehicle_path(@vehicle)}, maybe?
+          - else
+            %div.subhead Like what you see? Save your changes #{link_to "by registering", new_user_registration_path}. This project page won't be saved otherwise.
