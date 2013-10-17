@@ -42,7 +42,7 @@ module ApplicationHelper
     end
   end
 
-  def vehicle_path vehicle, opts = {}
+  def project_path vehicle, opts = {}
     semantic_vehicle_path vehicle.semantic_url_hash, opts
   end
 end
