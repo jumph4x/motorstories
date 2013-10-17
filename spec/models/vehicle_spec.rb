@@ -25,6 +25,13 @@ describe Vehicle do
       h.size.should == 4
     end
 
+    it 'should self identify as claimed?' do
+      vehicle.claimed?.should be_true
+      vehicle.set(:user_id => nil)
+      vehicle.reload
+      vehicle.claimed?.should be_false
+    end
+
     it 'should belong to a base_vehicle' do
       v = create(:vehicle)
       v.base_vehicle.should be_present

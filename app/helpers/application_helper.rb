@@ -1,6 +1,6 @@
 module ApplicationHelper
   def html_title
-    methud = "html_title_#{controller.action_name}"
+    methud = "title_#{controller.controller_name}_#{controller.action_name}"
     title = if respond_to? methud
       send(methud)
     else
@@ -40,5 +40,9 @@ module ApplicationHelper
         ).html_safe
       end
     end
+  end
+
+  def vehicle_path vehicle, opts = {}
+    semantic_vehicle_path vehicle.semantic_url_hash, opts
   end
 end

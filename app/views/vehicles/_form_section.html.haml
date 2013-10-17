@@ -2,7 +2,7 @@
   .row
     %h3.section-title= t("sections.#{section_name}", default: section_name.to_s.humanize)
     .section-controls.cf
-      - section_fields(@vehicle.vehicle_type, section_name).each do |attr|
+      - fields(@vehicle.vehicle_type, section_name).each do |attr|
         = content_tag :div, :class => 'row' do
           = content_tag :div, :class => 'small-12 large-6 large-centered columns' do
             -#%span.tool-tip.input-help.input-append-thing(data-tooltip){:title => t("form_help.#{attr}")} ?

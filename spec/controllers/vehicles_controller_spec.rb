@@ -85,10 +85,16 @@ describe VehiclesController do
   end
 
   context 'on #edit' do
-    context 'when adding a poster' do
-      it 'should render' do
-        get :edit, :id => vehicle.id, :segment => :poster
-        response.should render_template(:edit)
+    context 'when logged in' do
+      before do
+        sign_in user
+      end
+
+      context 'when adding a poster' do
+        it 'should render' do
+          get :edit, :id => vehicle.id, :segment => :poster
+          response.should render_template(:edit)
+        end
       end
     end
   end

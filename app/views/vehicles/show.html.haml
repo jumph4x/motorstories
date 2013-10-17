@@ -13,10 +13,12 @@
 .show.project.poster
   .tinter
     .row
-      .12-large.12-small.columns
-        %h1 #{@vehicle.name}
-        - if authorized_to_edit?
-          - if current_user
-            %div.subhead This is yours. #{link_to "Update the spec", edit_vehicle_path(@vehicle)}, maybe?
-          - else
-            %div.subhead Like what you see? Save your changes #{link_to "by registering", new_user_registration_path}. This project page won't be saved otherwise.
+      .large-12.small-12.columns
+        .head
+          %h1.fit #{@vehicle.name}
+          = vehicle_call_to_action @vehicle
+    .row.owner-updates
+      .large-4.small-12.columns
+        = vehicle_owner @vehicle
+      .large-8.small-12.columns
+        %h3 Recent updates

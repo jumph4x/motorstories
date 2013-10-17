@@ -138,6 +138,10 @@ class Vehicle
     }
   end
 
+  def claimed?
+    user_id.present?
+  end
+
   private
 
   def set_name_from_base_vehicle

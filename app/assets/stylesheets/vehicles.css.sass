@@ -7,14 +7,20 @@
     h1
       font-size: 4em
       color: #fff
-      text-shadow: 0 0 20px rgba(0,0,0,1)
+      text-shadow: 0 0 5px rgb(0,0,0), 0 0 20px rgb(0,0,0)
       border: none
-.subhead
+    h2,h3
+      color: #fff
+.head
   text-align: center
+.subhead
+  display: inline-block
+  background: rgba(0,0,0,0.5)
+  padding: 5px
+  border-radius: 4px
 .poster
   background-position: center center
 .tinter
-  min-height: 800px
   padding: 3em 0 1px 0
 .section-controls
   display: none
@@ -29,3 +35,7 @@
 .progress-headings
   .done
     text-decoration: line-through
+
+@media #{$small}
+  .owner-updates
+    margin-top: 20em
