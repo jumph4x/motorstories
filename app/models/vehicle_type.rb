@@ -16,10 +16,14 @@ class VehicleType
     def seed!
       self.data = {
         4 => {:id => 4, :name => 'car'},
-        5 => {:id => 5, :name => 'car'},
-        6 => {:id => 6, :name => 'car'},
-        7 => {:id => 7, :name => 'car'},
-        40 => {:id => 40, :name => 'motorcycle'}
+        5 => {:id => 5, :name => 'car', :desc => 'Car'},
+        6 => {:id => 6, :name => 'car', :desc => 'Truck'},
+        7 => {:id => 7, :name => 'car', :desc => 'Van'},
+        40 => {:id => 40, :name => 'motorcycle'},
+        46 => {:id => 46, :name => 'motorcycle', :desc => 'Offroad motorcycle'},
+        49 => {:id => 49, :name => 'motorcycle', :desc => 'Street motorcycle'},
+        2189 => {:id => 2189, :name => 'motorcycle', :desc => 'Scooter'},
+        2201 => {:id => 2201, :name => 'motorcycle', :desc => 'Scooter'}
       }
     end
   end

@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
   after_filter :store_location
 
   def render_404
+    flash[:error] = 'Oops, page not found.'
     redirect_to '/'
   end
 
