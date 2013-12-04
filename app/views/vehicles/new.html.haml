@@ -18,5 +18,5 @@
       .progress.radius
         %span.meter
   = form_for @vehicle, :html => { :class => 'custom' } do |f|
-    = f.hidden_field :base_vehicle_id, :value => @vehicle.base_vehicle_id
+    = f.hidden_field :proto_vehicle_id, :value => @vehicle.proto_vehicle_id
     = render 'form', :f => f

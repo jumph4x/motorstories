@@ -1,12 +1,12 @@
 $ ->
   'use strict'
 
-  $.fn.fillOptionsWith = (data, prefix) -> 
+  $.fn.fillOptionsWith = (data, attr, prefix) -> 
     options = prefix
     $.each(
       data,
       (idx, value) ->
-        options += '<option value="' + value[1] + '">' + value[0] + '</option>'
+        options += '<option value="' + value[attr] + '">' + value[attr] + '</option>'
     )
     this.html(options)
     this.removeAttr('disabled').show()
@@ -28,9 +28,9 @@ $ ->
     if make == ''
       return false
 
-    param_string = 'make_slug=' + make
+    param_string = 'make=' + make
     if model != ''
-      param_string += '&model_slug=' + model
+      param_string += '&model=' + model
     if year != ''
       param_string += '&year=' + year
 
@@ -46,10 +46,10 @@ $ ->
       return true
 
     $.getJSON(
-      "/models?make_slug=" + make,
+      "/proto_vehicles?make=" + make,
       { format: "json" },
       (data) -> 
-        model_el.fillOptionsWith(data, '<option value="">Model</option>')
+        model_el.fillOptionsWith(data, 'model', '<option value="">Model</option>')
         year_el.html('<option value="">Year</option>').attr('disabled','disabled')
     )
     btn_el.removeAttr('disabled')
@@ -61,10 +61,10 @@ $ ->
     if model == ''
       return true
     $.getJSON(
-      "/years?model_slug=" + model + '&make_slug=' + make,
+      "/proto_vehicles?model=" + model + '&make=' + make,
       { format: "json" },
       (data) -> 
-        year_el.fillOptionsWith(data, '<option value="">Year</option>')
+        year_el.fillOptionsWith(data, 'year', '<option value="">Year</option>')
     )
     btn_el.removeAttr('disabled')
 

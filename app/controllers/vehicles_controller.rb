@@ -1,22 +1,28 @@
 class VehiclesController < ApplicationController
   rescue_from MongoMapper::DocumentNotFound, :with => :render_404
   helper :navigation
-  helper_method :name_from_params, :authorized_to_edit?
+  helper_method :authorized_to_edit?
 
   def index
-    @vehicles = Vehicle.claimed.where(vehicle_query_conditions).limit(20).all
+    @vehicles = Vehicle.
+      all_by_mmyn_slugs(*mmyn_slugs).
+      claimed.
+      limit(20).
+      all
   end
 
   def show
-    @vehicle = Vehicle.where(vehicle_query_conditions).first
+    @vehicle = Vehicle.
+      all_by_mmyn_slugs(*mmyn_slugs).
+      first
     render_404 unless @vehicle
   end
 
   def new
-    @base_vehicle = load_base_vehicle
+    @proto_vehicle = load_proto_vehicle
 
     @vehicle = Vehicle.new
-    @vehicle.base_vehicle = @base_vehicle
+    @vehicle.proto_vehicle = @proto_vehicle
     @vehicle.prime!
   end
 
@@ -48,9 +54,6 @@ class VehiclesController < ApplicationController
     render_401 unless authorized_to_edit?
   end
 
-  def name_from_params
-    [params[:year], current_make.try(:name), current_model.try(:name)].compact.join(' ')
-  end
 
   def authorized_to_edit?
     return unless @vehicle
@@ -64,21 +67,19 @@ class VehiclesController < ApplicationController
 
   private
 
-  def vehicle_query_conditions
-    hash = {}
-
-    hash[:make] = current_make.name if current_make
-    hash[:model] = current_model.name if current_model
-    hash[:year] = params[:year].to_i if params[:year].present?
-
-    #hash[:location_id] = current_location.id if current_location
-    hash[:nickname] = params[:nickname] if params[:nickname].present?
-    
-    hash
+  def mmy_slugs
+    [
+      params[:make_slug],
+      params[:model_slug],
+      params[:year]
+    ]
   end
 
-  def load_base_vehicle
-    year = params[:year].try(:to_i)
-    BaseVehicle.find_by_make_id_and_model_id_and_year!(current_make.try(:_id), current_model.try(:_id), current_year)
+  def mmyn_slugs
+    mmy_slugs + [params[:nickname]]
+  end
+
+  def load_proto_vehicle
+    ProtoVehicle.all_by_mmy_slugs(*mmy_slugs).first
   end
 end

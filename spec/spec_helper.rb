@@ -24,8 +24,6 @@ RSpec.configure do |config|
     DatabaseCleaner[:mongo_mapper].clean
   end
   
-  config.include LocationFactory
-  config.include VehicleTypeFactory
   config.include FactoryGirl::Syntax::Methods
   config.include Devise::TestHelpers, :type => :controller
 

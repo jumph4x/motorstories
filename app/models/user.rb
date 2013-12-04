@@ -47,7 +47,6 @@ class User
 
   key :name, String, :required => true
   key :username, String, :required => true, :unique => true
-  key :location_id, Integer
   timestamps!
 
   def self.find_first_by_auth_conditions(warden_conditions)

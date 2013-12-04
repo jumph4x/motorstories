@@ -3,6 +3,7 @@ Motorstories::Application.routes.draw do
   devise_for :users
 
   resources :profiles, :path => 'people'
+  resources :proto_vehicles
   resources :vehicles, :path => 'projects', :except => [:show, :index]
   resources :models, :only => :index
   resources :years, :only => :index

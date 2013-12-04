@@ -1,5 +1,9 @@
 module VehiclesHelper
 
+  def name_from_params
+    [params[:year], make_name, model_name].compact.join(' ')
+  end
+
   def title_vehicles_show
     @vehicle.name
   end
@@ -12,7 +16,7 @@ module VehiclesHelper
         content_tag(:div, "Owner: #{link_to vehicle.user.username, profile_path(vehicle.user)}".html_safe, class: 'username') <<
         content_tag(:div, "Joined #{vehicle.user.created_at.strftime("%b %Y")}", class: 'joined')
       else
-        content_tag(:div, "Owner: you! #{link_to "Register", new_user_registration_path}", class: 'username') <<
+        content_tag(:div, "Owner: you! #{link_to "Register", new_user_registration_path}".html_safe, class: 'username') <<
         content_tag(:div, "Joined today", class: 'joined')
       end
     end

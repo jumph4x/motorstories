@@ -2,15 +2,21 @@ class Vehicle
   require 'carrierwave/orm/mongomapper'
   include MongoMapper::Document
 
+  VEHICLE_TYPE_GROUPS = {
+    'Car'                => :car,
+    'Truck'              => :car,
+    'Offroad Motorcycle' => :motorcycle,
+    'Street Motorcycle'  => :motorcycle
+  }
+
   mount_uploader :poster, PosterUploader
 
-  before_create :set_location_from_user
   before_validation :set_nickname, :set_vehicle_type
 
   scope :claimed, where(:user_id.ne => nil)
   scope :unclaimed, where(:user_id => nil)
 
-  belongs_to :base_vehicle
+  belongs_to :proto_vehicle
   belongs_to :user
 
   validate :ensure_nickname_presence
@@ -22,7 +28,6 @@ class Vehicle
   key :vehicle_type, String, :required => true
 
   key :nickname, String
-  key :location_id, Integer
 
   # General
   key :acquired_at, Date
@@ -106,8 +111,19 @@ class Vehicle
   key :trunk, String
   key :tint, String
 
+  class << self
+    def all_by_mmyn_slugs make_slug, model_slug, year, nickname
+      query = Motorstories::SlugCache.query_hash_from_mmyn_slugs make_slug, model_slug, year, nickname
+      where(query)
+    end
+  end
+
   def name
     "#{year} #{make} #{model}"
+  end
+
+  def group
+    VEHICLE_TYPE_GROUPS[vehicle_type]
   end
 
   def make_slug
@@ -118,15 +134,11 @@ class Vehicle
     model.to_url
   end
 
-  def location
-    location_id && Location.find_by_id(location_id)
-  end
-
   def prime!
     #set_location_from_user
     set_vehicle_type
     set_nickname
-    set_name_from_base_vehicle
+    set_name_from_proto_vehicle
   end
 
   def semantic_url_hash
@@ -144,24 +156,22 @@ class Vehicle
 
   private
 
-  def set_name_from_base_vehicle
-    return true unless base_vehicle
+  def set_name_from_proto_vehicle
+    return true unless proto_vehicle
 
-    self.year = base_vehicle.year
-    self.make = base_vehicle.make.name
-    self.model = base_vehicle.model.name
+    self.year = proto_vehicle.year
+    self.make = proto_vehicle.make
+    self.model = proto_vehicle.model
   end
 
-  def set_location_from_user
-    return true unless user
-
-    self.location_id = user.location_id
-  end
+  #def set_location_from_user
+  #  return true unless user
+  #end
 
   def set_vehicle_type
-    return true unless base_vehicle
+    return true unless proto_vehicle
 
-    self.vehicle_type = base_vehicle.vehicle_type
+    self.vehicle_type = proto_vehicle.vehicle_type
   end
 
   def set_nickname

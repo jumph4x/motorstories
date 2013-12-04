@@ -1,13 +1,15 @@
 class RedirectsController < ApplicationController
 
   def vehicles_index
-    mmy = params.slice(:make_slug, :model_slug, :year)
-    target = if (location = session[:location])
-      semantic_vehicles_path(mmy.merge(:location_slug => location))
-    else
-      semantic_vehicles_path(mmy.merge(:location_slug => 'all'))
-    end
+    redirect_to semantic_vehicles_path(mmy_params)
+  end
 
-    redirect_to target
+  def mmy_params
+    h = {}
+    params.slice(:make, :model).each do |k, v|
+      h["#{k}_slug"] = v.to_url
+    end
+    h[:year] = params[:year] if params[:year]
+    h
   end
 end
