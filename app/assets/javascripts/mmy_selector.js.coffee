@@ -6,7 +6,7 @@ $ ->
     $.each(
       data,
       (idx, value) ->
-        options += '<option value="' + value[attr] + '">' + value[attr] + '</option>'
+        options += '<option value="' + value + '">' + value + '</option>'
     )
     this.html(options)
     this.removeAttr('disabled').show()
@@ -46,7 +46,7 @@ $ ->
       return true
 
     $.getJSON(
-      "/proto_vehicles?make=" + make,
+      "/proto_vehicles/model_index?make=" + make,
       { format: "json" },
       (data) -> 
         model_el.fillOptionsWith(data, 'model', '<option value="">Model</option>')
@@ -61,7 +61,7 @@ $ ->
     if model == ''
       return true
     $.getJSON(
-      "/proto_vehicles?model=" + model + '&make=' + make,
+      "/proto_vehicles/year_index?model=" + model + '&make=' + make,
       { format: "json" },
       (data) -> 
         year_el.fillOptionsWith(data, 'year', '<option value="">Year</option>')

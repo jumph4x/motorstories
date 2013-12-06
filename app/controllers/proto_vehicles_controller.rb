@@ -12,7 +12,7 @@ class ProtoVehiclesController < ApplicationController
   end
 
   def model_index
-    proto_vehicles = ProtoVehicle.distinct_collection
+    proto_vehicles = ProtoVehicle.distinct_collection(:model, {make: params[:make]})
 
     respond_to do |format|
       format.json{ render :json => proto_vehicles }
@@ -20,7 +20,11 @@ class ProtoVehiclesController < ApplicationController
   end
 
   def year_index
+    proto_vehicles = ProtoVehicle.distinct_collection(:year, {make: params[:make], model: params[:model]})
 
+    respond_to do |format|
+      format.json{ render :json => proto_vehicles }
+    end
   end
 
   private
