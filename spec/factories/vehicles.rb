@@ -4,6 +4,6 @@ FactoryGirl.define do
     make 'Mazda'
     model 'MX-5 Miata'
     year 2006
-    base_vehicle { create(:base_vehicle_car) }
+    proto_vehicle { create(:proto_car) }
   end
 end

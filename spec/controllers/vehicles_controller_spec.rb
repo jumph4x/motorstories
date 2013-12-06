@@ -5,7 +5,6 @@ describe VehiclesController do
 
   let(:user){ create(:user) }
   let(:vehicle){ create(:vehicle, :user => user) }
-  let(:location){ Location.first }
 
   before do
     Motorstories::Application.reload_routes!
@@ -13,10 +12,9 @@ describe VehiclesController do
     controller.extend NavigationHelper
   end
 
-  def request_params loc, veh, extended = false
+  def request_params veh, extended = false
     hash =
     {
-      :location_slug => loc.slug,
       :make_slug=> veh.make_slug,
       :model_slug=> veh.model_slug,
       :trailing_slash => true
@@ -33,32 +31,26 @@ describe VehiclesController do
 
   context 'on #index' do
     it 'should prep the environment' do 
-      get :index, request_params(location, vehicle)
+      get :index, request_params(vehicle)
 
-      #assigns(:location).should be_a(Location)
-      assigns(:make).should be_a(Make)
-      assigns(:model).should be_a(Model)
       assigns(:vehicles).should == [vehicle]
     end
 
     it 'should render' do
-      get :index, request_params(location, vehicle)
+      get :index, request_params(vehicle)
       response.should render_template(:index)
     end
   end
 
   context 'on #show' do
     it 'should prep the environment' do 
-      get :show, request_params(location, vehicle, true)
+      get :show, request_params(vehicle, true)
 
-      #assigns(:location).should be_a(Location)
-      assigns(:make).should be_a(Make)
-      assigns(:model).should be_a(Model)
       assigns(:vehicle).should == vehicle
     end
 
     it 'should render' do
-      get :show, request_params(location, vehicle, true)
+      get :show, request_params(vehicle, true)
       response.should render_template(:show)
     end
   end
@@ -72,12 +64,12 @@ describe VehiclesController do
     end
 
     context 'with proper parameters' do
-      let(:bv){ create(:base_vehicle_car) }
+      let(:pv){ create(:proto_car) }
       it 'should render' do
         get :new, {
-          make_slug: bv.make.name.to_url,
-          model_slug: bv.model.name.to_url,
-          year: bv.year
+          make_slug: pv.make.to_url,
+          model_slug: pv.model.to_url,
+          year: pv.year
         }
         response.should render_template(:new)
       end

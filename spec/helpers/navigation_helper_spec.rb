@@ -1,25 +1,25 @@
 require 'spec_helper'
 
 describe NavigationHelper do
-  let(:bv){ create(:base_vehicle_car) }
+  let(:pv){ create(:proto_car) }
 
   context 'for MMY' do
     it 'renders Make' do
-      bv
-      helper.make_dropdown.should match(bv.make.name)
+      pv
+      helper.make_dropdown.should match(pv.make)
     end
 
     it 'renders Model' do
-      helper.stub(:current_make).and_return(bv.make)
-      bv
-      helper.model_dropdown.should match(bv.model.name)
+      helper.stub(:make_name).and_return(pv.make)
+      pv
+      helper.model_dropdown.should match(pv.model)
     end
 
     it 'renders Year' do
-      helper.stub(:current_make).and_return(bv.make)
-      helper.stub(:current_model).and_return(bv.model)
-      bv
-      helper.year_dropdown.should match(bv.year.to_s)
+      helper.stub(:make_name).and_return(pv.make)
+      helper.stub(:model_name).and_return(pv.model)
+      pv
+      helper.year_dropdown.should match(pv.year.to_s)
     end
   end
 end

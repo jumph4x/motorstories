@@ -7,7 +7,7 @@ module Motorstories
         return if make_map.present? and model_map.present?
 
         [:make, :model].each do |typ|
-          collection = ProtoVehicle.collection.distinct(typ, {:vehicle_type => {'$in' => ProtoVehicle::VEHICLE_TYPE_SCOPE}})
+          collection = ProtoVehicle.distinct_collection typ
           map_collection collection, typ
         end  
       end

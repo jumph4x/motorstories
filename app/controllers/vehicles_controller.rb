@@ -80,6 +80,8 @@ class VehiclesController < ApplicationController
   end
 
   def load_proto_vehicle
-    ProtoVehicle.all_by_mmy_slugs(*mmy_slugs).first
+    pv = ProtoVehicle.all_by_mmy_slugs(*mmy_slugs).first
+    render_404 unless pv
+    pv
   end
 end
