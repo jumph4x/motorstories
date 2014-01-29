@@ -14,6 +14,7 @@ set :domain, 'motorstori.es'
 set :deploy_to, '/home/deploy/motorstories'
 set :repository, 'git@github.com:jumph4x/motorstories.git'
 set :branch, 'master'
+set :keep_releases,   5
 
 # Manually create these paths in shared/ (eg: shared/config/database.yml) in your server.
 # They will be linked in the 'deploy:link_shared_paths' step.
@@ -59,11 +60,49 @@ task :deploy => :environment do
     invoke :'deploy:link_shared_paths'
     invoke :'bundle:install'
     #invoke :'rails:db_migrate'
-    #invoke :'rails:assets_precompile'
+    invoke :'rails:assets_precompile'
 
     to :launch do
-      queue "touch #{deploy_to}/tmp/restart.txt"
+      invoke :'unicorn:restart'
     end
+  end
+end
+
+namespace :unicorn do
+  set :unicorn_dir, "/home/unicorn"
+  set :unicorn_pid, "#{unicorn_dir}/pids/unicorn.pid"
+  set :unicorn_config, "#{unicorn_dir}/unicorn.rb"
+
+  set :start_unicorn, %{
+    cd #{app_path || '/home/deploy/motorstories/current'}
+    bundle exec unicorn -c #{unicorn_config} -E production -D
+  }
+ 
+#                                                                    Start task
+# ------------------------------------------------------------------------------
+  desc "Start unicorn"
+  task :start => :environment do
+    queue 'echo "-----> Start Unicorn"'
+    queue! start_unicorn
+  end
+ 
+#                                                                     Stop task
+# ------------------------------------------------------------------------------
+  desc "Stop unicorn"
+  task :stop do
+    queue 'echo "-----> Stop Unicorn"'
+    queue! %{
+      test -s "#{unicorn_pid}" && kill -QUIT `cat "#{unicorn_pid}"` && echo "Stop Ok" && exit 0
+      echo >&2 "Not running"
+    }
+  end
+ 
+#                                                                  Restart task
+# ------------------------------------------------------------------------------
+  desc "Restart unicorn using 'upgrade'"
+  task :restart => :environment do
+    invoke 'unicorn:stop'
+    invoke 'unicorn:start'
   end
 end
 
