@@ -1,0 +1,1 @@
+{ "indexes" : [ { "v" : 1, "key" : { "_id" : 1 }, "ns" : "motorstories_development.proto_vehicles", "name" : "_id_" } ] }
