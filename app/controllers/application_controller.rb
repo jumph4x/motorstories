@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  http_basic_authenticate_with name: "suck", password: "cock" if Rails.env.production?
+  http_basic_authenticate_with name: "love", password: "stories" if Rails.env.production?
   protect_from_forgery
 
   helper :navigation
