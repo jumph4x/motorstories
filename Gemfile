@@ -21,7 +21,8 @@ gem 'dynamic_form'
 gem 'select2-rails'
 gem 'parsley-rails'
 gem 'strong_parameters'
-gem 'aces_crawler'
+gem 'aces_crawler', git: 'git@github.com:jumph4x/aces_crawler.git'
+gem 'mina'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
