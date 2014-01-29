@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  http_basic_authenticate_with name: "inspirational", password: "stories"
+  http_basic_authenticate_with name: "suck", password: "cock"
   protect_from_forgery
 
   helper :navigation
