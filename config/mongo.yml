@@ -13,7 +13,5 @@ test:
 # set these environment variables on your prod server
 production:
   <<: *defaults
-  host: 107.170.241.133
+  port: 27077
   database: motorstories
-  username: db-admin
-  password: goodOne1

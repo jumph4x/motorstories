@@ -10,7 +10,7 @@ require 'mina/rvm'    # for rvm support. (http://rvm.io)
 #   repository   - Git repo to clone from. (needed by mina/git)
 #   branch       - Branch name to deploy. (needed by mina/git)
 
-set :domain, 'motorstori.es'
+set :domain, '107.170.242.26'
 set :deploy_to, '/home/deploy/motorstories'
 set :repository, 'git@github.com:jumph4x/motorstories.git'
 set :branch, 'master'
