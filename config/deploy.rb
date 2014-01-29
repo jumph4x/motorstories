@@ -20,7 +20,7 @@ set :branch, 'master'
 set :shared_paths, ['config/database.yml', 'log']
 
 # Optional settings:
-set :user, 'root'    # Username in the server to SSH to.
+set :user, 'rails'    # Username in the server to SSH to.
 set :ssh_options, '-A'
 
 set :rvm_path, '/usr/local/rvm/scripts/rvm'
@@ -62,6 +62,7 @@ task :deploy => :environment do
     #invoke :'rails:assets_precompile'
 
     to :launch do
+      queue! %[chown -R rails.rails "#{deploy_to}"]
       queue "touch #{deploy_to}/tmp/restart.txt"
     end
   end
