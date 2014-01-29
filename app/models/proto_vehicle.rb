@@ -21,34 +21,17 @@ class ProtoVehicle
       return [] unless make
 
       distinct_collection(:model, {:make => make})
-      #cars_and_motorcycles.
-      #  where(:make => make).
-      #  sort(:model.asc).
-      #  only(:model).
-      #  map(&:model).
-      #  uniq
     end
 
     def make_names
       return @cached_make_names if @cached_make_names
       @cached_make_names ||= distinct_collection(:make)
-        #cars_and_motorcycles.
-        #sort(:make.asc).
-        #only(:make).
-        #map(&:make).
-        #uniq
     end
 
     def years_by_make_and_model make, model
       return [] unless make and model
 
       distinct_collection(:year, {:make => make, :model => model})
-      #cars_and_motorcycles.
-      #  where(:make => make, :model => model).
-      #  sort(:year).
-      #  only(:year).
-      #  map(&:year).
-      #  uniq
     end
 
     def all_by_mmy_slugs make_slug, model_slug, year

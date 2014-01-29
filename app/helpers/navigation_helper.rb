@@ -10,8 +10,7 @@ module NavigationHelper
 
   def make_dropdown
     collection = ProtoVehicle.make_names
-    collection.unshift(["Make", nil])
-    select_tag :make, options_for_select(collection, make_name)
+    select_tag :make, options_for_select((['Make', nil] + collection ), make_name)
   end
 
   def make_name
