@@ -10,7 +10,7 @@ require 'mina/rvm'    # for rvm support. (http://rvm.io)
 #   repository   - Git repo to clone from. (needed by mina/git)
 #   branch       - Branch name to deploy. (needed by mina/git)
 
-set :domain, '107.170.242.26'
+set :domain, 'motorstori.es'
 set :deploy_to, '/home/deploy/motorstories'
 set :repository, 'git@github.com:jumph4x/motorstories.git'
 set :branch, 'master'
@@ -20,8 +20,8 @@ set :branch, 'master'
 set :shared_paths, ['config/database.yml', 'log']
 
 # Optional settings:
-set :user, 'rails'    # Username in the server to SSH to.
-set :ssh_options, '-A'
+set :user, 'deploy'    # Username in the server to SSH to.
+set :ssh_options, '-A -p 27022'
 
 set :rvm_path, '/usr/local/rvm/scripts/rvm'
 
@@ -62,7 +62,6 @@ task :deploy => :environment do
     #invoke :'rails:assets_precompile'
 
     to :launch do
-      queue! %[chown -R rails.rails "#{deploy_to}"]
       queue "touch #{deploy_to}/tmp/restart.txt"
     end
   end
