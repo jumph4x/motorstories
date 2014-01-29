@@ -9,7 +9,9 @@ class Vehicle
     'Street Motorcycle'  => :motorcycle
   }
 
-  mount_uploader :poster, PosterUploader
+  mount_uploader :cover_front, CoverUploader
+  mount_uploader :cover_profile, CoverUploader
+  mount_uploader :cover_rear, CoverUploader
 
   before_validation :set_nickname, :set_vehicle_type
 
@@ -29,11 +31,7 @@ class Vehicle
 
   key :nickname, String
 
-  # General
-  key :acquired_at, Date
-  key :project_type, String
-
-  # Engine
+  # Motor
   key :exhaust, String
   key :intake, String
   key :engine_management, String
@@ -116,6 +114,10 @@ class Vehicle
       query = Motorstories::SlugCache.query_hash_from_mmyn_slugs make_slug, model_slug, year, nickname
       where(query)
     end
+  end
+
+  def cover
+    cover_profile || cover_front || cover_rear
   end
 
   def name

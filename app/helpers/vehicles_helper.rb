@@ -34,69 +34,59 @@ module VehiclesHelper
     end
   end
 
-  def next_step_for_vehicle vehicle
-    if vehicle.poster.blank?
-      "Looks like the poster is missing. Want to #{link_to "add one", edit_vehicle_path(vehicle, :segment => :poster)}?"
-    else
-      "Did you install any new goodies? #{link_to "Update the spec", edit_vehicle_path(vehicle)}."
-    end
-  end
+  #def next_step_for_vehicle vehicle
+  #  "Did you install any new goodies? #{link_to "Update the spec", edit_vehicle_path(vehicle)}."
+  #end
 
-  def select_options_for vehicle_type, field, existing_value = nil
-    options = select_options[vehicle_type.to_sym][field.to_sym]
-    options_for_select(options, existing_value)
-  end
+  #def select_options_for vehicle_type, field, existing_value = nil
+  #  options = select_options[vehicle_type.to_sym][field.to_sym]
+  #  options_for_select(options, existing_value)
+  #end
 
-  def fields vehicle_type, section
-    (section_fields[section.to_sym] || []) +
-    (specific_section_fields[vehicle_type.to_sym][section.to_sym] || [])
-  end
+  #def fields vehicle_type, section
+  #  (section_fields[section.to_sym] || []) +
+  #  (specific_section_fields[vehicle_type.to_sym][section.to_sym] || [])
+  #end
 
-  def render_vehicle_field vehicle_type, attr, f
-    if dropdown_field?(vehicle_type, attr)
-      render_dropdown_field vehicle_type, attr, f
-    elsif file_field?(vehicle_type, attr)
-      render_file_field attr, f
-    else
-      render_text_field attr, f
-    end
-  end
+  #def render_vehicle_field vehicle_type, attr, f
+  #  if dropdown_field?(vehicle_type, attr)
+  #    render_dropdown_field vehicle_type, attr, f
+  #  elsif file_field?(vehicle_type, attr)
+  #    render_file_field attr, f
+  #  else
+  #    render_text_field attr, f
+  #  end
+  #end
 
-  def dropdown_field? vehicle_type, attr
-    s = select_options[vehicle_type.to_sym] and
-    s[attr.to_sym]
-  end
+  #def dropdown_field? vehicle_type, attr
+  #  s = select_options[vehicle_type.to_sym] and
+  #  s[attr.to_sym]
+  #end
 
-  def file_field? vehicle_type, attr
-    attr.to_sym == :poster
-  end
+  #def file_field? vehicle_type, attr
+  #  attr.to_sym == :poster
+  #end
 
-  def render_dropdown_field vehicle_type, attr, f
-    output = content_tag(:div, content_tag(:span, t("labels.project_type"), :class => 'prefix'), :class => 'large-3 small-3 columns')
-    output << content_tag(:div, f.select(attr, select_options_for(vehicle_type, attr),{}, {:id => 'project-type-select'}), :class => 'large-9 small-9 columns')
-    content_tag :div, output, :class => 'row collapse'
-  end
+  #def render_dropdown_field vehicle_type, attr, f
+  #  output = content_tag(:div, content_tag(:span, t("labels.project_type"), :class => 'prefix'), :class => 'large-3 small-3 columns')
+  #  output << content_tag(:div, f.select(attr, select_options_for(vehicle_type, attr),{}, {:id => 'project-type-select'}), :class => 'large-9 small-9 columns')
+  #  content_tag :div, output, :class => 'row collapse'
+  #end
 
-  def render_text_field attr, f
-    output = f.text_field attr, :placeholder => t(attr, default: attr.to_s.humanize), :class => field_classes[attr]
-    output << content_tag(:span, t("units.#{attr}", :default => ''), :class => 'input-append-thing')
-    output
-  end
+  #def render_text_field attr, f
+  #  output = f.text_field attr, :placeholder => t(attr, default: attr.to_s.humanize), :class => field_classes[attr]
+  #  output << content_tag(:span, t("units.#{attr}", :default => ''), :class => 'input-append-thing')
+  #  output
+  #end
 
-  def render_file_field attr, f
-    output = f.file_field attr, :placeholder => t(attr, default: attr.to_s.humanize), :class => field_classes[attr]
-    output
-  end
+  #def render_file_field attr, f
+  #  output = f.file_field attr, :placeholder => t(attr, default: attr.to_s.humanize), :class => field_classes[attr]
+  #  output
+  #end
 
   mattr_accessor :select_options, :specific_section_fields, :section_fields, :field_classes
   # project type helper
   self.select_options = {
-    :car => {
-      :project_type => ['autocross warrior', 'track attack', 'drifter', 'daily driver', 'offroader', 'hauler', 'vip', 'rat rot']
-    },
-    :motorcycle => {
-      :project_type => ['track attack', 'adventure', 'street fighter', 'commuter', 'stunter']
-    }
   }
 
   # fields specific to vehicle types
@@ -126,10 +116,5 @@ module VehiclesHelper
     :interior => [:gauges, :seat],
     :exterior => [:headlight],
     :poster => [:poster]
-  }
-
-  # CSS classes for fields, for instance, to help datepicker element auto-instantiate
-  self.field_classes = {
-    :acquired_at => 'date'
   }
 end

@@ -1,8 +1,8 @@
 - content_for :head do
-  - if @vehicle.poster.present?
+  - if @vehicle.cover.present?
     :sass
       .poster
-        background-image: url(#{@vehicle.poster})
+        background-image: url(#{@vehicle.cover})
         background-size: cover
       .tinter
         background-image: url(/assets/tinters/07.png)

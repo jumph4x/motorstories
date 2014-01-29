@@ -1,0 +1,22 @@
+.new.project
+  .row
+    .12-large.12-small.columns
+      %h1 Begin your #{@vehicle.name} story
+
+      %ol.inline-ol.progress-headings
+        %li.overview Overview
+        %li.suspension Suspension
+        %li.engine Engine
+        %li.drivetrain Drivetrain
+        %li.exterior Exterior &amp; Body
+        %li.interior Interior &amp; Controls
+        %li.brakes Brakes
+        %li.wheels Wheels
+
+      .cf
+
+      .progress.radius
+        %span.meter
+  = form_for @vehicle, :html => { :class => 'custom' } do |f|
+    = f.hidden_field :proto_vehicle_id, :value => @vehicle.proto_vehicle_id
+    = render 'form', :f => f

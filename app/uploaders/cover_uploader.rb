@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-class PosterUploader < CarrierWave::Uploader::Base
+class CoverUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
