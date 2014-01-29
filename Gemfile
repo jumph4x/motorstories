@@ -45,10 +45,10 @@ group :test do
   gem 'poltergeist'
 end
 
-group :production, :staging do
-  gem 'ratchetio', '>= 0.4.0'
-  gem 'newrelic_rpm'
-end
+#group :production, :staging do
+#  gem 'ratchetio', '>= 0.4.0'
+#  gem 'newrelic_rpm'
+#end
 
 # Gems used only for assets and not required
 # in production environments by default.
