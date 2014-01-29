@@ -13,6 +13,7 @@ test:
 # set these environment variables on your prod server
 production:
   <<: *defaults
+  host: 107.170.241.133
   database: motorstories
-  username: <%= ENV['MONGO_USERNAME'] %>
-  password: <%= ENV['MONGO_PASSWORD'] %>
+  username: db-admin
+  password: goodOne1
