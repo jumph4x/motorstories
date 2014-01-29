@@ -46,8 +46,8 @@ task :setup => :environment do
   queue! %[mkdir -p "#{deploy_to}/shared/config"]
   queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/config"]
 
-  queue! %[touch "#{deploy_to}/shared/config/database.yml"]
-  queue  %[echo "-----> Be sure to edit 'shared/config/database.yml'."]
+  #queue! %[touch "#{deploy_to}/shared/config/database.yml"]
+  #queue  %[echo "-----> Be sure to edit 'shared/config/database.yml'."]
 end
 
 desc "Deploys the current version to the server."
@@ -58,7 +58,7 @@ task :deploy => :environment do
     invoke :'git:clone'
     invoke :'deploy:link_shared_paths'
     invoke :'bundle:install'
-    invoke :'rails:db_migrate'
+    #invoke :'rails:db_migrate'
     invoke :'rails:assets_precompile'
 
     to :launch do
