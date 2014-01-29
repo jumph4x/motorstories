@@ -92,7 +92,7 @@ module VehiclesHelper
   # project type helper
   self.select_options = {
     :car => {
-      :project_type => ['autocross warrior', 'track attack', 'drifter', 'daily driver', 'offroader', 'hauler', 'vip']
+      :project_type => ['autocross warrior', 'track attack', 'drifter', 'daily driver', 'offroader', 'hauler', 'vip', 'rat rot']
     },
     :motorcycle => {
       :project_type => ['track attack', 'adventure', 'street fighter', 'commuter', 'stunter']

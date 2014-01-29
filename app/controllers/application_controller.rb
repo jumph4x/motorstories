@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  http_basic_authenticate_with name: "inspirational", password: "stories"
   protect_from_forgery
 
   helper :navigation
