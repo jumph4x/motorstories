@@ -2,7 +2,7 @@ class ProtoVehicle
   require 'carrierwave/orm/mongomapper'
   include MongoMapper::Document
 
-  VEHICLE_TYPE_SCOPE = ['Car', 'Trucks', 'Offroad Motorcycle', 'Street Mootorcycle']
+  VEHICLE_TYPE_SCOPE = ['Car', 'Trucks', 'Offroad Motorcycle', 'Street Motorcycle']
   scope :cars_and_motorcycles, where(:vehicle_type => VEHICLE_TYPE_SCOPE)
 
   key :make,          String,   :requred => true
@@ -20,18 +20,19 @@ class ProtoVehicle
     def model_names_by_make make
       return [] unless make
 
-      distinct_collection(:model, {:make => make})
+      distinct_collection(:model, {:make => make}).sort
     end
 
     def make_names
       return @cached_make_names if @cached_make_names
-      @cached_make_names ||= distinct_collection(:make)
+      @cached_make_names ||= distinct_collection(:make).sort
+
     end
 
     def years_by_make_and_model make, model
       return [] unless make and model
 
-      distinct_collection(:year, {:make => make, :model => model})
+      distinct_collection(:year, {:make => make, :model => model}).sort{|a,b| b <=> a }
     end
 
     def all_by_mmy_slugs make_slug, model_slug, year

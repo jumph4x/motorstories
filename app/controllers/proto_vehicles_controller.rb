@@ -12,7 +12,7 @@ class ProtoVehiclesController < ApplicationController
   end
 
   def model_index
-    proto_vehicles = ProtoVehicle.distinct_collection(:model, {make: params[:make]})
+    proto_vehicles = ProtoVehicle.model_names_by_make params[:make]
 
     respond_to do |format|
       format.json{ render :json => proto_vehicles }
@@ -20,7 +20,7 @@ class ProtoVehiclesController < ApplicationController
   end
 
   def year_index
-    proto_vehicles = ProtoVehicle.distinct_collection(:year, {make: params[:make], model: params[:model]})
+    proto_vehicles = ProtoVehicle.years_by_make_and_model params[:make], params[:model]
 
     respond_to do |format|
       format.json{ render :json => proto_vehicles }
@@ -36,14 +36,6 @@ class ProtoVehiclesController < ApplicationController
   def sort_options
     return [:year, :desc] if params[:model]
     [:model, :asc]
-  end
-
-  def field_to_load
-    if params[:model]
-      :year
-    else
-      :model
-    end
   end
 end
 
