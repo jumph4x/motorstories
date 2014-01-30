@@ -57,8 +57,7 @@ group :assets do
   gem 'compass-rails'
   gem 'respond-to'
 
-  gem 'uglifier', '>= 1.0.3'
-  gem 'zurb-foundation', :git => 'git://github.com/zurb/foundation.git'
+  gem 'foundation-rails'
 end
 
 # To use ActiveModel has_secure_password
