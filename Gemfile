@@ -1,16 +1,16 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 3.2.12'
-gem 'mongo_mapper'
+gem 'rails', '~> 4.0'
+gem 'mongo_mapper', github: 'mongomapper/mongomapper'
 gem 'bson_ext'
 
 gem 'haml-rails'
 gem "jquery-rails"
-gem 'craigslist', :git => 'git://github.com/gregstallings/craigslist.git'
+#gem 'craigslist', :git => 'git://github.com/gregstallings/craigslist.git'
 gem 'browser'
 
-gem 'devise', '~> 2.0'
-gem 'mm-devise', :git => "git://github.com/roboteti/mm-devise"
+gem 'devise'
+gem 'mm-devise', :git => "git://github.com/jpteti/mm-devise"
 
 gem 'carrierwave'
 gem 'mm-carrierwave'
@@ -20,7 +20,6 @@ gem 'dynamic_form'
 
 gem 'select2-rails'
 gem 'parsley-rails'
-gem 'strong_parameters'
 gem 'aces_crawler', git: 'git@github.com:jumph4x/aces_crawler.git'
 gem 'mina'
 
@@ -31,7 +30,7 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'pry-rails'
-  gem 'quiet_assets'
+  #gem 'quiet_assets'
   gem 'thin'
 end
 
@@ -52,8 +51,8 @@ end
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
+  gem 'sass-rails'
+  gem 'coffee-rails'
   gem 'compass-rails'
   gem 'respond-to'
 

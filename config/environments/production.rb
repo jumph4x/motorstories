@@ -70,4 +70,7 @@ Motorstories::Application.configure do
   # CUSTOM
   #
   config.action_mailer.default_url_options = { :host => 'motorstori.es' }
+
+  config.eager_load = true
+  config.assets.precompile += %w( vendor/modernizr.js )
 end

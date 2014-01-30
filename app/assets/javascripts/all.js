@@ -1,11 +1,6 @@
-//= require 'vendor/jquery'
+//= require jquery
 //= require jquery_ujs
-//= require './modernizr'
-//= require 'foundation/foundation'
-//= require 'foundation/foundation.topbar'
-//= require 'foundation/foundation.forms'
-//= require 'foundation/foundation.tooltips'
-//= require 'foundation/foundation.alerts'
+//= require foundation
 //= require select2
 //= require parsley
 //= require './mmy_selector'
