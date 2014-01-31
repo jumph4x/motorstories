@@ -6,12 +6,10 @@
 //= require './mmy_selector'
 //= require './vehicles'
 //= require './jquery.fittext'
-//= require './foundation-datepicker'
 
 $(document).ready(function(){
   $(document).foundation();
   $("#hero h1").fitText(2.5, { minFontSize: '24px' });
   $(".pitch").fitText(5, { minFontSize: '16px', maxFontSize: '35px' });
   $(".fit").fitText(2.5, {minFontSize: '16px'});
-  $('.date').fdatepicker();
 });

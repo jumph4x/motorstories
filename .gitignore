@@ -27,3 +27,6 @@
 
 # ignore carrierwave uplods
 public/uploads/*
+
+# Sass cache
+/.sass-cache

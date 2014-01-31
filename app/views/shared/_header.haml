@@ -1,20 +1,4 @@
-.row
-  %a#logo{href: '/'} Motorstori.es
-#first-tier.contain-to-grid
-  %nav.top-bar
-    .container
-      %ul.title-area
-        %li.name
-        %li.toggle-topbar.menu-icon
-          %a{href: '#'}
-            %span Menu
-      %section.top-bar-section
-        %ul.left
-          %li
-            = render 'shared/mmy_selector'
-        %ul.right
-          %li.show-for-small
-            %a{href: '/'} Home
-          %li.divider
-          = render "shared/topnav#{ '_auth' unless current_user}"
-          %li.divider
+%a#logo{href: '/'} Motorstori.es
+- render 'shared/mmy_selector'
+%a{href: '/'} Home
+- render "shared/topnav#{ '_auth' unless current_user}"

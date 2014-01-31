@@ -9,71 +9,8 @@ $cream: #EBFFF8
 $green: #5DDE78
 
 // styles
-body
-  background: #222
-#logo
-  font: 0/0 a
-  color: transparent
-  background: asset-data-url('layout/logo.png') no-repeat center center
-  height: 81px
-  width: 150px
-  padding: 10px 0
-  display: block
-  margin: 0 auto -100px auto
-  z-index: 70
-  position: relative
-#first-tier
-  @include single-box-shadow(rgba(0,0,0,0.7), 0, 0, 10px, 0)  
-  z-index: 69
-
-.top-bar.expanded
-  .top-bar-section
-    padding-top: 30px
-.top-bar-section
-  li:hover a.button
-    background: #2284a1
-.register-link b
-  border-radius: 3px
-  background: #d00
-  padding: 0px 4px
-  margin-left: 7px
 .flash
   position: absolute
   width: 100%
   padding: 10px 0
   opacity: 0.9
-.alert-box
-  .close
-    top: 0.6em
-    font-family: sans-serif
-
-.new,.index,.show,.edit
-  background: white
-  padding: 3em 0 1px 0
-  h1
-    text-align: center
-    margin-bottom: 0
-footer
-  background: #222
-  border-top: 3px solid #666
-  width: 100%
-  text-align: center
-  color: #555
-  padding: 1.5em 0
-  line-height: 1.5em
-  a
-    color: #777
-    text-decoration: underline
-    &:hover
-      color: #fff
-
-@media #{$topbar-media-query}
-  body
-    padding-top: 45px
-  .top-bar-section
-    padding-top: 0
-  #first-tier
-    position: fixed
-    top: 0
-  #logo
-    top: -45px
