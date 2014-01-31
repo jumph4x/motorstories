@@ -29,12 +29,7 @@
     .inner-wrap
       %a.logo.left-off-canvas-toggle
         = image_tag('layout/logo.svg', width: '48px')
-      %aside.left-off-canvas-menu
-        %ul
-          %li item1
-          %li lolurock
-          %li you are the best
-          %li all about you
+      = render 'shared/offcanvas'
       = wrapped_flash
       = yield
       = render 'shared/footer'
