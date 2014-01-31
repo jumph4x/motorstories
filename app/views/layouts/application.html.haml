@@ -19,7 +19,7 @@
 
   %title= html_title
 
-  -# %link{href: '//fonts.googleapis.com/css?family=Sanchez|Donegal+One', rel: 'stylesheet', type: 'text/css'}
+  %link{href: '//fonts.googleapis.com/css?family=Droid+Sans', rel: 'stylesheet', type: 'text/css'}
   = csrf_meta_tag
   = content_for :head
   = javascript_include_tag :all
@@ -27,7 +27,8 @@
 %body
   .off-canvas-wrap
     .inner-wrap
-      %a.logo.left-off-canvas-toggle M
+      %a.logo.left-off-canvas-toggle
+        = image_tag('layout/logo.svg', width: '48px')
       %aside.left-off-canvas-menu
         %ul
           %li item1
@@ -36,5 +37,5 @@
           %li all about you
       = wrapped_flash
       = yield
+      = render 'shared/footer'
       %a.exit-off-canvas
-  = render 'shared/footer'
