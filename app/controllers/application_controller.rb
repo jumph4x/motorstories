@@ -5,12 +5,16 @@ class ApplicationController < ActionController::Base
   helper :navigation
   include NavigationHelper
 
-  helper_method :stored_vehicle_ids, :stored_vehicles
+  helper_method :stored_vehicle_ids, :stored_vehicles, :current_location
   after_filter :store_location
 
   def render_404
     flash[:error] = 'Oops, page not found.'
     redirect_to '/'
+  end
+
+  def current_location
+    "#{controller_name}-#{action_name}"
   end
 
   def render_401

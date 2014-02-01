@@ -26,9 +26,9 @@
 
 %body
   .off-canvas-wrap
-    .inner-wrap
-      %a.logo.left-off-canvas-toggle
-        = image_tag('layout/logo.svg', width: '48px')
+    .inner-wrap{class: current_location}
+      %a.logo-link.left-off-canvas-toggle
+        = inline_svg 'layout/logo.svg'
       = render 'shared/offcanvas'
       = wrapped_flash
       = yield
