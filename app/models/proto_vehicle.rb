@@ -2,7 +2,7 @@ class ProtoVehicle
   require 'carrierwave/orm/mongomapper'
   include MongoMapper::Document
 
-  VEHICLE_TYPE_SCOPE = ['Car', 'Trucks', 'Offroad Motorcycle', 'Street Motorcycle']
+  VEHICLE_TYPE_SCOPE = ['Car', 'Trucks', 'Van', 'Offroad Motorcycle', 'Street Motorcycle']
   scope :cars_and_motorcycles, where(:vehicle_type => VEHICLE_TYPE_SCOPE)
 
   key :make,          String,   :requred => true
