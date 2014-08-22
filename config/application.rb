@@ -30,6 +30,13 @@ module Motorstories
       g.fixture_replacement :factory_girl, :dir => "spec/factories"
     end
 
+    config.middleware.insert_before(Rack::Runtime, Rack::Rewrite) do
+      r301 %r{.*}, 'http://motorstori.es$&', :if => Proc.new {|rack_env|
+        Rails.env.production? &&
+        rack_env['SERVER_NAME'] != 'motorstori.es'
+      }
+    end
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.

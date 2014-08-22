@@ -175,6 +175,7 @@ GEM
     pry-rails (0.3.2)
       pry (>= 0.9.10)
     rack (1.5.2)
+    rack-rewrite (1.5.0)
     rack-test (0.6.2)
       rack (>= 1.0)
     rails (4.0.2)
@@ -278,6 +279,7 @@ DEPENDENCIES
   parsley-rails
   poltergeist
   pry-rails
+  rack-rewrite
   rails (~> 4.0)
   respond-to
   rspec-rails
