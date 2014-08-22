@@ -8,5 +8,5 @@
             %li= link_to veh.name, semantic_vehicle_path(veh.semantic_url_hash)
       - else
         %h1 Looks like no one added a #{name_from_params} yet
-        - if current_mmy
+        - if false && current_mmy
           %p Why don't you #{link_to 'add one', new_vehicle_path(current_mmy)}?

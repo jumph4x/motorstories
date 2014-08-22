@@ -4,13 +4,14 @@
       %a{href: '/'} Home
     %li
       %a{href: '#'} Search
-    - unless current_user 
+    - unless current_user
+      %li
+        %label
+          New around here?
       %li
         = link_to 'Sign in', new_user_session_path
       %li
         = register_link
-      %li
-        %a{href: '/#tour'} Tour
     - else
       %li
         = link_to current_user.username, '#'
@@ -18,4 +19,8 @@
         = link_to 'Acount Settings', edit_user_registration_path(current_user)
       %li
         = link_to 'Sign out', destroy_user_session_path, method: :delete
-
+    %li
+      %label
+        Your stories
+    %li
+      = link_to "Add a new project", new_vehicle_path
