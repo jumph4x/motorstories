@@ -25,7 +25,7 @@
   = javascript_include_tag :all
 
 %body
-  .off-canvas-wrap
+  .off-canvas-wrap(data-offcanvas)
     .inner-wrap{class: current_location}
       %a.logo-link.left-off-canvas-toggle
         = inline_svg 'layout/logo-remix.svg'
