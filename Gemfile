@@ -19,7 +19,6 @@ gem 'mm-carrierwave'
 gem 'stringex'
 gem 'dynamic_form'
 
-gem 'select2-rails'
 gem 'parsley-rails'
 gem 'aces_crawler', git: 'git@github.com:jumph4x/aces_crawler.git'
 gem 'mina'
@@ -54,10 +53,8 @@ end
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails'
+  gem 'sass-rails', '~> 4.0'
   gem 'coffee-rails'
-  gem 'compass-rails'
-  gem 'respond-to'
 
   gem 'foundation-rails'
 end
