@@ -151,6 +151,8 @@ GEM
       mongo_mapper (~> 0.9)
     mongo (1.9.2)
       bson (~> 1.9.2)
+    mongo_session_store-rails4 (5.1.0)
+      actionpack (>= 3.1)
     multi_json (1.8.4)
     nokogiri (1.6.1)
       mini_portile (~> 0.5.0)
@@ -272,6 +274,7 @@ DEPENDENCIES
   mm-carrierwave
   mm-devise!
   mongo_mapper!
+  mongo_session_store-rails4
   parsley-rails
   poltergeist
   pry-rails

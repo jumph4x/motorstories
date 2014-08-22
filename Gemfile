@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '~> 4.0'
 gem 'mongo_mapper', github: 'mongomapper/mongomapper'
 gem 'bson_ext'
+gem "mongo_session_store-rails4"
 
 gem 'haml-rails'
 gem "jquery-rails"
