@@ -8,9 +8,13 @@ module NavigationHelper
     mmy.size == 3 and mmy.values.all?{|p| p.present?} and mmy
   end
 
-  def make_dropdown
+  def make_dropdown namespace = nil
     collection = ProtoVehicle.make_names
-    select_tag :make, options_for_select(([['Make', nil]] + collection ), make_name)
+    select_tag :make, options_for_select(([['Make', nil]] + collection ), make_name), {name: name_spacer('make', namespace)}
+  end
+
+  def name_spacer name, namespace = nil
+    namespace ? "#{namespace}[#{name}]" : name
   end
 
   def make_name
@@ -25,9 +29,9 @@ module NavigationHelper
     ProtoVehicle.model_names_by_make(make_name)
   end
 
-  def model_dropdown
+  def model_dropdown namespace = nil
     collection = model_names_by_current_make
-    html_hash = {}
+    html_hash = {name: name_spacer('model', namespace)}
     html_hash[:disabled] = 'disabled' unless collection.present?
     collection.unshift(["Model", nil])
 
@@ -38,20 +42,20 @@ module NavigationHelper
     ProtoVehicle.years_by_make_and_model(make_name, model_name)
   end
 
-  def year_dropdown
+  def year_dropdown namespace = nil
     collection = years_by_make_and_model
-    html_hash = {}
+    html_hash = {name: name_spacer('year', namespace)}
     html_hash[:disabled] = 'disabled' unless collection.present?
     collection.unshift(["Year", nil])
 
     select_tag(:year, options_for_select(collection, params[:year]), html_hash)
   end
 
-  def mmy_selector redirect = false
+  def mmy_selector redirect = false, namespace = nil
     clazz = 'mmy-selector'
-    output = make_dropdown +
-             model_dropdown +
-             year_dropdown
+    output = make_dropdown(namespace) +
+             model_dropdown(namespace) +
+             year_dropdown(namespace)
 
     if redirect
       output += content_tag(:a, 'Browse', {id: 'mmy-submit', class: 'button'})

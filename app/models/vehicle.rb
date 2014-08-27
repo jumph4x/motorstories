@@ -9,11 +9,9 @@ class Vehicle
     'Street Motorcycle'  => :motorcycle
   }
 
-  mount_uploader :cover_front, CoverUploader
-  mount_uploader :cover_profile, CoverUploader
-  mount_uploader :cover_rear, CoverUploader
+  mount_uploader :cover, CoverUploader
 
-  before_validation :set_nickname, :set_vehicle_type
+  before_validation :set_proto_vehicle, :set_vehicle_type, :set_nickname
 
   scope :claimed, where(:user_id.ne => nil)
   scope :unclaimed, where(:user_id => nil)
@@ -23,6 +21,7 @@ class Vehicle
 
   validate :ensure_nickname_presence
   validates :nickname, :uniqueness => true
+  validates :cover, :presence => true
 
   key :make, String, :required => true
   key :model, String, :required => true
@@ -116,10 +115,6 @@ class Vehicle
     end
   end
 
-  def cover
-    cover_profile || cover_front || cover_rear
-  end
-
   def name
     "#{year} #{make} #{model}"
   end
@@ -138,6 +133,7 @@ class Vehicle
 
   def prime!
     #set_location_from_user
+    set_proto_vehicle
     set_vehicle_type
     set_nickname
     set_name_from_proto_vehicle
@@ -169,6 +165,12 @@ class Vehicle
   #def set_location_from_user
   #  return true unless user
   #end
+
+  def set_proto_vehicle
+    return true unless make && model && year
+
+    self.proto_vehicle = ProtoVehicle.first_by_mmy make, model, year
+  end
 
   def set_vehicle_type
     return true unless proto_vehicle

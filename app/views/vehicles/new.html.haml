@@ -1,4 +1,20 @@
-.row
-  .small-12
-    %h1 Begin your story
-    = mmy_selector
+.projects.new
+  = form_for @vehicle, html: {multipart: true} do |f|
+    .row
+      .small-12.columns
+        = render 'error_messages'
+
+    .row
+      .small-12.columns
+        %h1 Begin your story
+
+        %p Tell everyone what the vehicle is
+        = mmy_selector false, 'vehicle'
+
+        %p Upload a large photo to serve as a cover for this story
+        = f.file_field :cover
+        = f.hidden_field :cover_cache
+
+    .row
+      .small-12.columns
+        = submit_tag 'Next', class: 'button'

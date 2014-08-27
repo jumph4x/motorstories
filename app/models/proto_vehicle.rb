@@ -39,5 +39,9 @@ class ProtoVehicle
       query = Motorstories::SlugCache.query_hash_from_mmyn_slugs make_slug, model_slug, year, nil
       where(query)
     end
+
+    def first_by_mmy make, model, year
+      first(make: make, model: model, year: year)
+    end
   end
 end

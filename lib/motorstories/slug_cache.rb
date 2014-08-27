@@ -9,7 +9,7 @@ module Motorstories
         [:make, :model].each do |typ|
           collection = ProtoVehicle.distinct_collection typ
           map_collection collection, typ
-        end  
+        end
       end
 
       def map_collection values, typ

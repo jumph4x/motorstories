@@ -32,7 +32,7 @@ class VehiclesController < ApplicationController
 
     if @vehicle.save
       handle_created_vehicle @vehicle
-      redirect_to edit_vehicle_path(@vehicle, {:segment => 'poster'})
+      redirect_to edit_vehicle_path(@vehicle, {:segment => 'mod_survey'})
     else
       render :new
     end

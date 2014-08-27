@@ -115,6 +115,6 @@ module VehiclesHelper
     :wheels => [:tire_front, :tire_rear, :tire_front_width, :tire_rear_width, :tire_front_profile, :tire_rear_profile],
     :interior => [:gauges, :seat],
     :exterior => [:headlight],
-    :poster => [:poster]
+    :cover => [:cover]
   }
 end
