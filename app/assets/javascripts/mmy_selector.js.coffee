@@ -12,6 +12,7 @@ $ ->
     this.removeAttr('disabled').show()
     $("option:first", this).attr('selected', 'selected')
 
+  container_el = $('.mmy-selector')
   make_el = $('.mmy-selector #make')
   model_el = $('.mmy-selector #model')
   year_el = $('.mmy-selector #year')
@@ -25,6 +26,9 @@ $ ->
     model = model_el.val()
     year = year_el.val()
 
+    unless container_el.hasClass('redirectable')
+      return false
+
     if make == ''
       return false
 
@@ -35,7 +39,7 @@ $ ->
       param_string += '&year=' + year
 
     window.location.replace("/redirects/vehicles_index?" + param_string)
-    
+
   make_el.change ->
     make = $(this).val()
 

@@ -46,4 +46,20 @@ module NavigationHelper
 
     select_tag(:year, options_for_select(collection, params[:year]), html_hash)
   end
+
+  def mmy_selector redirect = false
+    clazz = 'mmy-selector'
+    output = make_dropdown +
+             model_dropdown +
+             year_dropdown
+
+    if redirect
+      output += content_tag(:a, 'Browse', {id: 'mmy-submit', class: 'button'})
+      clazz += ' redirectable'
+    end
+
+    content_tag(:div, class: clazz) do
+      output
+    end
+  end
 end
