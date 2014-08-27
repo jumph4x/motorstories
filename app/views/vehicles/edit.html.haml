@@ -1,8 +1,11 @@
 .edit.projects
-  .row
-    .small-12.columns
-      %h1 What's been done to it?
-
   = form_for @vehicle, :html => { :class => 'custom' } do |f|
+    .row
+      .small-12.columns
+        %h1 What's been done to it?
+
     = render params[:segment], :f => f
 
+    .row
+      .small-12.columns
+        = submit_tag 'Next', class: 'button'
