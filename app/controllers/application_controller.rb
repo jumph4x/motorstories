@@ -5,7 +5,8 @@ class ApplicationController < ActionController::Base
   helper :navigation
   include NavigationHelper
 
-  helper_method :stored_vehicle_ids, :stored_vehicles, :current_location
+  helper_method :stored_vehicle_ids, :stored_vehicles,
+                :current_location, :user_vehicles
   after_filter :store_location
 
   def render_404
@@ -42,6 +43,14 @@ class ApplicationController < ActionController::Base
 
   def stored_vehicles
     @cached_stored_vehicles ||= Vehicle.where(:id => stored_vehicle_ids).all
+  end
+
+  def user_vehicles
+    if current_user
+      current_user.vehicles
+    else
+      stored_vehicles
+    end
   end
 
   def store_location

@@ -131,6 +131,10 @@ class Vehicle
     "#{year} #{make} #{model}"
   end
 
+  def short_name
+    "'#{year.to_s[2..3]} #{model}"
+  end
+
   def group
     VEHICLE_TYPE_GROUPS[vehicle_type]
   end

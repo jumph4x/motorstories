@@ -21,6 +21,13 @@
         = link_to 'Sign out', destroy_user_session_path, method: :delete
     %li
       %label
-        Your stories
+        - if current_user
+          Your
+        - else
+          Unsaved
+        stories
+    - user_vehicles.each do |vehicle|
+      %li
+        = link_to vehicle.short_name, project_path(vehicle)
     %li
       = link_to "Add a new project", new_vehicle_path

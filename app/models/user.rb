@@ -9,7 +9,7 @@ class User
   ## Database authenticatable
   key :email,               String, :default => ""
   key :encrypted_password,  String, :default => ""
-  
+
   ## Recoverable
   key :reset_password_token,    String
   key :reset_password_sent_at,  Time
