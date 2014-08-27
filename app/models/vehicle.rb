@@ -5,6 +5,7 @@ class Vehicle
   VEHICLE_TYPE_GROUPS = {
     'Car'                => :car,
     'Truck'              => :car,
+    'Van'                => :car,
     'Offroad Motorcycle' => :motorcycle,
     'Street Motorcycle'  => :motorcycle
   }
@@ -29,6 +30,17 @@ class Vehicle
   key :vehicle_type, String, :required => true
 
   key :nickname, String
+
+  def self.mod_categories
+    [:motor, :suspension, :drivetrain, :brakes, :ergonomics, :body]
+  end
+
+  attr_accessor :motor_modded
+  attr_accessor :suspension_modded
+  attr_accessor :drivetrain_modded
+  attr_accessor :brakes_modded
+  attr_accessor :ergonomics_modded
+  attr_accessor :body_modded
 
   # Motor
   key :exhaust, String
@@ -86,7 +98,7 @@ class Vehicle
   key :tire_rear_width, Integer
   key :tire_rear_profile, Integer
 
-  # Controls & Interior
+  # Ergonomics
   key :control_levers, String
   key :steering_damper, String
   key :gauges, String
@@ -96,7 +108,7 @@ class Vehicle
   key :steering_wheel, String
   key :pedals, String
 
-  # Exterior & Body
+  # Body
   key :headlight, String
   key :crash_cage, String # or sliders
   key :plastics, String

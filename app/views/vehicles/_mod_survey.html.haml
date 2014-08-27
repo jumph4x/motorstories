@@ -1,0 +1,9 @@
+.row
+  - Vehicle.mod_categories.each do |cat|
+    .small-12.medium-6.large-4.columns
+      %h2= cat.to_s.titleize
+      %div
+        [[diagram/illustration]]
+        .switch.round
+          = f.check_box "#{cat}_modded"
+          = f.label "#{cat}_modded"
