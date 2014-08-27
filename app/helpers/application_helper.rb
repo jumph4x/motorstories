@@ -25,7 +25,7 @@ module ApplicationHelper
 
   def register_link
     if stored_vehicle_ids.any?
-      link_to "Register #{content_tag :b, stored_vehicle_ids.count}".html_safe, new_user_registration_path, :title => "Register now to save your projects!"
+      link_to "Register #{content_tag :b, stored_vehicle_ids.count, class: 'label radius'}".html_safe, new_user_registration_path, :title => "Register now to save your projects!"
     else
       link_to "Register", new_user_registration_path
     end
@@ -33,9 +33,6 @@ module ApplicationHelper
 
   def wrapped_flash
     return unless show_flash
-    css_classes = {
-      :error => 'alert'
-    }
 
     content_tag :div, :class => 'flash', :'data-alert' => true do
       content_tag :div, :class => [flash_type, 'alert-box', 'row'] do
