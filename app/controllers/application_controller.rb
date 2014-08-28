@@ -7,7 +7,9 @@ class ApplicationController < ActionController::Base
 
   helper_method :stored_vehicle_ids, :stored_vehicles,
                 :current_location, :user_vehicles
+
   after_filter :store_location
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
   def render_404
     flash[:error] = 'Oops, page not found.'
@@ -72,5 +74,13 @@ class ApplicationController < ActionController::Base
 
   def after_sign_out_path_for(resource_or_scope)
     session[:previous_url] || root_path
+  end
+
+  protected
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.for(:sign_up) << :username
+    devise_parameter_sanitizer.for(:sign_up) << :name
+    devise_parameter_sanitizer.for(:sign_up) << :email
   end
 end

@@ -34,8 +34,8 @@ module ApplicationHelper
   def wrapped_flash
     return unless show_flash
 
-    content_tag :div, :class => 'flash', :'data-alert' => true do
-      content_tag :div, :class => [flash_type, 'alert-box', 'row'] do
+    content_tag :div, :class => 'flash' do
+      content_tag :div, :class => [flash_type, 'alert-box'], :'data-alert' => true do
         (
           show_flash +
           content_tag(:a, "&times;".html_safe, class: 'close')
