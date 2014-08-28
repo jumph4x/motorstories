@@ -183,6 +183,7 @@ class Vehicle
   #end
 
   def set_proto_vehicle
+    return true if proto_vehicle
     return true unless make && model && year
 
     self.proto_vehicle = ProtoVehicle.first_by_mmy make, model, year
@@ -195,7 +196,8 @@ class Vehicle
   end
 
   def set_nickname
-    self.nickname = nil if user_id_changed?
+    return true if !user_id_changed? && nickname
+
     if user
       self.nickname ||= "#{user.username}s-#{model.to_url}"
     else

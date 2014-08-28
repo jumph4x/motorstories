@@ -33,12 +33,12 @@ describe VehiclesController do
     it 'should prep the environment' do 
       get :index, request_params(vehicle)
 
-      assigns(:vehicles).should == [vehicle]
+      expect(assigns(:vehicles)).to eq([vehicle])
     end
 
     it 'should render' do
       get :index, request_params(vehicle)
-      response.should render_template(:index)
+      expect(response).to render_template(:index)
     end
   end
 
@@ -46,12 +46,12 @@ describe VehiclesController do
     it 'should prep the environment' do 
       get :show, request_params(vehicle, true)
 
-      assigns(:vehicle).should == vehicle
+      expect(assigns(:vehicle)).to eq(vehicle)
     end
 
     it 'should render' do
       get :show, request_params(vehicle, true)
-      response.should render_template(:show)
+      expect(response).to render_template(:show)
     end
   end
 
@@ -59,7 +59,7 @@ describe VehiclesController do
     context 'without proper parameters' do
       it 'should redirect' do
         get :new
-        response.should redirect_to '/'
+        expect(response).to redirect_to('/')
       end
     end
 
@@ -71,7 +71,7 @@ describe VehiclesController do
           model_slug: pv.model.to_url,
           year: pv.year
         }
-        response.should render_template(:new)
+        expect(response).to render_template(:new)
       end
     end
   end

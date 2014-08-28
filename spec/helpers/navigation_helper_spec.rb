@@ -6,20 +6,20 @@ describe NavigationHelper do
   context 'for MMY' do
     it 'renders Make' do
       pv
-      helper.make_dropdown.should match(pv.make)
+      expect(helper.make_dropdown).to match(pv.make)
     end
 
     it 'renders Model' do
-      helper.stub(:make_name).and_return(pv.make)
+      allow(helper).to receive_messages(:make_name => pv.make)
       pv
-      helper.model_dropdown.should match(pv.model)
+      expect(helper.model_dropdown).to match(pv.model)
     end
 
     it 'renders Year' do
-      helper.stub(:make_name).and_return(pv.make)
-      helper.stub(:model_name).and_return(pv.model)
+      allow(helper).to receive_messages(:make_name => pv.make, :model_name => pv.model)
       pv
-      helper.year_dropdown.should match(pv.year.to_s)
+
+      expect(helper.year_dropdown).to match(pv.year.to_s)
     end
   end
 end

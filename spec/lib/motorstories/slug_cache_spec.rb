@@ -10,8 +10,8 @@ module Motorstories
 
     context '::make_query' do
       it 'returns the full make name' do
-        singleton.make_query(car.make.to_url).should == 'Mazda'
-      end 
+        expect(singleton.make_query(car.make.to_url)).to eq('Mazda')
+      end
     end
   end
 end

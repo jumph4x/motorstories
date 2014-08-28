@@ -6,8 +6,8 @@ describe Devise::RegistrationsController do
 
   it 'renders #new' do
     get :new
-    response.should render_template(:new)
-    response.code.should == '200'
+    expect(response).to render_template(:new)
+    expect(response.code).to eq('200')
   end
 end
 

@@ -8,8 +8,8 @@ describe Vehicle do
       v = create(:vehicle, :model => 'UNCLAIMED')
       v2 = create(:vehicle, :model => 'CLAIMED', :user => user)
 
-      Vehicle.unclaimed.all.should == [v]
-      Vehicle.claimed.all.should == [v2]
+      expect(Vehicle.unclaimed.all).to eq([v])
+      expect(Vehicle.claimed.all).to eq([v2])
     end
   end
 
@@ -18,41 +18,41 @@ describe Vehicle do
 
     it 'should output #semantic_url_hash' do
       h = vehicle.semantic_url_hash
-      h[:make_slug].should == vehicle.make.to_url
-      h[:model_slug].should == vehicle.model.to_url
-      h[:year].should == vehicle.year
-      h[:nickname].should == vehicle.nickname
-      h.size.should == 4
+      expect(h[:make_slug]).to eq(vehicle.make.to_url)
+      expect(h[:model_slug]).to eq(vehicle.model.to_url)
+      expect(h[:year]).to eq(vehicle.year)
+      expect(h[:nickname]).to eq(vehicle.nickname)
+      expect(h.size).to eq(4)
     end
 
     it 'should self identify as claimed?' do
-      vehicle.claimed?.should be_true
+      expect(vehicle.claimed?).to be_truthy
       vehicle.set(:user_id => nil)
       vehicle.reload
-      vehicle.claimed?.should be_false
+      expect(vehicle.claimed?).to be_falsey
     end
 
     it 'should belong to a base_vehicle' do
       v = create(:vehicle)
-      v.proto_vehicle.should be_present
+      expect(v.proto_vehicle).to be_present
     end
 
     it 'should have a vehicle_type set' do
       v = create(:vehicle)
-      v.vehicle_type.should == 'Car'
+      expect(v.vehicle_type).to eq('Car')
     end
 
     it 'should be able to print vehicle name' do
-      vehicle.name.should == '2006 Mazda MX-5 Miata'
+      expect(vehicle.name).to eq('2006 Mazda MX-5 Miata')
     end
 
     pending 'should set location from user' do 
-      vehicle.location_id.should be_present
-      vehicle.location_id.should == user.location_id
+      expect(vehicle.location_id).to be_present
+      expect(vehicle.location_id).to eq(user.location_id)
     end
 
     it 'should set nickname from user' do
-      vehicle.nickname.should == "#{user.username}s-#{vehicle.model.to_url}"
+      expect(vehicle.nickname).to eq("#{user.username}s-#{vehicle.model.to_url}")
     end
 
     it 'should validate nickname presence if user is set' do
@@ -62,27 +62,27 @@ describe Vehicle do
       v.user = user
       v.save
 
-      v.nickname.should be_present
-      val1.should_not == v.nickname
+      expect(v.nickname).to be_present
+      expect(val1).to eq(v.nickname)
       v.nickname = ''
-      v.save.should be_false
+      expect(v.save).to be_falsey
     end
 
     it 'should return #make_slug' do
-      vehicle.make_slug.should == 'mazda'
+      expect(vehicle.make_slug).to eq('mazda')
     end
 
     it 'should return #model_slug' do
-      vehicle.model_slug.should == 'mx-5-miata'
+      expect(vehicle.model_slug).to eq('mx-5-miata')
     end
-    
+
     it 'should validate uniqueness of nickname within scope' do
       v2 = create(:vehicle, :make => 'BMW', :model => "MX-5 Miata")
       v2.nickname = 'test-nickname'
       v2.save
 
       vehicle.nickname = 'test-nickname'
-      vehicle.should_not be_valid
+      expect(vehicle).not_to be_valid
     end
 
     context 'when tied to a base vehicle' do
@@ -95,7 +95,7 @@ describe Vehicle do
       end
 
       it 'gets name from base_vehicle' do
-        blank_vehicle.make.should == 'Mazda'
+        expect(blank_vehicle.make).to eq('Mazda')
       end
     end
   end
