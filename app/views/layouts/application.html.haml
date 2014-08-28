@@ -27,10 +27,11 @@
 %body
   .off-canvas-wrap(data-offcanvas)
     .inner-wrap{class: current_location}
-      %a.logo-link.left-off-canvas-toggle
-        = inline_svg 'layout/logo-remix.svg'
+      %header
+        %a.logo-link.left-off-canvas-toggle
+          = inline_svg 'layout/logo-remix.svg'
+        = wrapped_flash
       = render 'shared/offcanvas'
-      = wrapped_flash
       = yield
       = render 'shared/footer'
       %a.exit-off-canvas
