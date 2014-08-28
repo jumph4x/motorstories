@@ -34,9 +34,9 @@ module VehiclesHelper
     end
   end
 
-  #def next_step_for_vehicle vehicle
-  #  "Did you install any new goodies? #{link_to "Update the spec", edit_vehicle_path(vehicle)}."
-  #end
+  def next_step_for_vehicle vehicle
+    "Did you install any new goodies?"
+  end
 
   #def select_options_for vehicle_type, field, existing_value = nil
   #  options = select_options[vehicle_type.to_sym][field.to_sym]
