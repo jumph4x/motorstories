@@ -46,11 +46,6 @@ describe Vehicle do
       expect(vehicle.name).to eq('2006 Mazda MX-5 Miata')
     end
 
-    pending 'should set location from user' do 
-      expect(vehicle.location_id).to be_present
-      expect(vehicle.location_id).to eq(user.location_id)
-    end
-
     it 'should set nickname from user' do
       expect(vehicle.nickname).to eq("#{user.username}s-#{vehicle.model.to_url}")
     end
@@ -96,6 +91,18 @@ describe Vehicle do
 
       it 'gets name from base_vehicle' do
         expect(blank_vehicle.make).to eq('Mazda')
+      end
+    end
+
+    context 'when modded' do
+      it 'primes story entries' do
+        expect(vehicle.entries).to be_empty
+        vehicle.motor_modded = '1'
+        vehicle.suspension_modded = '1'
+        vehicle.brakes_modded = '0'
+        vehicle.save
+
+        expect(vehicle.entries.size).to eq(2)
       end
     end
   end

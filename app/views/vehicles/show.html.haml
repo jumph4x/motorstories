@@ -20,5 +20,11 @@
     .row.owner-updates
       .large-4.small-12.columns
         = vehicle_owner @vehicle
-      .large-8.small-12.columns
-        %h3 Recent updates
+.row.updates
+  - @vehicle.entries.each do |entry|
+    .small-6.large-3.columns{class: "#{'end' if @vehicle.entries.last == entry}"}
+      .border-dashed-lgray.min-height-10.margin-top-1.pad-1
+        = "[pending] " if entry.pending?
+        Type:
+        = entry.category
+        %button.secondary Complete entry

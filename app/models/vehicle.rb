@@ -2,6 +2,8 @@ class Vehicle
   require 'carrierwave/orm/mongomapper'
   include MongoMapper::Document
 
+  has_many :entries
+
   VEHICLE_TYPE_GROUPS = {
     'Car'                => :car,
     'Truck'              => :car,
@@ -13,6 +15,7 @@ class Vehicle
   mount_uploader :cover, CoverUploader
 
   before_validation :set_proto_vehicle, :set_vehicle_type, :set_nickname
+  before_save :prime_mod_entries
 
   scope :claimed, where(:user_id.ne => nil)
   scope :unclaimed, where(:user_id => nil)
@@ -32,12 +35,12 @@ class Vehicle
   key :nickname, String
 
   def self.mod_categories
-    [:motor, :suspension, :drivetrain, :brakes, :ergonomics, :body]
+    [:motor, :suspension, :wheels, :brakes, :ergonomics, :body]
   end
 
   attr_accessor :motor_modded
   attr_accessor :suspension_modded
-  attr_accessor :drivetrain_modded
+  attr_accessor :wheels_modded
   attr_accessor :brakes_modded
   attr_accessor :ergonomics_modded
   attr_accessor :body_modded
@@ -169,6 +172,15 @@ class Vehicle
 
   private
 
+  def prime_mod_entries
+    self.class.mod_categories.each do |cat|
+      next unless send("#{cat}_modded").to_i == 1
+      self.entries << Entry.new(category: cat)
+    end
+
+    true
+  end
+
   def set_name_from_proto_vehicle
     return true unless proto_vehicle
 
@@ -176,10 +188,6 @@ class Vehicle
     self.make = proto_vehicle.make
     self.model = proto_vehicle.model
   end
-
-  #def set_location_from_user
-  #  return true unless user
-  #end
 
   def set_proto_vehicle
     return true if proto_vehicle
