@@ -42,23 +42,12 @@ class Vehicle
   attr_accessor :ergonomics_modded
   attr_accessor :body_modded
 
-  # Motor
+  # Motor (Powertrain)
   key :exhaust, String
   key :intake, String
   key :engine_management, String
   key :engine_code, String
 
-  # Suspension
-  key :height_diff, Float
-  key :springs_front, String
-  key :springs_rear, String
-  key :dampers_front, String
-  key :dampers_rear, String
-
-  key :camber_front, Float
-  key :camber_rear, Float
-
-  # Drivetrain
   key :sprocket_front, String
   key :sprocket_front_diff, Integer
   key :sprocket_rear, String
@@ -69,6 +58,16 @@ class Vehicle
   key :transmission, String
   key :differential_ratio, String
   key :differential_lock, String
+
+  # Suspension
+  key :height_diff, Float
+  key :springs_front, String
+  key :springs_rear, String
+  key :dampers_front, String
+  key :dampers_rear, String
+
+  key :camber_front, Float
+  key :camber_rear, Float
 
   # Brakes
   key :brake_front_diameter, Integer
