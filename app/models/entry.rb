@@ -1,5 +1,7 @@
 class Entry
+  require 'carrierwave/orm/mongomapper'
   include MongoMapper::EmbeddedDocument
+
   attr_accessor :pending
 
   validates :snapshot, :body, :occurred_at, :presence => true, :unless => Proc.new{|e| e.pending }
