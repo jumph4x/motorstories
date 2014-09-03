@@ -1,5 +1,5 @@
 .projects.new
-  = form_for @vehicle, html: {'multipart' => true, 'data-parsley-validate' => true} do |f|
+  = form_for @vehicle, html: {'multipart' => true} do |f|
     .row
       .small-12.columns
         = render 'error_messages'
