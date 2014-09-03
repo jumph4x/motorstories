@@ -1,5 +1,5 @@
 .projects.new
-  = form_for @vehicle, html: {multipart: true} do |f|
+  = form_for @vehicle, html: {'multipart' => true, 'data-parsley-validate' => true} do |f|
     .row
       .small-12.columns
         = render 'error_messages'
@@ -12,7 +12,7 @@
         = mmy_selector false, 'vehicle'
 
         %p Upload a large photo to serve as a cover for this story
-        = f.file_field :cover
+        = f.file_field :cover, {required: true}
         = f.hidden_field :cover_cache
 
     .row
