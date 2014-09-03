@@ -19,7 +19,6 @@ gem 'mm-carrierwave'
 gem 'stringex'
 gem 'dynamic_form'
 
-gem 'parsley-rails'
 gem 'aces_crawler', git: 'git@github.com:jumph4x/aces_crawler.git'
 gem 'mina'
 
