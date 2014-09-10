@@ -1,9 +1,12 @@
 .hero
-  .still-fallback
-  %video.video-bg( autoplay loop )
-    %source{src: video_path('splash/homepage.mp4'), type: 'video/mp4'}
-    %source{src: video_path('splash/homepage.webm'), type: 'video/webm'}
-  .content.on-top.pad-top-4
-    %h1.txt-sha Tell your story.
-    .centered
-      = mmy_selector true
+  .proportion-hd
+    .abs.width-100
+      .still-fallback.proportion-hd
+      - unless browser.mobile?
+        %video.video-bg( autoplay loop )
+          %source{src: video_path('splash/homepage.mp4'), type: 'video/mp4'}
+          %source{src: video_path('splash/homepage.webm'), type: 'video/webm'}
+      .content.on-top.pad-top-15p
+        %h1.txt-sha Tell your story.
+        .centered
+          = mmy_selector true
