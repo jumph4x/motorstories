@@ -29,7 +29,8 @@
     .inner-wrap{class: current_location}
       %header
         %a.logo-link.left-off-canvas-toggle
-          = inline_svg 'layout/logo-remix.svg'
+          - #inline_svg 'layout/logo-remix.svg'
+          = image_tag 'layout/logo.png'
         = wrapped_flash
       = render 'shared/offcanvas'
       = yield
