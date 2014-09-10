@@ -33,6 +33,7 @@
           = image_tag 'layout/logo.png'
         = wrapped_flash
       = render 'shared/offcanvas'
-      = yield
+      .main
+        = yield
       = render 'shared/footer'
       %a.exit-off-canvas
