@@ -86,7 +86,7 @@ module Motorstories
     config.assets.version = '1.1'
 
     # Adding things to be precompiled
-    #config.assets.precompile = ['legacy.js','modern.js', 'application.css']
     config.assets.paths << "#{Rails.root}/app/assets/videos"
+    config.assets.precompile += ['*.mp4', '*.webm']
   end
 end
