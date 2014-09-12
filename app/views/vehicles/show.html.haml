@@ -4,14 +4,12 @@
       .poster
         background-image: url(#{@vehicle.cover})
         background-size: cover
-      .tinter
-        background-image: url(/assets/tinters/07.png)
   - else
     :sass
       .poster
         background-image: url(/assets/layout/poster-bg.png)
 .show.project.poster
-  .tinter
+  %div{class: ('photo-tint' if @vehicle.cover.present?)}
     .row
       .large-12.small-12.columns
         .head
