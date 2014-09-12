@@ -37,15 +37,34 @@ task :environment do
   invoke :'rvm:use[ruby-2.1.2]'
 end
 
+task :link_public_shared_paths => :environment do
+
+  public_shared_paths = ['uploads']
+  cmds = public_shared_paths.map do |file|
+    [
+      echo_cmd(%{rm -rf "./#{file}"}),
+      echo_cmd(%{ln -s "#{deploy_to}/#{shared_path}/#{file}" "./public/#{file}"})
+    ]
+  end
+
+  queue %{
+    echo "-----> Symlinking public shared paths"
+    #{cmds.flatten.join(" &&\n")}
+  }
+end
 # Put any custom mkdir's in here for when `mina setup` is ran.
 # For Rails apps, we'll make some of the shared paths that are shared between
 # all releases.
+
 task :setup => :environment do
   queue! %[mkdir -p "#{deploy_to}/shared/log"]
   queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/log"]
 
   queue! %[mkdir -p "#{deploy_to}/shared/config"]
   queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/config"]
+
+  queue! %[mkdir -p "#{deploy_to}/shared/uploads"]
+  queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/uploads"]
 
   #queue! %[touch "#{deploy_to}/shared/config/database.yml"]
   #queue  %[echo "-----> Be sure to edit 'shared/config/database.yml'."]
@@ -58,6 +77,7 @@ task :deploy => :environment do
     # instance of your project.
     invoke :'git:clone'
     invoke :'deploy:link_shared_paths'
+    invoke :'link_public_shared_paths'
     invoke :'bundle:install'
     #invoke :'rails:db_migrate'
     invoke :'rails:assets_precompile'
