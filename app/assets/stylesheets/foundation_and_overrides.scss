@@ -86,6 +86,34 @@ $row-width: rem-calc(1200);
 // c. Global
 // - - - - - - - - - - - - - - - - - - - - - - - - -
 
+// We use these as default colors throughout
+$primary-color: #A2CD5A;
+$secondary-color: #e7e7e7;
+$alert-color: #f04124;
+$success-color: #43AC6A;
+$warning-color: #f08a24;
+$info-color: #a0d3e8;
+
+$white       : #FFFFFF;
+$ghost       : #FAFAFA;
+$snow        : #F9F9F9;
+$vapor       : #F6F6F6;
+$white-smoke : #F5F5F5;
+$silver      : #EFEFEF;
+$smoke       : #EEEEEE;
+$gainsboro   : #DDDDDD;
+$iron        : #CCCCCC;
+$base        : #AAAAAA;
+$aluminum    : #999999;
+$jumbo       : #888888;
+$monsoon     : #777777;
+$steel       : #666666;
+$charcoal    : #555555;
+$tuatara     : #444444;
+$oil         : #333333;
+$jet         : #222222;
+$black       : #000000;
+
 // We use these to define default font weights
 // $font-weight-normal: normal !default;
 // $font-weight-bold: bold !default;
@@ -97,10 +125,10 @@ $row-width: rem-calc(1200);
 // $font-weight-bold: bold !default;
 
 // We use these to control various global styles
-// $body-bg: $white;
+$body-bg: $jet;
 // $body-font-color: $jet;
 // $body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
-$body-font-family: 'Droid Sans', sans-serif;
+$body-font-family: 'Droid Sans',"Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
 // $font-weight-normal:normal;
 // $body-font-weight: $font-weight-normal;
 // $body-font-style: normal;
@@ -114,33 +142,6 @@ $body-font-family: 'Droid Sans', sans-serif;
 // $default-float: left;
 // $last-child-float: $opposite-direction;
 
-// We use these as default colors throughout
-// $primary-color: #008CBA;
-// $secondary-color: #e7e7e7;
-// $alert-color: #f04124;
-// $success-color: #43AC6A;
-// $warning-color: #f08a24;
-// $info-color: #a0d3e8;
-
-// $white       : #FFFFFF;
-// $ghost       : #FAFAFA;
-// $snow        : #F9F9F9;
-// $vapor       : #F6F6F6;
-// $white-smoke : #F5F5F5;
-// $silver      : #EFEFEF;
-// $smoke       : #EEEEEE;
-// $gainsboro   : #DDDDDD;
-// $iron        : #CCCCCC;
-// $base        : #AAAAAA;
-// $aluminum    : #999999;
-// $jumbo       : #888888;
-// $monsoon     : #777777;
-// $steel       : #666666;
-// $charcoal    : #555555;
-// $tuatara     : #444444;
-// $oil         : #333333;
-// $jet         : #222222;
-// $black       : #000000;
 
 // We use these to make sure border radius matches unless we want it different.
 // $global-radius: 3px;
@@ -203,7 +204,7 @@ $header-font-family: 'Pacifico', cursive;
 // $header-font-weight: $font-weight-normal;
 // $header-font-style: normal;
 // $header-font-color: $jet;
-// $header-line-height: 1.4;
+$header-line-height: 1.5;
 // $header-top-margin: .2rem;
 // $header-bottom-margin: .5rem;
 // $header-text-rendering: optimizeLegibility;
@@ -826,7 +827,7 @@ $header-font-family: 'Pacifico', cursive;
 
 // Off Canvas Menu Variables
 // $off-canvas-width: rem-calc(250);
-// $off-canvas-bg: $oil;
+$off-canvas-bg: $jet;
 
 // Off Canvas Menu List Variables
 // $off-canvas-label-padding: 0.3rem rem-calc(15);
