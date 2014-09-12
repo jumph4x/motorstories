@@ -3,19 +3,14 @@
 #make,#model,#year
   display: inline-block
   width: 100px
-  margin: 8px 5px
-  border: 1px solid #eee
-  font-size: 14px
+  border: none
   &[disabled]
     color: #aaa
-    border-color: #555
 #mmy-submit
-  top: 0
-  font-size: 13px
-  padding: 4px 0
-  margin: 8px 5px
-  width: 75px
+  padding: 9px 20px
   text-align: center
+  vertical-align: middle
+  margin: 0
 
 .input-append, .input-prepend
   position: relative
@@ -39,11 +34,7 @@
 .input-help
   left: 0
   width: 12px
-  
+
 // tooltips
 .tool-tip
   float: right
-
-@media #{$topbar-media-query}
-  #mmy-submit
-    padding: 0 10px

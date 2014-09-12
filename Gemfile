@@ -54,6 +54,7 @@ end
 group :assets do
   gem 'sass-rails', '~> 4.0'
   gem 'coffee-rails'
+  gem 'compass-rails'
 
   gem 'foundation-rails'
 end
