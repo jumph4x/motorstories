@@ -34,6 +34,12 @@
   .done
     text-decoration: line-through
 
+.illustration
+  @include transition(500ms)
+  background-color: #777
+  &.modded
+    background-color: $blueprintBlue
+
 @media #{$small}
   .owner-updates
     margin-top: 20em

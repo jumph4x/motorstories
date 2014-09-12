@@ -1,23 +1,8 @@
 $ ->
-  'use strict'
-  progress = 4
-  completed = []
-  $(".progress .meter").css('width', progress + '%')
-
-  $(".section-controls .button").click () ->
-    section = $(this).parents("[data-name]")
-    section_name = section.attr('data-name')
-    
-    if !(section_name in completed)
-      completed.push section_name
-      progress += 12
-      $(".progress .meter").css('width', progress + '%')
-      
-      $('.progress-headings .' + section_name).addClass("done")
-    
-    section.removeClass('expanded') 
-    next_section = section.next("[data-name]")
-    if next_section.length > 0
-      next_section.addClass('expanded') 
+  $('input[type="checkbox"][data-category]').bind 'change', ->
+    cat = $(this).attr('data-category')
+    bg = $('.illustration[data-category="' + cat + '"]')
+    if $(this).prop('checked')
+      bg.addClass 'modded'
     else
-      section.parents('form').submit()
+      bg.removeClass 'modded'
