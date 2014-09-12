@@ -10,7 +10,9 @@ Motorstories::Application.routes.draw do
     end
   end
 
-  resources :vehicles, :path => 'projects', :except => [:show, :index]
+  resources :vehicles, :path => 'projects', :except => [:show, :index] do
+    resources :entries, :except => [:index]
+  end
   resources :models, :only => :index
   resources :years, :only => :index
 

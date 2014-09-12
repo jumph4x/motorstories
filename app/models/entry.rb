@@ -7,7 +7,7 @@ class Entry
   validates :snapshot, :body, :occurred_at, :presence => true, :unless => Proc.new{|e| e.pending }
 
   def self.categories
-    Vehicle.mod_categories + [:journey, :journal]
+    Vehicle.mod_categories + [:journey, :journal, :bought, :sold]
   end
 
   mount_uploader :snapshot, SnapshotUploader
