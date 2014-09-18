@@ -1,0 +1,23 @@
+- if @entry.errors.any?
+  .row
+    .small-12.columns
+      %h2 Your submission lacks a few things
+      %ul
+        - @entry.errors.full_messages.each do |msg|
+          %li= msg
+
+.row
+  .small-12.medium-6.columns
+    = f.label :snapshot, 'Pic or it didn\'t happen'
+    = f.file_field :snapshot, {required: true}
+  .small-12.medium-6.columns
+    = f.label :category, 'The what'
+    = f.select :category, entry_category_select(@entry.category), {required: true}
+.row
+  .small-12.medium-6.columns
+    = f.label :body, 'What\'s happening here'
+    = f.text_area :body, {required: true}
+  .small-12.medium-6.columns
+    = f.label :ocurred_at, 'When was this?'
+    = f.date_field :occurred_at, {value: (@entry.occurred_at || Date.today), required: true}
+

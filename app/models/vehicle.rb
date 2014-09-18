@@ -34,10 +34,6 @@ class Vehicle
 
   key :nickname, String
 
-  def self.mod_categories
-    [:motor, :suspension, :wheels, :brakes, :ergonomics, :body]
-  end
-
   attr_accessor :motor_modded
   attr_accessor :suspension_modded
   attr_accessor :wheels_modded
@@ -127,6 +123,14 @@ class Vehicle
       query = Motorstories::SlugCache.query_hash_from_mmyn_slugs make_slug, model_slug, year, nickname
       where(query)
     end
+
+    def mod_categories
+      [:motor, :suspension, :wheels, :brakes, :ergonomics, :body]
+    end
+  end
+
+  def pending_entries
+    entries.select{|e| e.pending?}
   end
 
   def name

@@ -8,21 +8,26 @@
     :sass
       .poster
         background-image: url(/assets/layout/poster-bg.png)
-.show.project.poster
-  %div{class: ('photo-tint' if @vehicle.cover.present?)}
-    .row
-      .large-12.small-12.columns
-        .head
-          %h1.fit #{@vehicle.name}
-          = vehicle_call_to_action @vehicle
-    .row.owner-updates
-      .large-4.small-12.columns
-        = vehicle_owner @vehicle
-.row.updates
-  - @vehicle.entries.each do |entry|
-    .small-6.large-3.columns{class: "#{'end' if @vehicle.entries.last == entry}"}
-      .border-dashed-lgray.min-height-10.margin-top-1.pad-1
-        = "[pending] " if entry.pending?
-        Type:
-        = entry.category
-        %button.secondary Complete entry
+.show.project
+  .poster.font-white
+    %div{class: ('photo-tint' if @vehicle.cover.present?)}
+      .row
+        .large-12.small-12.columns
+          .head
+            %h1.fit #{@vehicle.name}
+            = vehicle_call_to_action @vehicle
+      .row.owner-updates
+        .large-4.small-12.columns
+          = vehicle_owner @vehicle
+  .row.pending-entries.pad-bottom-1
+    - @vehicle.entries.each do |entry|
+      .small-6.large-3.columns{class: "#{'end' if @vehicle.entries.last == entry}"}
+        .min-height-10.margin-top-1.pad-1{class: (entry.pending? ? 'border-dashed-gray' : 'border-gray')}
+          = "[pending] " if entry.pending?
+          Type:
+          = entry.category
+          .body
+            - if entry.pending?
+              = link_to 'Complete entry', edit_vehicle_entry_path(@vehicle,entry), class: 'button secondary'
+            - else
+              = entry.body

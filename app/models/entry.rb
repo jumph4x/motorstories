@@ -14,11 +14,11 @@ class Entry
 
   key :category, String
 
-  key :occurred_at, Time
+  key :occurred_at, Date
   key :body, String
   key :location, Array
 
   def pending?
-    pending || (!body && !snapshot)
+    pending || (!body && !snapshot_filename)
   end
 end

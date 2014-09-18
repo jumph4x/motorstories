@@ -1,0 +1,9 @@
+.edit.entry
+  .row
+    .small-12.columns
+      %h1 Complete this entry
+  = form_for(@entry, url: vehicle_entry_path) do |f|
+    = render 'form', f: f
+    .row
+      .small-12.columns
+        = submit_tag 'Complete', class: 'button'
