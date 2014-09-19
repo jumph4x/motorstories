@@ -14,7 +14,7 @@ Motorstories::Application.routes.draw do
     resources :entries, :except => [:index, :show] do
       member do
         get :photo_editor
-        match :photo_update, :via => :all
+        post :photo_update
       end
     end
   end
