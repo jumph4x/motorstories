@@ -18,7 +18,11 @@ class EntriesController < ApplicationController
 
   def update
     if @entry.update_attributes(entry_params)
-      redirect_to semantic_vehicle_path(@vehicle.semantic_url_hash)
+      if params[:commit].match(/photo/i)
+        redirect_to photo_editor_vehicle_entry_path(@vehicle, @entry)
+      else
+        redirect_to semantic_vehicle_path(@vehicle.semantic_url_hash)
+      end
     else
       render :edit
     end

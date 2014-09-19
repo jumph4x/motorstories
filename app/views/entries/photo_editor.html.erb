@@ -13,8 +13,8 @@
      var featherEditor = new Aviary.Feather({
        apiKey: '2fd5541ae279b553',
        apiVersion: 3,
-       theme: 'dark', // Check out our new 'light' and 'dark' themes!
-       tools: 'all',
+       theme: 'dark',
+       tools: 'enhance,effects,frames,orientation,focus,crop,warmth,brightness,contrast,saturation,sharpness,colorsplash',
        appendTo: '',
        postUrl: '<%= public_url photo_update_vehicle_entry_path(@vehicle, @entry) -%>',
        onLoad: function(){ launch(); },
