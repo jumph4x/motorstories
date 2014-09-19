@@ -1,0 +1,35 @@
+<%- content_for :head do -%>
+  <script type="text/javascript" src="http://feather.aviary.com/js/feather.js"></script>
+
+  <script type='text/javascript'>
+     var featherEditor = new Aviary.Feather({
+       apiKey: '2fd5541ae279b553',
+       apiVersion: 3,
+       theme: 'dark', // Check out our new 'light' and 'dark' themes!
+       tools: 'all',
+       appendTo: '',
+       onSave: function(imageID, newURL) {
+         var img = document.getElementById(imageID);
+         img.src = newURL;
+       },
+       onError: function(errorObj) {
+         alert(errorObj.message);
+       }
+     });
+     function launchEditor(id, src) {
+       featherEditor.launch({
+         image: id,
+         url: src
+       });
+       return false;
+     }
+
+    $(document).ready(function(){
+      launchEditor('snapshot', 'http://98.210.222.68:3000<%= @entry.snapshot.url -%>');
+    });
+  </script>
+<%- end -%>
+
+<img src="<%= @entry.snapshot.url -%>" id="snapshot" />
+
+<a onclick="launchEditor('snapshot', 'http://98.210.222.68:3000<%= @entry.snapshot.url -%>');" href="#">Edit</a>

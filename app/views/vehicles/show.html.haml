@@ -31,3 +31,4 @@
               = link_to 'Complete entry', edit_vehicle_entry_path(@vehicle,entry), class: 'button secondary'
             - else
               = entry.body
+              = link_to 'Photo editor', photo_editor_vehicle_entry_path(@vehicle, entry), class: 'button secondary'

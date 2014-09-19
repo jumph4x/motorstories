@@ -2,12 +2,16 @@ class EntriesController < ApplicationController
   rescue_from MongoMapper::DocumentNotFound, :with => :render_404
   helper :navigation
   before_filter :load_vehicle
-  before_filter :load_entry, :only => [:edit, :update]
+  before_filter :load_entry, :only => [:edit, :update, :photo_editor, :photo_update]
 
   def new
   end
 
   def edit
+  end
+
+  def photo_editor
+
   end
 
   def create
@@ -19,6 +23,9 @@ class EntriesController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def photo_update
   end
 
   def destroy
