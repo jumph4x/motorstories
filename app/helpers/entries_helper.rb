@@ -7,5 +7,9 @@ module EntriesHelper
       'Update' => [:journey, :journal]
     }, selected)
   end
+
+  def aviary_js_url
+    "https://dme0ih8comzn4.cloudfront.net/js/feather.js"
+  end
 end
 
