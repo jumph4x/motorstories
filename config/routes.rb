@@ -2,7 +2,7 @@ Motorstories::Application.routes.draw do
 
   devise_for :users
 
-  #resources :profiles, :path => 'people'
+  resources :profiles, :path => 'people'
   resources :proto_vehicles do
     collection do
       get :model_index

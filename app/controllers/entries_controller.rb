@@ -11,7 +11,6 @@ class EntriesController < ApplicationController
   end
 
   def photo_editor
-
   end
 
   def create
@@ -26,6 +25,10 @@ class EntriesController < ApplicationController
   end
 
   def photo_update
+    @entry.remote_snapshot_url = params[:url]
+    @entry.save
+
+    render :nothing => true
   end
 
   def destroy

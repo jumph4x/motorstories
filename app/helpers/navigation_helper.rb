@@ -68,4 +68,26 @@ module NavigationHelper
     end
   end
 
+  def cached_public_ip
+    Rails.cache.fetch('public_url') do
+      `curl icanhazip.com`.strip
+    end
+  end
+
+  def public_host
+    if Rails.env.production?
+      'motorstori.es'
+    else
+      cached_public_ip
+    end
+  end
+
+  def port
+    ":3000" unless Rails.env.production?
+  end
+
+  def public_url path
+    "http://#{public_host}#{port}#{path}"
+  end
+
 end

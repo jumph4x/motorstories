@@ -1,35 +1,36 @@
-<%- content_for :head do -%>
+<%= content_for :head do -%>
   <script type="text/javascript" src="http://feather.aviary.com/js/feather.js"></script>
-
   <script type='text/javascript'>
+    $(document).ready(function(){
+     var launch = function(){
+       featherEditor.launch({image: 'snapshot', url: '<%= public_url @entry.snapshot.url -%>'});
+       return false;
+     }
+
      var featherEditor = new Aviary.Feather({
        apiKey: '2fd5541ae279b553',
        apiVersion: 3,
        theme: 'dark', // Check out our new 'light' and 'dark' themes!
        tools: 'all',
        appendTo: '',
+       postUrl: '<%= public_url photo_update_vehicle_entry_path(@vehicle, @entry) -%>',
+       onLoad: function(){ launch(); },
        onSave: function(imageID, newURL) {
-         var img = document.getElementById(imageID);
-         img.src = newURL;
+         window.location.href = '<%= public_url semantic_vehicle_path(@vehicle.semantic_url_hash) -%>';
        },
        onError: function(errorObj) {
          alert(errorObj.message);
        }
      });
-     function launchEditor(id, src) {
-       featherEditor.launch({
-         image: id,
-         url: src
-       });
-       return false;
-     }
 
-    $(document).ready(function(){
-      launchEditor('snapshot', 'http://98.210.222.68:3000<%= @entry.snapshot.url -%>');
     });
   </script>
 <%- end -%>
 
-<img src="<%= @entry.snapshot.url -%>" id="snapshot" />
+<img src="<%= @entry.snapshot.url -%>" style="display:none" id="snapshot" />
 
-<a onclick="launchEditor('snapshot', 'http://98.210.222.68:3000<%= @entry.snapshot.url -%>');" href="#">Edit</a>
+<div class="row">
+  <div class="small-12 columns">
+    <h1 class="text-center line-height-20">Loading...</h1>
+  </div>
+</div>
