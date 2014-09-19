@@ -86,8 +86,16 @@ module NavigationHelper
     ":3000" unless Rails.env.production?
   end
 
+  def protocol
+    if Rails.env.production?
+      "https://"
+    else
+      "http://"
+    end
+  end
+
   def public_url path
-    "http://#{public_host}#{port}#{path}"
+    "#{protocol}#{public_host}#{port}#{path}"
   end
 
 end
