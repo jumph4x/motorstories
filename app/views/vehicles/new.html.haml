@@ -8,11 +8,12 @@
       .small-12.columns
         %h1 Begin your story
 
-        %p Tell everyone what the vehicle is
-        = mmy_selector false, 'vehicle'
+        %p.margin-top-1.margin-bottom-05 1. Tell everyone what the vehicle is
+        .border-dashed-gray.ibl
+          = mmy_selector false, 'vehicle'
 
-        %p Upload a large photo to serve as a cover for this story
-        = f.file_field :cover, {required: true}
+        %p.margin-top-1.margin-bottom-05 2. Upload a large photo to serve as a cover for this story
+        = f.file_field :cover, {required: true, accept: 'image/jpeg,image/png'}
         = f.hidden_field :cover_cache
 
     .row

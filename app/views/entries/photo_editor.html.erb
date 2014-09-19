@@ -2,6 +2,9 @@
   <script type="text/javascript" src="<%= aviary_js_url-%>"></script>
   <script type='text/javascript'>
     $(document).ready(function(){
+      var goBack = function(){
+        window.location.href = '<%= semantic_vehicle_path(@vehicle.semantic_url_hash) -%>';
+      }
      var launch = function(){
        featherEditor.launch({image: 'snapshot', url: '<%= public_url @entry.snapshot.url -%>'});
        return false;
@@ -16,7 +19,10 @@
        postUrl: '<%= public_url photo_update_vehicle_entry_path(@vehicle, @entry) -%>',
        onLoad: function(){ launch(); },
        onSave: function(imageID, newURL) {
-         window.location.href = '<%= public_url semantic_vehicle_path(@vehicle.semantic_url_hash) -%>';
+         goBack();
+       },
+       onClose: function(isDirty) {
+         goBack();
        },
        onError: function(errorObj) {
          alert(errorObj.message);

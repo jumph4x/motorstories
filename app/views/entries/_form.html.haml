@@ -9,7 +9,8 @@
 .row
   .small-12.medium-6.columns
     = f.label :snapshot, 'Pic or it didn\'t happen'
-    = f.file_field :snapshot, {required: true}
+    = f.file_field :snapshot, {required: true, accept: 'image/jpeg,image/png'}
+    = f.hidden_field :snapshot_cache
   .small-12.medium-6.columns
     = f.label :category, 'The what'
     = f.select :category, entry_category_select(@entry.category), {required: true}
