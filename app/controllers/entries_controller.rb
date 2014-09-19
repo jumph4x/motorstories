@@ -25,6 +25,8 @@ class EntriesController < ApplicationController
   end
 
   def photo_update
+    return unless params[:url]
+
     @entry.remote_snapshot_url = params[:url]
     @entry.save
 
