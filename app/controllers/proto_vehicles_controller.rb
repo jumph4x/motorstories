@@ -12,7 +12,7 @@ class ProtoVehiclesController < ApplicationController
   end
 
   def model_index
-    proto_vehicles = ProtoVehicle.model_names_by_make(make_name).map{|m| [m,m.to_url]}
+    proto_vehicles = ProtoVehicle.model_names_by_make(make_name)
 
     respond_to do |format|
       format.json{ render :json => proto_vehicles }

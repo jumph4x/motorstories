@@ -1,21 +1,18 @@
 $ ->
   'use strict'
 
-  typeIsArray = Array.isArray || ( value ) -> return {}.toString.call( value ) is '[object Array]'
-
   $.fn.fillOptionsWith = (data, attr, prefix) ->
     options = prefix
     $.each(
       data,
       (idx, value) ->
-        if typeIsArray value
-          options += '<option value="' + value[1] + '">' + value[0] + '</option>'
-        else
-          options += '<option value="' + value + '">' + value + '</option>'
+        options += '<option value="' + value + '">' + value + '</option>'
     )
     this.html(options)
     this.removeAttr('disabled').show()
     $("option:first", this).attr('selected', 'selected')
+    this.select2("destroy")
+    this.select2({placeholder: attr})
 
   container_el = $('.mmy-selector')
   make_el = $('.mmy-selector #make')
@@ -32,9 +29,9 @@ $ ->
     model = model_el.val()
     year = year_el.val()
 
-    param_string = 'make_slug=' + make
+    param_string = 'make=' + make
     if model != ''
-      param_string += '&model_slug=' + model
+      param_string += '&model=' + model
     if year != ''
       param_string += '&year=' + year
 
@@ -62,10 +59,10 @@ $ ->
       return true
 
     $.getJSON(
-      "/proto_vehicles/model_index?make_slug=" + make,
+      "/proto_vehicles/model_index?make=" + make,
       { format: "json" },
       (data) -> 
-        model_el.fillOptionsWith(data, 'model', '<option value="">Model</option>')
+        model_el.fillOptionsWith(data, 'Model', '<option></option>')
         year_el.html('<option value="">Year</option>').attr('disabled','disabled')
     )
     btn_el.removeAttr('disabled')
@@ -77,10 +74,10 @@ $ ->
     if model == ''
       return true
     $.getJSON(
-      "/proto_vehicles/year_index?model_slug=" + model + '&make_slug=' + make,
+      "/proto_vehicles/year_index?model=" + model + '&make=' + make,
       { format: "json" },
       (data) -> 
-        year_el.fillOptionsWith(data, 'year', '<option value="">Year</option>')
+        year_el.fillOptionsWith(data, 'Year', '<option></option>')
     )
     btn_el.removeAttr('disabled')
 

@@ -77,11 +77,11 @@ class ApplicationController < ActionController::Base
   end
 
   def make_name
-    params[:make_slug] && Motorstories::SlugCache.make_query(params[:make_slug])
+    params[:make] || (params[:make_slug] && Motorstories::SlugCache.make_query(params[:make_slug]))
   end
 
   def model_name
-    params[:model_slug] && Motorstories::SlugCache.model_query(params[:model_slug])
+    params[:model] || (params[:model_slug] && Motorstories::SlugCache.model_query(params[:model_slug]))
   end
 
 

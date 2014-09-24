@@ -14,6 +14,7 @@ class ProtoVehicle
     def distinct_collection field, addtl_conds = {}
       conditions = {:vehicle_type => {'$in' => ProtoVehicle::VEHICLE_TYPE_SCOPE}}
       conditions.merge!(addtl_conds)
+
       ProtoVehicle.collection.distinct(field, conditions)
     end
 
