@@ -10,7 +10,7 @@ module NavigationHelper
 
   def make_dropdown namespace = nil
     collection = ProtoVehicle.make_names
-    html_opts = {name: name_spacer('make', namespace), required: true}
+    html_opts = {name: name_spacer('make', namespace), required: true, class: 'select2 mmy'}
     select_tag :make, options_for_select(([['Make', nil]] + collection ), make_name), html_opts
   end
 
@@ -32,7 +32,7 @@ module NavigationHelper
 
   def model_dropdown namespace = nil
     collection = model_names_by_current_make
-    html_hash = {name: name_spacer('model', namespace), required: true}
+    html_hash = {name: name_spacer('model', namespace), required: true, class: 'select2 mmy'}
     html_hash[:disabled] = 'disabled' unless collection.present?
     collection.unshift(["Model", nil])
 
@@ -45,7 +45,7 @@ module NavigationHelper
 
   def year_dropdown namespace = nil
     collection = years_by_make_and_model
-    html_hash = {name: name_spacer('year', namespace), required: true}
+    html_hash = {name: name_spacer('year', namespace), required: true, class: 'select2 mmy'}
     html_hash[:disabled] = 'disabled' unless collection.present?
     collection.unshift(["Year", nil])
 

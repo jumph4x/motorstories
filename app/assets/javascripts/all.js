@@ -9,4 +9,5 @@
 $(document).ready(function(){
   $(document).foundation();
   $('.fit').fitText(1.4);
+  $(".select2").select2();
 });
