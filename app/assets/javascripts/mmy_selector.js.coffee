@@ -1,12 +1,17 @@
 $ ->
   'use strict'
 
-  $.fn.fillOptionsWith = (data, attr, prefix) -> 
+  typeIsArray = Array.isArray || ( value ) -> return {}.toString.call( value ) is '[object Array]'
+
+  $.fn.fillOptionsWith = (data, attr, prefix) ->
     options = prefix
     $.each(
       data,
       (idx, value) ->
-        options += '<option value="' + value + '">' + value + '</option>'
+        if typeIsArray value
+          options += '<option value="' + value[1] + '">' + value[0] + '</option>'
+        else
+          options += '<option value="' + value + '">' + value + '</option>'
     )
     this.html(options)
     this.removeAttr('disabled').show()
@@ -17,28 +22,35 @@ $ ->
   model_el = $('.mmy-selector #model')
   year_el = $('.mmy-selector #year')
   btn_el = $(".mmy-selector #mmy-submit")
+  new_btn_el = $(".mmy-selector .new-project-redirect")
 
   if make_el.val() == ''
     btn_el.attr('disabled','disabled')
 
-  mmyRedirect = () ->
+  paramString = () ->
     make = make_el.val()
     model = model_el.val()
     year = year_el.val()
 
-    unless container_el.hasClass('redirectable')
-      return false
-
-    if make == ''
-      return false
-
-    param_string = 'make=' + make
+    param_string = 'make_slug=' + make
     if model != ''
-      param_string += '&model=' + model
+      param_string += '&model_slug=' + model
     if year != ''
       param_string += '&year=' + year
 
-    window.location.replace("/redirects/vehicles_index?" + param_string)
+    return param_string
+
+  mmyRedirect = () ->
+    unless container_el.hasClass('redirectable')
+      return false
+    if make_el.val() == ''
+      return false
+    window.location.replace("/redirects/vehicles_index?" + paramString())
+
+  newRedirect = () ->
+    if make_el.val() == ''
+      return false
+    window.location.replace("/projects/new?" + paramString())
 
   make_el.change ->
     make = $(this).val()
@@ -50,7 +62,7 @@ $ ->
       return true
 
     $.getJSON(
-      "/proto_vehicles/model_index?make=" + make,
+      "/proto_vehicles/model_index?make_slug=" + make,
       { format: "json" },
       (data) -> 
         model_el.fillOptionsWith(data, 'model', '<option value="">Model</option>')
@@ -65,7 +77,7 @@ $ ->
     if model == ''
       return true
     $.getJSON(
-      "/proto_vehicles/year_index?model=" + model + '&make=' + make,
+      "/proto_vehicles/year_index?model_slug=" + model + '&make_slug=' + make,
       { format: "json" },
       (data) -> 
         year_el.fillOptionsWith(data, 'year', '<option value="">Year</option>')
@@ -83,3 +95,6 @@ $ ->
 
   btn_el.click ->
     mmyRedirect()
+
+  new_btn_el.click ->
+    newRedirect()

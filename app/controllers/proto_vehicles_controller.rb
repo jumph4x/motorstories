@@ -12,7 +12,7 @@ class ProtoVehiclesController < ApplicationController
   end
 
   def model_index
-    proto_vehicles = ProtoVehicle.model_names_by_make params[:make]
+    proto_vehicles = ProtoVehicle.model_names_by_make(make_name).map{|m| [m,m.to_url]}
 
     respond_to do |format|
       format.json{ render :json => proto_vehicles }
@@ -20,7 +20,7 @@ class ProtoVehiclesController < ApplicationController
   end
 
   def year_index
-    proto_vehicles = ProtoVehicle.years_by_make_and_model params[:make], params[:model]
+    proto_vehicles = ProtoVehicle.years_by_make_and_model(make_name, model_name)
 
     respond_to do |format|
       format.json{ render :json => proto_vehicles }

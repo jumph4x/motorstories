@@ -9,21 +9,13 @@ module NavigationHelper
   end
 
   def make_dropdown namespace = nil
-    collection = ProtoVehicle.make_names
+    collection = ProtoVehicle.make_names.map{|n| [n,n.to_url]}
     html_opts = {name: name_spacer('make', namespace), required: true, class: 'select2 mmy'}
-    select_tag :make, options_for_select(([['Make', nil]] + collection ), make_name), html_opts
+    select_tag :make, options_for_select(([['Make', nil]] + collection ), params[:make_slug]), html_opts
   end
 
   def name_spacer name, namespace = nil
     namespace ? "#{namespace}[#{name}]" : name
-  end
-
-  def make_name
-    params[:make_slug] && Motorstories::SlugCache.make_query(params[:make_slug])
-  end
-
-  def model_name
-    params[:model_slug] && Motorstories::SlugCache.model_query(params[:model_slug])
   end
 
   def model_names_by_current_make
@@ -31,12 +23,12 @@ module NavigationHelper
   end
 
   def model_dropdown namespace = nil
-    collection = model_names_by_current_make
+    collection = model_names_by_current_make.map{|n| [n,n.to_url]}
     html_hash = {name: name_spacer('model', namespace), required: true, class: 'select2 mmy'}
     html_hash[:disabled] = 'disabled' unless collection.present?
     collection.unshift(["Model", nil])
 
-    select_tag :model, options_for_select(collection, model_name), html_hash
+    select_tag :model, options_for_select(collection, params[:model_slug]), html_hash
   end
 
   def years_by_make_and_model

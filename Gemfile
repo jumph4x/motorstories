@@ -9,7 +9,7 @@ gem 'haml-rails'
 gem "jquery-rails"
 #gem 'craigslist', :git => 'git://github.com/gregstallings/craigslist.git'
 gem 'browser'
-gem 'select2-rails'
+gem 'select2-rails', '~> 3.2.0'
 
 gem 'devise'
 gem 'mm-devise', :git => "git://github.com/jpteti/mm-devise"

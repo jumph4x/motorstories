@@ -8,5 +8,14 @@
           %source{src: video_path('splash/homepage.webm'), type: 'video/webm'}
       .content.on-top.pad-top-20p
         %h1.txt-sha Begin your story
-        .centered.text-center
-          = mmy_selector true
+        .row
+          .small-12.large-8.large-offset-2
+            .row.mmy-selector
+              .small-3.columns
+                = make_dropdown
+              .small-3.columns
+                = model_dropdown
+              .small-3.columns
+                = year_dropdown
+              .small-3.columns
+                %a.button.small.pad-tb-07.expand.new-project-redirect{href: '#'} Add a project!

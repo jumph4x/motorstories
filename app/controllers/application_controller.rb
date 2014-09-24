@@ -5,7 +5,8 @@ class ApplicationController < ActionController::Base
   include NavigationHelper
 
   helper_method :stored_vehicle_ids, :stored_vehicles,
-                :current_location, :user_vehicles
+                :current_location, :user_vehicles,
+                :make_name, :model_name
 
   after_filter :store_location
   before_action :configure_permitted_parameters, if: :devise_controller?
@@ -74,6 +75,15 @@ class ApplicationController < ActionController::Base
   def after_sign_out_path_for(resource_or_scope)
     session[:previous_url] || root_path
   end
+
+  def make_name
+    params[:make_slug] && Motorstories::SlugCache.make_query(params[:make_slug])
+  end
+
+  def model_name
+    params[:model_slug] && Motorstories::SlugCache.model_query(params[:model_slug])
+  end
+
 
   protected
 

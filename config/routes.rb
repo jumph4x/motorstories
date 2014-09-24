@@ -1,5 +1,4 @@
 Motorstories::Application.routes.draw do
-
   devise_for :users
 
   resources :profiles, :path => 'people'
@@ -31,7 +30,5 @@ Motorstories::Application.routes.draw do
     :as => 'semantic_vehicles'
 
   #get ':location_slug' => 'locations#show',:as => 'locations'
-
   root :to => 'static#index'
-
 end
