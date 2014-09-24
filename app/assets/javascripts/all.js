@@ -1,6 +1,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require foundation
+//= require select2
 //= require './jquery.fittext'
 //= require './mmy_selector'
 //= require './vehicles'

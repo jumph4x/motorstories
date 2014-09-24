@@ -27,6 +27,7 @@ gem 'mina'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'rack-rewrite'
+gem 'uglifier'
 
 group :development do
   gem 'better_errors'

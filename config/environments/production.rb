@@ -73,4 +73,7 @@ Motorstories::Application.configure do
 
   config.eager_load = true
   config.assets.precompile += %w( vendor/modernizr.js )
+
+  require 'uglifier'
+  config.assets.js_compressor = Uglifier.new(output: {ascii_only: true, quote_keys: true})
 end
