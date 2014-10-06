@@ -36,6 +36,14 @@ en:
     tire_rear_width: mm
     tire_rear_profile: mm
 
+  mod:
+    desc:
+      motor: Power related modifications. Have you been tinkering with breather mods or engine management?
+      suspension: Upgraded shocks, springs, sway bars and even bushings. Adjusted camber or toe?
+      wheels: Speaks for itself. Shiny new wheels can make any old trick look relatable and trendy.
+      brakes: "Rotors, lines, pads. Going fast is no fun when stopping just as quickly isn't an option."
+      ergonomics: Controls, dash upgrades, fancy new seat. Improvements to the vehicle interface.
+      body: Exterior upgrades, be it lighting, carbon fibre or even aero improvements.
   form_help:
     #general
     acquired_at: When did this guy become your own?
