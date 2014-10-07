@@ -1,0 +1,71 @@
+@mixin box-shadow($shadow...)
+  -webkit-box-shadow: ($shadow)
+  -moz-box-shadow: ($shadow)
+  box-shadow: ($shadow)
+
+@mixin box-shadows($one, $two)
+  -webkit-box-shadow: $one, $two
+  -moz-box-shadow: $one, $two
+  box-shadow: $one, $two
+
+@mixin border-radius($radius)
+  -webkit-border-radius: $radius
+  -moz-border-radius: $radius
+  -ms-border-radius: $radius
+  border-radius: $radius
+
+@mixin translate3d-scale($x, $y, $z, $s)
+  -webkit-transform: translate3d($x, $y, $z) scale3d($s, $s, $s)
+  -moz-transform: translate3d($x, $y, $z) scale3d($s, $s, $s)
+  -ms-transform: translate3d($x, $y, $z) scale3d($s, $s, $s)
+  -o-transform: translate3d($x, $y, $z) scale3d($s, $s, $s)
+  transform: translate3d($x, $y, $z) scale3d($s, $s, $s)
+
+@mixin transform-origin($v)
+  -webkit-transform-origin: $v
+  -moz-transform-origin: $v
+  -ms-transform-origin: $v
+  -o-transform-origin: $v
+  transform-origin: $v
+
+@mixin transition-transform($d1, $d2, $d3)
+  -webkit-transition: opacity $d1 $d2, -webkit-transform $d3 ease
+  -webkit-transition-delay: ease, 0s
+  -moz-transition: opacity $d1 $d2 ease, -moz-transform $d3 ease
+  -o-transition: opacity $d1 $d2 ease, -o-transform $d3 ease
+  transition: opacity $d1 $d2 ease, transform $d3 ease
+
+@mixin transition3d($d1)
+  -webkit-transition: -webkit-transform $d1 ease
+  -moz-transition: -moz-transform $d1 ease
+  -o-transition: -o-transform $d1 ease
+  transition: transform $d1 ease
+
+@mixin transition($prop, $d)
+  -webkit-transition: $prop $d ease-in-out
+  -moz-transition: $prop $d ease-in-out
+  -o-transition: $prop $d ease-in-out
+  transition: $prop $d ease-in-out
+
+@mixin transform($prop)
+  -webkit-transform: $prop
+  -moz-transform: $prop
+  -o-transform: $prop
+  transform: $prop
+
+@mixin gradient($f, $t)
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from($f), to($t))
+  background-image: -webkit-linear-gradient($f, $t)
+  background-image: -moz-linear-gradient($f, $t)
+  background-image: -o-linear-gradient($f, $t)
+
+@mixin backface-visibility($v)
+  -moz-backface-visibility: $v
+  -webkit-backface-visibility: $v
+  -ms-backface-visibility: $v
+  -o-backface-visibility: $v
+  backface-visibility: $v
+
+@mixin diagonal-stripe($f, $t, $d)
+  background: repeating-linear-gradient(45deg,$f,$f $d,$t $d,$t ($d*2))
+
