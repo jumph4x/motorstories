@@ -1,6 +1,7 @@
 Motorstories::Application.routes.draw do
   devise_for :users
 
+  get 'credits' => 'static#credits', :as => 'credits'
   resources :profiles, :path => 'people'
   resources :proto_vehicles do
     collection do

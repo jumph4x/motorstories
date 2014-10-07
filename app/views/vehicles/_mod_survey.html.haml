@@ -1,7 +1,7 @@
 .row
   - Vehicle.mod_categories.each do |cat|
     .small-12.medium-6.large-4.columns.min-height-15
-      %h2= cat.to_s.titleize
+      %h3= cat.to_s.titleize
       %p= t("mod.desc.#{cat}")
       .row
         .small-4.columns.text-right
