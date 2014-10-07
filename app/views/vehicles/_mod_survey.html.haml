@@ -3,7 +3,7 @@
     .small-12.medium-6.large-4.columns.min-height-15
       .text-center
         %h3= cat.to_s.titleize
-        .icon.animate.round.border-gray.ibl.pad-05.line-height-08.margin-bottom-1{'data-category' => cat}
+        .icon.animate.round.border-gray.ibl.pad-05.margin-bottom-1{'data-category' => cat}
           = inline_svg "illustrations/#{@vehicle.group}/#{cat}.svg"
       .text-small.height-3
         = t("mod.desc.#{cat}")

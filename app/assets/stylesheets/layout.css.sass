@@ -33,12 +33,30 @@ header
   right: 0
 
 .icon
+  line-height: 0rem
   svg
     height: 75px
     width: 75px
   &.modded
     background: $primary-color
+  &.small
+    svg
+      height: 37px
+      width: 37px
 
+.no-image
+  width: 100%
+  border: 1px solid #ccc
+  line-height: 10rem
+  color: #ccc
+  text-align: center
+
+.vertical-line
+  margin: 0 auto
+  border-left: 1px solid #777
+  width: 1px
+  &.dashed
+    border-left: 1px dashed #777
 
 footer
   font-size: 0.9rem

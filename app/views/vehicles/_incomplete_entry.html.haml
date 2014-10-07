@@ -1,0 +1,19 @@
+.small-12.medium-10.large-8.medium-centered.of-hidden.max-height-12.columns
+  .row
+    .small-3.medium-2.columns.text-center
+      .icon.small.round.border-gray.ibl.pad-05
+        = inline_svg "illustrations/#{@vehicle.group}/#{entry.category}.svg"
+      .date.text-small.monospace.font-bold
+        .month-day DATE
+        .year HERE
+      .vertical-line.height-100.dashed
+        &nbsp;
+    .small-3.medium-4.columns
+      .photo.margin-bottom-1.no-image
+        No photo, yet
+    .small-6.medium-6.columns
+      .body
+        Upload a snapshot and describe what happened
+      .actions
+        - if @vehicle.user == current_user
+          = link_to 'Complete entry', edit_vehicle_entry_path(@vehicle,entry), class: 'button secondary small radius'
