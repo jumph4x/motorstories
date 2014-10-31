@@ -1,7 +1,7 @@
 .small-12.medium-10.large-8.medium-centered.of-hidden.max-height-15.columns
   .row
     .small-3.medium-2.columns.text-center
-      .icon.small.round.border-gray.ibl.pad-05
+      .icon.small.round.border-gray.ibl.p-05
         = inline_svg "illustrations/#{@vehicle.group}/#{entry.category}.svg"
       .date.text-small.monospace.font-bold
         .month-day= entry.occurred_at.strftime("%m.%d")
@@ -9,7 +9,7 @@
       .vertical-line.height-100
         &nbsp;
     .small-3.medium-4.columns
-      .photo.margin-bottom-1
+      .photo.m-b-1
         = image_tag entry.snapshot.url
     .small-6.medium-6.columns
       .body

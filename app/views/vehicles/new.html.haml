@@ -8,7 +8,7 @@
       .small-12.columns
         %h1 Begin your story
 
-        %p.margin-top-1.margin-bottom-05 1. Tell everyone what the vehicle is
+        %p.m-t-1.m-b-05 1. Tell everyone what the vehicle is
         - # mmy_selector false, 'vehicle'
         .row.mmy-selector
           .small-4.columns
@@ -18,7 +18,7 @@
           .small-4.columns
             = year_dropdown 'vehicle'
 
-        %p.margin-top-1.margin-bottom-05 2. Upload a large photo to serve as a cover for this story
+        %p.m-t-1.m-b-05 2. Upload a large photo to serve as a cover for this story
         = f.file_field :cover, {required: true, accept: 'image/jpeg,image/png'}
         = f.hidden_field :cover_cache
 

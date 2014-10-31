@@ -19,9 +19,9 @@
       .row.owner-updates
         .large-4.small-12.columns
           = vehicle_owner @vehicle
-  .entries.margin-top-5
+  .entries.m-t-5
     - @vehicle.entries.each do |entry|
-      .row.pad-tb-1
+      .row.p-tb-1
         - if entry.pending?
           = render 'incomplete_entry', entry: entry
         - else
