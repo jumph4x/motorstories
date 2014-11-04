@@ -1,12 +1,20 @@
 .index.project
   .row
-    .12-large.12-small.columns
-      - if @vehicles.any?
-        %h1 Showing all #{name_from_params}
-        %ul
-          - @vehicles.each do |veh|
-            %li= link_to veh.name, semantic_vehicle_path(veh.semantic_url_hash)
+    .large-3.small-12.columns
+      = form_tag vehicles_redirect_path, :method => :get do
+        = text_field_tag :keywords, params[:keywords], placeholder: 'Keywords'
+        = select_tag :vehicle_type, options_for_select(Vehicle::VEHICLE_TYPE_GROUPS.keys.map{|t| [t,t]}.unshift(['Type', nil]), params[:vehicle_type])
+        = make_dropdown
+        = model_dropdown
+        = year_dropdown
+        = submit_tag 'Explore', class: 'button'
+    .large-9.small-12.columns
+      - if !filtered?
+        %h1.m-t-0 What excited you?
+      - elsif collection.any?
+        %h1.m-t-0 #{name_from_params} Stories
+        = render 'collection', :vehicles => collection
       - else
-        %h1 Looks like no one added a #{name_from_params} yet
-        - if false && current_mmy
-          %p Why don't you #{link_to 'add one', new_vehicle_path(current_mmy)}?
+        %h1.m-t-0 No #{name_from_params} matching your filters yet
+        - if current_mmy
+          %p Do you #{link_to 'have one', new_vehicle_path(current_mmy)}?

@@ -1,0 +1,4 @@
+.row
+  - collection.each do |vehicle|
+    .small-6.large-4.columns.radius.border-lgray
+      = link_to vehicle.name, semantic_vehicle_path(vehicle.semantic_url_hash)

@@ -3,7 +3,7 @@
     %li
       %a{href: '/'} Homepage
     %li
-      %a{href: '#'} Search
+      = link_to 'Search', search_path
     - unless current_user
       %li
         %label

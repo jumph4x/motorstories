@@ -1,14 +1,14 @@
 class VehiclesController < ApplicationController
   rescue_from MongoMapper::DocumentNotFound, :with => :render_404
   helper :navigation
-  helper_method :authorized_to_edit?
+  helper_method :authorized_to_edit?, :collection, :filtered?
 
   def index
-    @vehicles = Vehicle.
-      all_by_mmyn_slugs(*mmyn_slugs).
-      claimed.
-      limit(20).
-      all
+    respond_to do |format|
+      format.html do
+        #render (filtered? ? 'index' : 'search_help')
+      end
+    end
   end
 
   def show
@@ -54,6 +54,20 @@ class VehiclesController < ApplicationController
     render_401 unless authorized_to_edit?
   end
 
+  def collection
+    @vehicles ||=
+    if filtered?
+      Vehicle.
+      all_by_mmyn_slugs(*mmyn_slugs).
+      by_type(params[:vehicle_type]).
+      with_keywords(params[:keywords]).
+      claimed.
+      limit(20).
+      all
+    else
+      []
+    end
+  end
 
   def authorized_to_edit?
     return unless @vehicle
@@ -73,6 +87,10 @@ class VehiclesController < ApplicationController
       params[:model_slug],
       params[:year]
     ]
+  end
+
+  def filtered?
+    mmy_slugs.compact.present? || [params[:keywords], params[:vehicle_type]].compact.present?
   end
 
   def mmyn_slugs

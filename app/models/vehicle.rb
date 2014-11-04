@@ -19,6 +19,20 @@ class Vehicle
 
   scope :claimed, where(:user_id.ne => nil)
   scope :unclaimed, where(:user_id => nil)
+  scope :with_keywords, lambda{|keywords|
+    cumul = where
+    keywords.present? && keywords.split.each do |part|
+      cumul = cumul.where('entries.body' => /#{part}/i)
+    end
+    cumul
+  }
+  scope :by_type, lambda{|type|
+    if type.present?
+      where(:vehicle_type => type)
+    else
+      where
+    end
+  }
 
   belongs_to :proto_vehicle
   belongs_to :user

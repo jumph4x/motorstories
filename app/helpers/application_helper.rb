@@ -11,8 +11,10 @@ module ApplicationHelper
   end
 
   def inline_svg path
-    file = File.open("app/assets/images/#{path}", "rb")
-    raw file.read
+    path = "app/assets/images/#{path}"
+    return unless File.exists? path
+
+    raw File.open(path, 'rb').read
   end
 
   def show_flash

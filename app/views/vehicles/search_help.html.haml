@@ -1,0 +1,10 @@
+.search-help.project
+  .row
+    .large-12.small-12.columns
+      %h1 Story Search
+  .row
+    .large-4.small-12.columns
+      = form_tag search_path, :method => :get do
+        = text_field_tag :keywords, params[:keywords] || 'Keywords'
+    .large-8.small-12.columns
+

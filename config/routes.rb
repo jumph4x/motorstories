@@ -21,7 +21,11 @@ Motorstories::Application.routes.draw do
   resources :models, :only => :index
   resources :years, :only => :index
 
-  get 'redirects/vehicles_index' => 'redirects#vehicles_index'
+  get 'redirects/vehicles_index' => 'redirects#vehicles_index',
+    :as => 'vehicles_redirect'
+
+  get 'search' => 'vehicles#index',
+    :as => 'search'
 
   get ':make_slug/:model_slug/:year/:nickname' => 'vehicles#show',
     :as => 'semantic_vehicle'
