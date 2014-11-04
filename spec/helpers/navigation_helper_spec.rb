@@ -5,12 +5,13 @@ describe NavigationHelper do
 
   context 'for MMY' do
     it 'renders Make' do
+      allow(helper).to receive_messages(:make_name => pv.make)
       pv
       expect(helper.make_dropdown).to match(pv.make)
     end
 
     it 'renders Model' do
-      allow(helper).to receive_messages(:make_name => pv.make)
+      allow(helper).to receive_messages(:make_name => pv.make, :model_name => pv.model)
       pv
       expect(helper.model_dropdown).to match(pv.model)
     end
