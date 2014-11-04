@@ -20,7 +20,7 @@
       %li
         = link_to current_user.username, '#'
       %li
-        = link_to 'Acount Settings', edit_user_registration_path(current_user)
+        = link_to 'Acount Settings', edit_user_registration_path
       %li
         = link_to 'Sign out', destroy_user_session_path, method: :delete
     %li
