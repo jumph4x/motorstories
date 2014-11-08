@@ -10,7 +10,7 @@
         = submit_tag 'Explore', class: 'button'
     .large-9.small-12.columns
       - if !filtered?
-        %h1.m-t-0 What excited you?
+        %h1.m-t-0 What excites you?
       - elsif collection.any?
         %h1.m-t-0 #{name_from_params} Stories
         = render 'collection', :vehicles => collection
